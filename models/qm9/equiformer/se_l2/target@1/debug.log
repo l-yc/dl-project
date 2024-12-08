@@ -1930,3 +1930,762 @@
 2024-12-08 08:07:18,707 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
 
 2024-12-08 08:07:20,056 - logger.py:50 - Epoch: [148][0/27] 	 loss: 0.04089, MAE: 0.41896, time/step=1346ms, lr=2.56e-04
+2024-12-08 08:07:45,368 - logger.py:50 - Epoch: [148][26/27] 	 loss: 0.03714, MAE: 0.38050, time/step=987ms, lr=2.56e-04
+2024-12-08 08:07:47,618 - logger.py:50 - Epoch: [148] Target: [1] train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046, Time: 28.91s
+2024-12-08 08:07:47,618 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:07:49,257 - logger.py:50 - Epoch: [149][0/27] 	 loss: 0.03769, MAE: 0.38616, time/step=1633ms, lr=2.53e-04
+2024-12-08 08:08:14,571 - logger.py:50 - Epoch: [149][26/27] 	 loss: 0.03470, MAE: 0.35558, time/step=998ms, lr=2.53e-04
+2024-12-08 08:08:16,787 - logger.py:50 - Epoch: [149] Target: [1] train MAE: 0.35558, val MAE: 0.41760, test MAE: 0.43334, Time: 29.17s
+2024-12-08 08:08:16,788 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:08:18,179 - logger.py:50 - Epoch: [150][0/27] 	 loss: 0.03302, MAE: 0.33828, time/step=1388ms, lr=2.51e-04
+2024-12-08 08:08:43,366 - logger.py:50 - Epoch: [150][26/27] 	 loss: 0.04132, MAE: 0.42337, time/step=984ms, lr=2.51e-04
+2024-12-08 08:08:45,573 - logger.py:50 - Epoch: [150] Target: [1] train MAE: 0.42337, val MAE: 0.43584, test MAE: 0.45175, Time: 28.79s
+2024-12-08 08:08:45,573 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:08:47,190 - logger.py:50 - Epoch: [151][0/27] 	 loss: 0.03593, MAE: 0.36818, time/step=1613ms, lr=2.48e-04
+2024-12-08 08:09:12,537 - logger.py:50 - Epoch: [151][26/27] 	 loss: 0.04077, MAE: 0.41769, time/step=998ms, lr=2.48e-04
+2024-12-08 08:09:14,834 - logger.py:50 - Epoch: [151] Target: [1] train MAE: 0.41769, val MAE: 0.43389, test MAE: 0.44613, Time: 29.26s
+2024-12-08 08:09:14,835 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:09:16,158 - logger.py:50 - Epoch: [152][0/27] 	 loss: 0.03357, MAE: 0.34391, time/step=1321ms, lr=2.45e-04
+2024-12-08 08:09:41,331 - logger.py:50 - Epoch: [152][26/27] 	 loss: 0.04323, MAE: 0.44296, time/step=981ms, lr=2.45e-04
+2024-12-08 08:09:43,519 - logger.py:50 - Epoch: [152] Target: [1] train MAE: 0.44296, val MAE: 0.77581, test MAE: 0.81146, Time: 28.68s
+2024-12-08 08:09:43,520 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:09:45,250 - logger.py:50 - Epoch: [153][0/27] 	 loss: 0.06431, MAE: 0.65894, time/step=1726ms, lr=2.43e-04
+2024-12-08 08:10:10,662 - logger.py:50 - Epoch: [153][26/27] 	 loss: 0.07180, MAE: 0.73559, time/step=1005ms, lr=2.43e-04
+2024-12-08 08:10:13,074 - logger.py:50 - Epoch: [153] Target: [1] train MAE: 0.73559, val MAE: 0.73828, test MAE: 0.67850, Time: 29.55s
+2024-12-08 08:10:13,074 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:10:14,548 - logger.py:50 - Epoch: [154][0/27] 	 loss: 0.06076, MAE: 0.62256, time/step=1471ms, lr=2.40e-04
+2024-12-08 08:10:40,376 - logger.py:50 - Epoch: [154][26/27] 	 loss: 0.06000, MAE: 0.61475, time/step=1011ms, lr=2.40e-04
+2024-12-08 08:10:42,529 - logger.py:50 - Epoch: [154] Target: [1] train MAE: 0.61475, val MAE: 0.78802, test MAE: 0.86166, Time: 29.45s
+2024-12-08 08:10:42,529 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:10:43,883 - logger.py:50 - Epoch: [155][0/27] 	 loss: 0.08079, MAE: 0.82774, time/step=1351ms, lr=2.37e-04
+2024-12-08 08:11:09,430 - logger.py:50 - Epoch: [155][26/27] 	 loss: 0.05442, MAE: 0.55757, time/step=996ms, lr=2.37e-04
+2024-12-08 08:11:11,823 - logger.py:50 - Epoch: [155] Target: [1] train MAE: 0.55757, val MAE: 0.82067, test MAE: 0.83421, Time: 29.29s
+2024-12-08 08:11:11,823 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:11:13,577 - logger.py:50 - Epoch: [156][0/27] 	 loss: 0.06304, MAE: 0.64584, time/step=1750ms, lr=2.35e-04
+2024-12-08 08:11:38,953 - logger.py:50 - Epoch: [156][26/27] 	 loss: 0.04955, MAE: 0.50768, time/step=1005ms, lr=2.35e-04
+2024-12-08 08:11:41,292 - logger.py:50 - Epoch: [156] Target: [1] train MAE: 0.50768, val MAE: 0.45259, test MAE: 0.47575, Time: 29.47s
+2024-12-08 08:11:41,292 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:11:42,668 - logger.py:50 - Epoch: [157][0/27] 	 loss: 0.03573, MAE: 0.36605, time/step=1373ms, lr=2.32e-04
+2024-12-08 08:12:07,740 - logger.py:50 - Epoch: [157][26/27] 	 loss: 0.05162, MAE: 0.52893, time/step=979ms, lr=2.32e-04
+2024-12-08 08:12:09,897 - logger.py:50 - Epoch: [157] Target: [1] train MAE: 0.52893, val MAE: 0.51203, test MAE: 0.51452, Time: 28.60s
+2024-12-08 08:12:09,897 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:12:11,525 - logger.py:50 - Epoch: [158][0/27] 	 loss: 0.04259, MAE: 0.43638, time/step=1623ms, lr=2.30e-04
+2024-12-08 08:12:36,747 - logger.py:50 - Epoch: [158][26/27] 	 loss: 0.05150, MAE: 0.52762, time/step=994ms, lr=2.30e-04
+2024-12-08 08:12:39,003 - logger.py:50 - Epoch: [158] Target: [1] train MAE: 0.52762, val MAE: 0.52429, test MAE: 0.54404, Time: 29.11s
+2024-12-08 08:12:39,003 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:12:40,397 - logger.py:50 - Epoch: [159][0/27] 	 loss: 0.03358, MAE: 0.34405, time/step=1391ms, lr=2.27e-04
+2024-12-08 08:13:05,635 - logger.py:50 - Epoch: [159][26/27] 	 loss: 0.04806, MAE: 0.49245, time/step=986ms, lr=2.27e-04
+2024-12-08 08:13:07,932 - logger.py:50 - Epoch: [159] Target: [1] train MAE: 0.49245, val MAE: 0.64841, test MAE: 0.59997, Time: 28.93s
+2024-12-08 08:13:07,932 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:13:09,572 - logger.py:50 - Epoch: [160][0/27] 	 loss: 0.05664, MAE: 0.58027, time/step=1635ms, lr=2.24e-04
+2024-12-08 08:13:34,951 - logger.py:50 - Epoch: [160][26/27] 	 loss: 0.05296, MAE: 0.54258, time/step=1001ms, lr=2.24e-04
+2024-12-08 08:13:37,223 - logger.py:50 - Epoch: [160] Target: [1] train MAE: 0.54258, val MAE: 0.48091, test MAE: 0.46676, Time: 29.29s
+2024-12-08 08:13:37,223 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:13:38,573 - logger.py:50 - Epoch: [161][0/27] 	 loss: 0.03555, MAE: 0.36424, time/step=1347ms, lr=2.22e-04
+2024-12-08 08:14:03,774 - logger.py:50 - Epoch: [161][26/27] 	 loss: 0.03666, MAE: 0.37564, time/step=983ms, lr=2.22e-04
+2024-12-08 08:14:05,975 - logger.py:50 - Epoch: [161] Target: [1] train MAE: 0.37564, val MAE: 0.48533, test MAE: 0.51810, Time: 28.75s
+2024-12-08 08:14:05,975 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:14:07,635 - logger.py:50 - Epoch: [162][0/27] 	 loss: 0.03417, MAE: 0.35008, time/step=1655ms, lr=2.19e-04
+2024-12-08 08:14:32,903 - logger.py:50 - Epoch: [162][26/27] 	 loss: 0.04978, MAE: 0.51007, time/step=997ms, lr=2.19e-04
+2024-12-08 08:14:35,289 - logger.py:50 - Epoch: [162] Target: [1] train MAE: 0.51007, val MAE: 0.47850, test MAE: 0.47599, Time: 29.31s
+2024-12-08 08:14:35,289 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:14:36,630 - logger.py:50 - Epoch: [163][0/27] 	 loss: 0.03425, MAE: 0.35087, time/step=1338ms, lr=2.17e-04
+2024-12-08 08:15:01,880 - logger.py:50 - Epoch: [163][26/27] 	 loss: 0.03745, MAE: 0.38371, time/step=985ms, lr=2.17e-04
+2024-12-08 08:15:04,108 - logger.py:50 - Epoch: [163] Target: [1] train MAE: 0.38371, val MAE: 0.42180, test MAE: 0.41229, Time: 28.82s
+2024-12-08 08:15:04,108 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:15:05,719 - logger.py:50 - Epoch: [164][0/27] 	 loss: 0.03313, MAE: 0.33942, time/step=1607ms, lr=2.14e-04
+2024-12-08 08:15:31,055 - logger.py:50 - Epoch: [164][26/27] 	 loss: 0.03488, MAE: 0.35741, time/step=998ms, lr=2.14e-04
+2024-12-08 08:15:33,324 - logger.py:50 - Epoch: [164] Target: [1] train MAE: 0.35741, val MAE: 0.44415, test MAE: 0.43001, Time: 29.22s
+2024-12-08 08:15:33,324 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:15:34,721 - logger.py:50 - Epoch: [165][0/27] 	 loss: 0.03806, MAE: 0.38992, time/step=1394ms, lr=2.11e-04
+2024-12-08 08:15:59,935 - logger.py:50 - Epoch: [165][26/27] 	 loss: 0.04490, MAE: 0.46003, time/step=985ms, lr=2.11e-04
+2024-12-08 08:16:02,246 - logger.py:50 - Epoch: [165] Target: [1] train MAE: 0.46003, val MAE: 0.44415, test MAE: 0.47846, Time: 28.92s
+2024-12-08 08:16:02,246 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:16:03,817 - logger.py:50 - Epoch: [166][0/27] 	 loss: 0.03275, MAE: 0.33555, time/step=1567ms, lr=2.09e-04
+2024-12-08 08:16:29,116 - logger.py:50 - Epoch: [166][26/27] 	 loss: 0.03343, MAE: 0.34253, time/step=995ms, lr=2.09e-04
+2024-12-08 08:16:31,274 - logger.py:50 - Epoch: [166] Target: [1] train MAE: 0.34253, val MAE: 0.42082, test MAE: 0.45528, Time: 29.03s
+2024-12-08 08:16:31,274 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:16:32,598 - logger.py:50 - Epoch: [167][0/27] 	 loss: 0.03444, MAE: 0.35283, time/step=1321ms, lr=2.06e-04
+2024-12-08 08:16:57,840 - logger.py:50 - Epoch: [167][26/27] 	 loss: 0.03311, MAE: 0.33925, time/step=984ms, lr=2.06e-04
+2024-12-08 08:17:00,170 - logger.py:50 - Epoch: [167] Target: [1] train MAE: 0.33925, val MAE: 0.41853, test MAE: 0.41165, Time: 28.90s
+2024-12-08 08:17:00,170 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:17:01,862 - logger.py:50 - Epoch: [168][0/27] 	 loss: 0.03037, MAE: 0.31118, time/step=1687ms, lr=2.04e-04
+2024-12-08 08:17:26,964 - logger.py:50 - Epoch: [168][26/27] 	 loss: 0.03823, MAE: 0.39167, time/step=992ms, lr=2.04e-04
+2024-12-08 08:17:29,241 - logger.py:50 - Epoch: [168] Target: [1] train MAE: 0.39167, val MAE: 0.42203, test MAE: 0.42751, Time: 29.07s
+2024-12-08 08:17:29,241 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:17:30,842 - logger.py:50 - Epoch: [169][0/27] 	 loss: 0.03427, MAE: 0.35113, time/step=1596ms, lr=2.01e-04
+2024-12-08 08:17:56,203 - logger.py:50 - Epoch: [169][26/27] 	 loss: 0.03835, MAE: 0.39293, time/step=998ms, lr=2.01e-04
+2024-12-08 08:17:58,507 - logger.py:50 - Epoch: [169] Target: [1] train MAE: 0.39293, val MAE: 0.58186, test MAE: 0.54169, Time: 29.27s
+2024-12-08 08:17:58,507 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:17:59,844 - logger.py:50 - Epoch: [170][0/27] 	 loss: 0.05154, MAE: 0.52804, time/step=1334ms, lr=1.99e-04
+2024-12-08 08:18:25,093 - logger.py:50 - Epoch: [170][26/27] 	 loss: 0.04701, MAE: 0.48164, time/step=985ms, lr=1.99e-04
+2024-12-08 08:18:27,502 - logger.py:50 - Epoch: [170] Target: [1] train MAE: 0.48164, val MAE: 0.43338, test MAE: 0.45904, Time: 28.99s
+2024-12-08 08:18:27,502 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:18:29,028 - logger.py:50 - Epoch: [171][0/27] 	 loss: 0.03217, MAE: 0.32964, time/step=1521ms, lr=1.96e-04
+2024-12-08 08:18:54,166 - logger.py:50 - Epoch: [171][26/27] 	 loss: 0.03257, MAE: 0.33372, time/step=987ms, lr=1.96e-04
+2024-12-08 08:18:56,470 - logger.py:50 - Epoch: [171] Target: [1] train MAE: 0.33372, val MAE: 0.43606, test MAE: 0.44428, Time: 28.97s
+2024-12-08 08:18:56,470 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:18:58,089 - logger.py:50 - Epoch: [172][0/27] 	 loss: 0.02722, MAE: 0.27889, time/step=1614ms, lr=1.94e-04
+2024-12-08 08:19:23,366 - logger.py:50 - Epoch: [172][26/27] 	 loss: 0.03225, MAE: 0.33047, time/step=996ms, lr=1.94e-04
+2024-12-08 08:19:25,667 - logger.py:50 - Epoch: [172] Target: [1] train MAE: 0.33047, val MAE: 0.59378, test MAE: 0.53841, Time: 29.20s
+2024-12-08 08:19:25,667 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:19:27,062 - logger.py:50 - Epoch: [173][0/27] 	 loss: 0.05026, MAE: 0.51499, time/step=1392ms, lr=1.91e-04
+2024-12-08 08:19:52,278 - logger.py:50 - Epoch: [173][26/27] 	 loss: 0.03773, MAE: 0.38655, time/step=985ms, lr=1.91e-04
+2024-12-08 08:19:54,665 - logger.py:50 - Epoch: [173] Target: [1] train MAE: 0.38655, val MAE: 0.43798, test MAE: 0.47620, Time: 29.00s
+2024-12-08 08:19:54,666 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:19:56,058 - logger.py:50 - Epoch: [174][0/27] 	 loss: 0.03447, MAE: 0.35322, time/step=1389ms, lr=1.88e-04
+2024-12-08 08:20:21,360 - logger.py:50 - Epoch: [174][26/27] 	 loss: 0.05230, MAE: 0.53588, time/step=989ms, lr=1.88e-04
+2024-12-08 08:20:23,670 - logger.py:50 - Epoch: [174] Target: [1] train MAE: 0.53588, val MAE: 0.59543, test MAE: 0.53564, Time: 29.00s
+2024-12-08 08:20:23,670 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:20:25,034 - logger.py:50 - Epoch: [175][0/27] 	 loss: 0.04727, MAE: 0.48427, time/step=1360ms, lr=1.86e-04
+2024-12-08 08:20:50,448 - logger.py:50 - Epoch: [175][26/27] 	 loss: 0.04655, MAE: 0.47699, time/step=992ms, lr=1.86e-04
+2024-12-08 08:20:52,721 - logger.py:50 - Epoch: [175] Target: [1] train MAE: 0.47699, val MAE: 0.68553, test MAE: 0.73016, Time: 29.05s
+2024-12-08 08:20:52,721 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:20:54,063 - logger.py:50 - Epoch: [176][0/27] 	 loss: 0.05758, MAE: 0.58997, time/step=1338ms, lr=1.83e-04
+2024-12-08 08:21:19,282 - logger.py:50 - Epoch: [176][26/27] 	 loss: 0.03941, MAE: 0.40381, time/step=984ms, lr=1.83e-04
+2024-12-08 08:21:21,707 - logger.py:50 - Epoch: [176] Target: [1] train MAE: 0.40381, val MAE: 0.42363, test MAE: 0.39409, Time: 28.99s
+2024-12-08 08:21:21,711 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:21:23,271 - logger.py:50 - Epoch: [177][0/27] 	 loss: 0.03563, MAE: 0.36508, time/step=1555ms, lr=1.81e-04
+2024-12-08 08:21:48,434 - logger.py:50 - Epoch: [177][26/27] 	 loss: 0.03447, MAE: 0.35314, time/step=990ms, lr=1.81e-04
+2024-12-08 08:21:50,604 - logger.py:50 - Epoch: [177] Target: [1] train MAE: 0.35314, val MAE: 0.45186, test MAE: 0.51476, Time: 28.89s
+2024-12-08 08:21:50,604 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:21:52,224 - logger.py:50 - Epoch: [178][0/27] 	 loss: 0.03364, MAE: 0.34465, time/step=1616ms, lr=1.78e-04
+2024-12-08 08:22:17,479 - logger.py:50 - Epoch: [178][26/27] 	 loss: 0.03264, MAE: 0.33443, time/step=995ms, lr=1.78e-04
+2024-12-08 08:22:19,711 - logger.py:50 - Epoch: [178] Target: [1] train MAE: 0.33443, val MAE: 0.58636, test MAE: 0.62031, Time: 29.11s
+2024-12-08 08:22:19,711 - logger.py:50 - Best -- epoch=148, train MAE: 0.38050, val MAE: 0.41733, test MAE: 0.44046
+
+2024-12-08 08:22:21,059 - logger.py:50 - Epoch: [179][0/27] 	 loss: 0.04589, MAE: 0.47018, time/step=1345ms, lr=1.76e-04
+2024-12-08 08:22:46,165 - logger.py:50 - Epoch: [179][26/27] 	 loss: 0.04207, MAE: 0.43105, time/step=980ms, lr=1.76e-04
+2024-12-08 08:22:48,561 - logger.py:50 - Epoch: [179] Target: [1] train MAE: 0.43105, val MAE: 0.40770, test MAE: 0.42935, Time: 28.85s
+2024-12-08 08:22:48,561 - logger.py:50 - Best -- epoch=179, train MAE: 0.43105, val MAE: 0.40770, test MAE: 0.42935
+
+2024-12-08 08:22:50,305 - logger.py:50 - Epoch: [180][0/27] 	 loss: 0.02498, MAE: 0.25591, time/step=1739ms, lr=1.73e-04
+2024-12-08 08:23:15,405 - logger.py:50 - Epoch: [180][26/27] 	 loss: 0.03223, MAE: 0.33018, time/step=994ms, lr=1.73e-04
+2024-12-08 08:23:17,581 - logger.py:50 - Epoch: [180] Target: [1] train MAE: 0.33018, val MAE: 0.41454, test MAE: 0.40609, Time: 29.02s
+2024-12-08 08:23:17,581 - logger.py:50 - Best -- epoch=179, train MAE: 0.43105, val MAE: 0.40770, test MAE: 0.42935
+
+2024-12-08 08:23:18,949 - logger.py:50 - Epoch: [181][0/27] 	 loss: 0.02622, MAE: 0.26867, time/step=1365ms, lr=1.71e-04
+2024-12-08 08:23:44,291 - logger.py:50 - Epoch: [181][26/27] 	 loss: 0.03179, MAE: 0.32568, time/step=989ms, lr=1.71e-04
+2024-12-08 08:23:46,533 - logger.py:50 - Epoch: [181] Target: [1] train MAE: 0.32568, val MAE: 0.39788, test MAE: 0.38577, Time: 28.95s
+2024-12-08 08:23:46,533 - logger.py:50 - Best -- epoch=181, train MAE: 0.32568, val MAE: 0.39788, test MAE: 0.38577
+
+2024-12-08 08:23:48,025 - logger.py:50 - Epoch: [182][0/27] 	 loss: 0.02966, MAE: 0.30387, time/step=1489ms, lr=1.68e-04
+2024-12-08 08:24:13,135 - logger.py:50 - Epoch: [182][26/27] 	 loss: 0.03520, MAE: 0.36067, time/step=985ms, lr=1.68e-04
+2024-12-08 08:24:15,542 - logger.py:50 - Epoch: [182] Target: [1] train MAE: 0.36067, val MAE: 0.56342, test MAE: 0.53813, Time: 29.01s
+2024-12-08 08:24:15,542 - logger.py:50 - Best -- epoch=181, train MAE: 0.32568, val MAE: 0.39788, test MAE: 0.38577
+
+2024-12-08 08:24:17,192 - logger.py:50 - Epoch: [183][0/27] 	 loss: 0.05167, MAE: 0.52944, time/step=1646ms, lr=1.66e-04
+2024-12-08 08:24:42,334 - logger.py:50 - Epoch: [183][26/27] 	 loss: 0.03243, MAE: 0.33222, time/step=992ms, lr=1.66e-04
+2024-12-08 08:24:44,486 - logger.py:50 - Epoch: [183] Target: [1] train MAE: 0.33222, val MAE: 0.41075, test MAE: 0.43075, Time: 28.94s
+2024-12-08 08:24:44,486 - logger.py:50 - Best -- epoch=181, train MAE: 0.32568, val MAE: 0.39788, test MAE: 0.38577
+
+2024-12-08 08:24:46,015 - logger.py:50 - Epoch: [184][0/27] 	 loss: 0.03097, MAE: 0.31731, time/step=1525ms, lr=1.64e-04
+2024-12-08 08:25:11,333 - logger.py:50 - Epoch: [184][26/27] 	 loss: 0.03603, MAE: 0.36913, time/step=994ms, lr=1.64e-04
+2024-12-08 08:25:13,591 - logger.py:50 - Epoch: [184] Target: [1] train MAE: 0.36913, val MAE: 0.61620, test MAE: 0.60503, Time: 29.10s
+2024-12-08 08:25:13,591 - logger.py:50 - Best -- epoch=181, train MAE: 0.32568, val MAE: 0.39788, test MAE: 0.38577
+
+2024-12-08 08:25:14,953 - logger.py:50 - Epoch: [185][0/27] 	 loss: 0.05313, MAE: 0.54432, time/step=1359ms, lr=1.61e-04
+2024-12-08 08:25:40,090 - logger.py:50 - Epoch: [185][26/27] 	 loss: 0.03540, MAE: 0.36274, time/step=981ms, lr=1.61e-04
+2024-12-08 08:25:42,327 - logger.py:50 - Epoch: [185] Target: [1] train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891, Time: 28.74s
+2024-12-08 08:25:42,327 - logger.py:50 - Best -- epoch=185, train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891
+
+2024-12-08 08:25:45,498 - logger.py:50 - Epoch: [186][0/27] 	 loss: 0.02730, MAE: 0.27968, time/step=3167ms, lr=1.59e-04
+2024-12-08 08:26:10,910 - logger.py:50 - Epoch: [186][26/27] 	 loss: 0.03362, MAE: 0.34445, time/step=1058ms, lr=1.59e-04
+2024-12-08 08:26:13,093 - logger.py:50 - Epoch: [186] Target: [1] train MAE: 0.34445, val MAE: 0.52085, test MAE: 0.49152, Time: 30.77s
+2024-12-08 08:26:13,093 - logger.py:50 - Best -- epoch=185, train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891
+
+2024-12-08 08:26:14,498 - logger.py:50 - Epoch: [187][0/27] 	 loss: 0.04304, MAE: 0.44094, time/step=1402ms, lr=1.56e-04
+2024-12-08 08:26:39,749 - logger.py:50 - Epoch: [187][26/27] 	 loss: 0.05289, MAE: 0.54185, time/step=987ms, lr=1.56e-04
+2024-12-08 08:26:42,106 - logger.py:50 - Epoch: [187] Target: [1] train MAE: 0.54185, val MAE: 0.57772, test MAE: 0.52052, Time: 29.01s
+2024-12-08 08:26:42,106 - logger.py:50 - Best -- epoch=185, train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891
+
+2024-12-08 08:26:43,735 - logger.py:50 - Epoch: [188][0/27] 	 loss: 0.04876, MAE: 0.49959, time/step=1624ms, lr=1.54e-04
+2024-12-08 08:27:09,009 - logger.py:50 - Epoch: [188][26/27] 	 loss: 0.03446, MAE: 0.35304, time/step=996ms, lr=1.54e-04
+2024-12-08 08:27:11,186 - logger.py:50 - Epoch: [188] Target: [1] train MAE: 0.35304, val MAE: 0.39811, test MAE: 0.38618, Time: 29.08s
+2024-12-08 08:27:11,186 - logger.py:50 - Best -- epoch=185, train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891
+
+2024-12-08 08:27:12,803 - logger.py:50 - Epoch: [189][0/27] 	 loss: 0.02903, MAE: 0.29744, time/step=1614ms, lr=1.51e-04
+2024-12-08 08:27:38,186 - logger.py:50 - Epoch: [189][26/27] 	 loss: 0.03716, MAE: 0.38070, time/step=1000ms, lr=1.51e-04
+2024-12-08 08:27:40,445 - logger.py:50 - Epoch: [189] Target: [1] train MAE: 0.38070, val MAE: 0.53321, test MAE: 0.56963, Time: 29.26s
+2024-12-08 08:27:40,446 - logger.py:50 - Best -- epoch=185, train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891
+
+2024-12-08 08:27:41,815 - logger.py:50 - Epoch: [190][0/27] 	 loss: 0.04266, MAE: 0.43710, time/step=1366ms, lr=1.49e-04
+2024-12-08 08:28:07,069 - logger.py:50 - Epoch: [190][26/27] 	 loss: 0.03297, MAE: 0.33780, time/step=986ms, lr=1.49e-04
+2024-12-08 08:28:09,300 - logger.py:50 - Epoch: [190] Target: [1] train MAE: 0.33780, val MAE: 0.39940, test MAE: 0.41135, Time: 28.85s
+2024-12-08 08:28:09,300 - logger.py:50 - Best -- epoch=185, train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891
+
+2024-12-08 08:28:10,928 - logger.py:50 - Epoch: [191][0/27] 	 loss: 0.02305, MAE: 0.23618, time/step=1623ms, lr=1.47e-04
+2024-12-08 08:28:36,270 - logger.py:50 - Epoch: [191][26/27] 	 loss: 0.03000, MAE: 0.30742, time/step=999ms, lr=1.47e-04
+2024-12-08 08:28:38,645 - logger.py:50 - Epoch: [191] Target: [1] train MAE: 0.30742, val MAE: 0.41506, test MAE: 0.39204, Time: 29.34s
+2024-12-08 08:28:38,645 - logger.py:50 - Best -- epoch=185, train MAE: 0.36274, val MAE: 0.38649, test MAE: 0.37891
+
+2024-12-08 08:28:40,008 - logger.py:50 - Epoch: [192][0/27] 	 loss: 0.03419, MAE: 0.35031, time/step=1360ms, lr=1.44e-04
+2024-12-08 08:29:05,205 - logger.py:50 - Epoch: [192][26/27] 	 loss: 0.02741, MAE: 0.28080, time/step=984ms, lr=1.44e-04
+2024-12-08 08:29:07,638 - logger.py:50 - Epoch: [192] Target: [1] train MAE: 0.28080, val MAE: 0.36654, test MAE: 0.38324, Time: 28.99s
+2024-12-08 08:29:07,638 - logger.py:50 - Best -- epoch=192, train MAE: 0.28080, val MAE: 0.36654, test MAE: 0.38324
+
+2024-12-08 08:29:09,110 - logger.py:50 - Epoch: [193][0/27] 	 loss: 0.02957, MAE: 0.30301, time/step=1467ms, lr=1.42e-04
+2024-12-08 08:29:34,275 - logger.py:50 - Epoch: [193][26/27] 	 loss: 0.03037, MAE: 0.31118, time/step=986ms, lr=1.42e-04
+2024-12-08 08:29:36,474 - logger.py:50 - Epoch: [193] Target: [1] train MAE: 0.31118, val MAE: 0.46560, test MAE: 0.51375, Time: 28.84s
+2024-12-08 08:29:36,474 - logger.py:50 - Best -- epoch=192, train MAE: 0.28080, val MAE: 0.36654, test MAE: 0.38324
+
+2024-12-08 08:29:38,101 - logger.py:50 - Epoch: [194][0/27] 	 loss: 0.03568, MAE: 0.36553, time/step=1622ms, lr=1.40e-04
+2024-12-08 08:30:03,416 - logger.py:50 - Epoch: [194][26/27] 	 loss: 0.02944, MAE: 0.30161, time/step=998ms, lr=1.40e-04
+2024-12-08 08:30:05,842 - logger.py:50 - Epoch: [194] Target: [1] train MAE: 0.30161, val MAE: 0.36743, test MAE: 0.38342, Time: 29.37s
+2024-12-08 08:30:05,843 - logger.py:50 - Best -- epoch=192, train MAE: 0.28080, val MAE: 0.36654, test MAE: 0.38324
+
+2024-12-08 08:30:07,165 - logger.py:50 - Epoch: [195][0/27] 	 loss: 0.02624, MAE: 0.26880, time/step=1319ms, lr=1.37e-04
+2024-12-08 08:30:32,357 - logger.py:50 - Epoch: [195][26/27] 	 loss: 0.02711, MAE: 0.27773, time/step=982ms, lr=1.37e-04
+2024-12-08 08:30:34,555 - logger.py:50 - Epoch: [195] Target: [1] train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375, Time: 28.71s
+2024-12-08 08:30:34,556 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:30:36,158 - logger.py:50 - Epoch: [196][0/27] 	 loss: 0.02577, MAE: 0.26400, time/step=1597ms, lr=1.35e-04
+2024-12-08 08:31:01,507 - logger.py:50 - Epoch: [196][26/27] 	 loss: 0.02998, MAE: 0.30716, time/step=998ms, lr=1.35e-04
+2024-12-08 08:31:03,737 - logger.py:50 - Epoch: [196] Target: [1] train MAE: 0.30716, val MAE: 0.40103, test MAE: 0.37674, Time: 29.18s
+2024-12-08 08:31:03,737 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:31:05,088 - logger.py:50 - Epoch: [197][0/27] 	 loss: 0.02663, MAE: 0.27279, time/step=1348ms, lr=1.33e-04
+2024-12-08 08:31:30,249 - logger.py:50 - Epoch: [197][26/27] 	 loss: 0.02879, MAE: 0.29501, time/step=982ms, lr=1.33e-04
+2024-12-08 08:31:32,719 - logger.py:50 - Epoch: [197] Target: [1] train MAE: 0.29501, val MAE: 0.36246, test MAE: 0.35912, Time: 28.98s
+2024-12-08 08:31:32,719 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:31:34,208 - logger.py:50 - Epoch: [198][0/27] 	 loss: 0.02118, MAE: 0.21704, time/step=1484ms, lr=1.30e-04
+2024-12-08 08:31:59,428 - logger.py:50 - Epoch: [198][26/27] 	 loss: 0.02997, MAE: 0.30705, time/step=989ms, lr=1.30e-04
+2024-12-08 08:32:01,635 - logger.py:50 - Epoch: [198] Target: [1] train MAE: 0.30705, val MAE: 0.40760, test MAE: 0.37999, Time: 28.92s
+2024-12-08 08:32:01,636 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:32:03,004 - logger.py:50 - Epoch: [199][0/27] 	 loss: 0.02983, MAE: 0.30568, time/step=1366ms, lr=1.28e-04
+2024-12-08 08:32:28,278 - logger.py:50 - Epoch: [199][26/27] 	 loss: 0.03098, MAE: 0.31743, time/step=987ms, lr=1.28e-04
+2024-12-08 08:32:30,556 - logger.py:50 - Epoch: [199] Target: [1] train MAE: 0.31743, val MAE: 0.37580, test MAE: 0.38017, Time: 28.92s
+2024-12-08 08:32:30,556 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:32:31,894 - logger.py:50 - Epoch: [200][0/27] 	 loss: 0.02296, MAE: 0.23524, time/step=1335ms, lr=1.26e-04
+2024-12-08 08:32:57,078 - logger.py:50 - Epoch: [200][26/27] 	 loss: 0.02648, MAE: 0.27126, time/step=982ms, lr=1.26e-04
+2024-12-08 08:32:59,423 - logger.py:50 - Epoch: [200] Target: [1] train MAE: 0.27126, val MAE: 0.42120, test MAE: 0.45000, Time: 28.87s
+2024-12-08 08:32:59,423 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:33:00,731 - logger.py:50 - Epoch: [201][0/27] 	 loss: 0.03503, MAE: 0.35889, time/step=1306ms, lr=1.23e-04
+2024-12-08 08:33:25,911 - logger.py:50 - Epoch: [201][26/27] 	 loss: 0.02719, MAE: 0.27857, time/step=981ms, lr=1.23e-04
+2024-12-08 08:33:28,147 - logger.py:50 - Epoch: [201] Target: [1] train MAE: 0.27857, val MAE: 0.52204, test MAE: 0.56158, Time: 28.72s
+2024-12-08 08:33:28,147 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:33:29,752 - logger.py:50 - Epoch: [202][0/27] 	 loss: 0.03844, MAE: 0.39389, time/step=1601ms, lr=1.21e-04
+2024-12-08 08:33:55,087 - logger.py:50 - Epoch: [202][26/27] 	 loss: 0.03443, MAE: 0.35277, time/step=998ms, lr=1.21e-04
+2024-12-08 08:33:57,348 - logger.py:50 - Epoch: [202] Target: [1] train MAE: 0.35277, val MAE: 0.51992, test MAE: 0.47605, Time: 29.20s
+2024-12-08 08:33:57,348 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:33:58,739 - logger.py:50 - Epoch: [203][0/27] 	 loss: 0.04353, MAE: 0.44603, time/step=1388ms, lr=1.19e-04
+2024-12-08 08:34:23,945 - logger.py:50 - Epoch: [203][26/27] 	 loss: 0.03083, MAE: 0.31584, time/step=985ms, lr=1.19e-04
+2024-12-08 08:34:26,160 - logger.py:50 - Epoch: [203] Target: [1] train MAE: 0.31584, val MAE: 0.37664, test MAE: 0.39042, Time: 28.81s
+2024-12-08 08:34:26,161 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:34:27,837 - logger.py:50 - Epoch: [204][0/27] 	 loss: 0.02210, MAE: 0.22639, time/step=1672ms, lr=1.17e-04
+2024-12-08 08:34:53,301 - logger.py:50 - Epoch: [204][26/27] 	 loss: 0.02641, MAE: 0.27056, time/step=1005ms, lr=1.17e-04
+2024-12-08 08:34:55,712 - logger.py:50 - Epoch: [204] Target: [1] train MAE: 0.27056, val MAE: 0.37754, test MAE: 0.40274, Time: 29.55s
+2024-12-08 08:34:55,712 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:34:57,066 - logger.py:50 - Epoch: [205][0/27] 	 loss: 0.02685, MAE: 0.27514, time/step=1351ms, lr=1.15e-04
+2024-12-08 08:35:22,383 - logger.py:50 - Epoch: [205][26/27] 	 loss: 0.02629, MAE: 0.26937, time/step=988ms, lr=1.15e-04
+2024-12-08 08:35:24,579 - logger.py:50 - Epoch: [205] Target: [1] train MAE: 0.26937, val MAE: 0.36536, test MAE: 0.36715, Time: 28.87s
+2024-12-08 08:35:24,580 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:35:26,211 - logger.py:50 - Epoch: [206][0/27] 	 loss: 0.02421, MAE: 0.24809, time/step=1627ms, lr=1.12e-04
+2024-12-08 08:35:51,605 - logger.py:50 - Epoch: [206][26/27] 	 loss: 0.02941, MAE: 0.30137, time/step=1001ms, lr=1.12e-04
+2024-12-08 08:35:53,834 - logger.py:50 - Epoch: [206] Target: [1] train MAE: 0.30137, val MAE: 0.41323, test MAE: 0.40591, Time: 29.25s
+2024-12-08 08:35:53,835 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:35:55,230 - logger.py:50 - Epoch: [207][0/27] 	 loss: 0.02774, MAE: 0.28417, time/step=1392ms, lr=1.10e-04
+2024-12-08 08:36:20,396 - logger.py:50 - Epoch: [207][26/27] 	 loss: 0.02864, MAE: 0.29341, time/step=984ms, lr=1.10e-04
+2024-12-08 08:36:22,732 - logger.py:50 - Epoch: [207] Target: [1] train MAE: 0.29341, val MAE: 0.36621, test MAE: 0.36001, Time: 28.90s
+2024-12-08 08:36:22,733 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:36:24,341 - logger.py:50 - Epoch: [208][0/27] 	 loss: 0.02817, MAE: 0.28861, time/step=1603ms, lr=1.08e-04
+2024-12-08 08:36:49,680 - logger.py:50 - Epoch: [208][26/27] 	 loss: 0.02671, MAE: 0.27365, time/step=998ms, lr=1.08e-04
+2024-12-08 08:36:51,883 - logger.py:50 - Epoch: [208] Target: [1] train MAE: 0.27365, val MAE: 0.37242, test MAE: 0.38923, Time: 29.15s
+2024-12-08 08:36:51,883 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:36:53,270 - logger.py:50 - Epoch: [209][0/27] 	 loss: 0.02629, MAE: 0.26939, time/step=1384ms, lr=1.06e-04
+2024-12-08 08:37:18,422 - logger.py:50 - Epoch: [209][26/27] 	 loss: 0.02610, MAE: 0.26743, time/step=983ms, lr=1.06e-04
+2024-12-08 08:37:20,651 - logger.py:50 - Epoch: [209] Target: [1] train MAE: 0.26743, val MAE: 0.36393, test MAE: 0.37171, Time: 28.77s
+2024-12-08 08:37:20,652 - logger.py:50 - Best -- epoch=195, train MAE: 0.27773, val MAE: 0.35472, test MAE: 0.38375
+
+2024-12-08 08:37:22,244 - logger.py:50 - Epoch: [210][0/27] 	 loss: 0.02590, MAE: 0.26533, time/step=1588ms, lr=1.04e-04
+2024-12-08 08:37:47,519 - logger.py:50 - Epoch: [210][26/27] 	 loss: 0.02630, MAE: 0.26950, time/step=995ms, lr=1.04e-04
+2024-12-08 08:37:49,771 - logger.py:50 - Epoch: [210] Target: [1] train MAE: 0.26950, val MAE: 0.35061, test MAE: 0.34483, Time: 29.12s
+2024-12-08 08:37:49,771 - logger.py:50 - Best -- epoch=210, train MAE: 0.26950, val MAE: 0.35061, test MAE: 0.34483
+
+2024-12-08 08:37:51,117 - logger.py:50 - Epoch: [211][0/27] 	 loss: 0.02233, MAE: 0.22878, time/step=1342ms, lr=1.02e-04
+2024-12-08 08:38:16,256 - logger.py:50 - Epoch: [211][26/27] 	 loss: 0.02810, MAE: 0.28793, time/step=981ms, lr=1.02e-04
+2024-12-08 08:38:18,563 - logger.py:50 - Epoch: [211] Target: [1] train MAE: 0.28793, val MAE: 0.37256, test MAE: 0.40327, Time: 28.79s
+2024-12-08 08:38:18,563 - logger.py:50 - Best -- epoch=210, train MAE: 0.26950, val MAE: 0.35061, test MAE: 0.34483
+
+2024-12-08 08:38:19,955 - logger.py:50 - Epoch: [212][0/27] 	 loss: 0.02365, MAE: 0.24236, time/step=1389ms, lr=9.97e-05
+2024-12-08 08:38:45,070 - logger.py:50 - Epoch: [212][26/27] 	 loss: 0.02531, MAE: 0.25931, time/step=982ms, lr=9.97e-05
+2024-12-08 08:38:47,226 - logger.py:50 - Epoch: [212] Target: [1] train MAE: 0.25931, val MAE: 0.34065, test MAE: 0.38224, Time: 28.66s
+2024-12-08 08:38:47,226 - logger.py:50 - Best -- epoch=212, train MAE: 0.25931, val MAE: 0.34065, test MAE: 0.38224
+
+2024-12-08 08:38:48,823 - logger.py:50 - Epoch: [213][0/27] 	 loss: 0.02854, MAE: 0.29237, time/step=1593ms, lr=9.76e-05
+2024-12-08 08:39:14,087 - logger.py:50 - Epoch: [213][26/27] 	 loss: 0.02474, MAE: 0.25343, time/step=995ms, lr=9.76e-05
+2024-12-08 08:39:16,320 - logger.py:50 - Epoch: [213] Target: [1] train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521, Time: 29.09s
+2024-12-08 08:39:16,321 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:39:17,656 - logger.py:50 - Epoch: [214][0/27] 	 loss: 0.02225, MAE: 0.22799, time/step=1333ms, lr=9.55e-05
+2024-12-08 08:39:42,801 - logger.py:50 - Epoch: [214][26/27] 	 loss: 0.02731, MAE: 0.27986, time/step=981ms, lr=9.55e-05
+2024-12-08 08:39:45,032 - logger.py:50 - Epoch: [214] Target: [1] train MAE: 0.27986, val MAE: 0.40339, test MAE: 0.40253, Time: 28.71s
+2024-12-08 08:39:45,033 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:39:46,635 - logger.py:50 - Epoch: [215][0/27] 	 loss: 0.02925, MAE: 0.29970, time/step=1597ms, lr=9.35e-05
+2024-12-08 08:40:11,906 - logger.py:50 - Epoch: [215][26/27] 	 loss: 0.02738, MAE: 0.28050, time/step=995ms, lr=9.35e-05
+2024-12-08 08:40:14,037 - logger.py:50 - Epoch: [215] Target: [1] train MAE: 0.28050, val MAE: 0.38508, test MAE: 0.41359, Time: 29.00s
+2024-12-08 08:40:14,037 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:40:15,403 - logger.py:50 - Epoch: [216][0/27] 	 loss: 0.02867, MAE: 0.29378, time/step=1363ms, lr=9.15e-05
+2024-12-08 08:40:40,574 - logger.py:50 - Epoch: [216][26/27] 	 loss: 0.02829, MAE: 0.28986, time/step=983ms, lr=9.15e-05
+2024-12-08 08:40:42,970 - logger.py:50 - Epoch: [216] Target: [1] train MAE: 0.28986, val MAE: 0.43412, test MAE: 0.40465, Time: 28.93s
+2024-12-08 08:40:42,970 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:40:44,609 - logger.py:50 - Epoch: [217][0/27] 	 loss: 0.03387, MAE: 0.34700, time/step=1634ms, lr=8.95e-05
+2024-12-08 08:41:09,940 - logger.py:50 - Epoch: [217][26/27] 	 loss: 0.02590, MAE: 0.26531, time/step=999ms, lr=8.95e-05
+2024-12-08 08:41:12,076 - logger.py:50 - Epoch: [217] Target: [1] train MAE: 0.26531, val MAE: 0.35079, test MAE: 0.37579, Time: 29.11s
+2024-12-08 08:41:12,076 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:41:13,412 - logger.py:50 - Epoch: [218][0/27] 	 loss: 0.02437, MAE: 0.24964, time/step=1333ms, lr=8.75e-05
+2024-12-08 08:41:38,614 - logger.py:50 - Epoch: [218][26/27] 	 loss: 0.02436, MAE: 0.24956, time/step=983ms, lr=8.75e-05
+2024-12-08 08:41:40,864 - logger.py:50 - Epoch: [218] Target: [1] train MAE: 0.24956, val MAE: 0.37658, test MAE: 0.38251, Time: 28.79s
+2024-12-08 08:41:40,864 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:41:42,206 - logger.py:50 - Epoch: [219][0/27] 	 loss: 0.02286, MAE: 0.23426, time/step=1339ms, lr=8.55e-05
+2024-12-08 08:42:07,413 - logger.py:50 - Epoch: [219][26/27] 	 loss: 0.02399, MAE: 0.24580, time/step=983ms, lr=8.55e-05
+2024-12-08 08:42:09,695 - logger.py:50 - Epoch: [219] Target: [1] train MAE: 0.24580, val MAE: 0.35711, test MAE: 0.38008, Time: 28.83s
+2024-12-08 08:42:09,695 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:42:11,281 - logger.py:50 - Epoch: [220][0/27] 	 loss: 0.02410, MAE: 0.24697, time/step=1581ms, lr=8.36e-05
+2024-12-08 08:42:36,499 - logger.py:50 - Epoch: [220][26/27] 	 loss: 0.02633, MAE: 0.26982, time/step=993ms, lr=8.36e-05
+2024-12-08 08:42:38,746 - logger.py:50 - Epoch: [220] Target: [1] train MAE: 0.26982, val MAE: 0.47836, test MAE: 0.48023, Time: 29.05s
+2024-12-08 08:42:38,746 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:42:40,082 - logger.py:50 - Epoch: [221][0/27] 	 loss: 0.03617, MAE: 0.37054, time/step=1333ms, lr=8.16e-05
+2024-12-08 08:43:05,237 - logger.py:50 - Epoch: [221][26/27] 	 loss: 0.02565, MAE: 0.26279, time/step=981ms, lr=8.16e-05
+2024-12-08 08:43:07,624 - logger.py:50 - Epoch: [221] Target: [1] train MAE: 0.26279, val MAE: 0.36421, test MAE: 0.37136, Time: 28.88s
+2024-12-08 08:43:07,624 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:43:09,137 - logger.py:50 - Epoch: [222][0/27] 	 loss: 0.02231, MAE: 0.22858, time/step=1508ms, lr=7.97e-05
+2024-12-08 08:43:34,294 - logger.py:50 - Epoch: [222][26/27] 	 loss: 0.02463, MAE: 0.25238, time/step=988ms, lr=7.97e-05
+2024-12-08 08:43:36,610 - logger.py:50 - Epoch: [222] Target: [1] train MAE: 0.25238, val MAE: 0.34028, test MAE: 0.35567, Time: 28.99s
+2024-12-08 08:43:36,611 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:43:38,198 - logger.py:50 - Epoch: [223][0/27] 	 loss: 0.02018, MAE: 0.20673, time/step=1583ms, lr=7.78e-05
+2024-12-08 08:44:03,497 - logger.py:50 - Epoch: [223][26/27] 	 loss: 0.02450, MAE: 0.25099, time/step=996ms, lr=7.78e-05
+2024-12-08 08:44:05,791 - logger.py:50 - Epoch: [223] Target: [1] train MAE: 0.25099, val MAE: 0.33982, test MAE: 0.36009, Time: 29.18s
+2024-12-08 08:44:05,792 - logger.py:50 - Best -- epoch=213, train MAE: 0.25343, val MAE: 0.33643, test MAE: 0.34521
+
+2024-12-08 08:44:07,124 - logger.py:50 - Epoch: [224][0/27] 	 loss: 0.02014, MAE: 0.20638, time/step=1330ms, lr=7.59e-05
+2024-12-08 08:44:32,313 - logger.py:50 - Epoch: [224][26/27] 	 loss: 0.02234, MAE: 0.22884, time/step=982ms, lr=7.59e-05
+2024-12-08 08:44:34,715 - logger.py:50 - Epoch: [224] Target: [1] train MAE: 0.22884, val MAE: 0.33622, test MAE: 0.36864, Time: 28.92s
+2024-12-08 08:44:34,716 - logger.py:50 - Best -- epoch=224, train MAE: 0.22884, val MAE: 0.33622, test MAE: 0.36864
+
+2024-12-08 08:44:36,325 - logger.py:50 - Epoch: [225][0/27] 	 loss: 0.02325, MAE: 0.23824, time/step=1605ms, lr=7.41e-05
+2024-12-08 08:45:01,482 - logger.py:50 - Epoch: [225][26/27] 	 loss: 0.02360, MAE: 0.24178, time/step=991ms, lr=7.41e-05
+2024-12-08 08:45:03,632 - logger.py:50 - Epoch: [225] Target: [1] train MAE: 0.24178, val MAE: 0.34264, test MAE: 0.34856, Time: 28.92s
+2024-12-08 08:45:03,632 - logger.py:50 - Best -- epoch=224, train MAE: 0.22884, val MAE: 0.33622, test MAE: 0.36864
+
+2024-12-08 08:45:05,088 - logger.py:50 - Epoch: [226][0/27] 	 loss: 0.02216, MAE: 0.22706, time/step=1453ms, lr=7.22e-05
+2024-12-08 08:45:30,417 - logger.py:50 - Epoch: [226][26/27] 	 loss: 0.02746, MAE: 0.28139, time/step=992ms, lr=7.22e-05
+2024-12-08 08:45:32,673 - logger.py:50 - Epoch: [226] Target: [1] train MAE: 0.28139, val MAE: 0.35559, test MAE: 0.37963, Time: 29.04s
+2024-12-08 08:45:32,674 - logger.py:50 - Best -- epoch=224, train MAE: 0.22884, val MAE: 0.33622, test MAE: 0.36864
+
+2024-12-08 08:45:33,982 - logger.py:50 - Epoch: [227][0/27] 	 loss: 0.01982, MAE: 0.20311, time/step=1305ms, lr=7.04e-05
+2024-12-08 08:45:59,128 - logger.py:50 - Epoch: [227][26/27] 	 loss: 0.02370, MAE: 0.24281, time/step=980ms, lr=7.04e-05
+2024-12-08 08:46:01,533 - logger.py:50 - Epoch: [227] Target: [1] train MAE: 0.24281, val MAE: 0.34231, test MAE: 0.35763, Time: 28.86s
+2024-12-08 08:46:01,533 - logger.py:50 - Best -- epoch=224, train MAE: 0.22884, val MAE: 0.33622, test MAE: 0.36864
+
+2024-12-08 08:46:03,252 - logger.py:50 - Epoch: [228][0/27] 	 loss: 0.02201, MAE: 0.22550, time/step=1714ms, lr=6.86e-05
+2024-12-08 08:46:28,416 - logger.py:50 - Epoch: [228][26/27] 	 loss: 0.02223, MAE: 0.22774, time/step=995ms, lr=6.86e-05
+2024-12-08 08:46:30,554 - logger.py:50 - Epoch: [228] Target: [1] train MAE: 0.22774, val MAE: 0.36045, test MAE: 0.35439, Time: 29.02s
+2024-12-08 08:46:30,554 - logger.py:50 - Best -- epoch=224, train MAE: 0.22884, val MAE: 0.33622, test MAE: 0.36864
+
+2024-12-08 08:46:31,909 - logger.py:50 - Epoch: [229][0/27] 	 loss: 0.02170, MAE: 0.22233, time/step=1352ms, lr=6.68e-05
+2024-12-08 08:46:57,171 - logger.py:50 - Epoch: [229][26/27] 	 loss: 0.02164, MAE: 0.22174, time/step=986ms, lr=6.68e-05
+2024-12-08 08:46:59,452 - logger.py:50 - Epoch: [229] Target: [1] train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724, Time: 28.90s
+2024-12-08 08:46:59,452 - logger.py:50 - Best -- epoch=229, train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724
+
+2024-12-08 08:47:00,826 - logger.py:50 - Epoch: [230][0/27] 	 loss: 0.02037, MAE: 0.20867, time/step=1371ms, lr=6.51e-05
+2024-12-08 08:47:26,007 - logger.py:50 - Epoch: [230][26/27] 	 loss: 0.02430, MAE: 0.24898, time/step=983ms, lr=6.51e-05
+2024-12-08 08:47:28,250 - logger.py:50 - Epoch: [230] Target: [1] train MAE: 0.24898, val MAE: 0.35880, test MAE: 0.35329, Time: 28.80s
+2024-12-08 08:47:28,250 - logger.py:50 - Best -- epoch=229, train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724
+
+2024-12-08 08:47:30,004 - logger.py:50 - Epoch: [231][0/27] 	 loss: 0.02401, MAE: 0.24602, time/step=1749ms, lr=6.33e-05
+2024-12-08 08:47:55,321 - logger.py:50 - Epoch: [231][26/27] 	 loss: 0.02216, MAE: 0.22705, time/step=1002ms, lr=6.33e-05
+2024-12-08 08:47:57,463 - logger.py:50 - Epoch: [231] Target: [1] train MAE: 0.22705, val MAE: 0.35568, test MAE: 0.37750, Time: 29.21s
+2024-12-08 08:47:57,464 - logger.py:50 - Best -- epoch=229, train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724
+
+2024-12-08 08:47:58,792 - logger.py:50 - Epoch: [232][0/27] 	 loss: 0.02236, MAE: 0.22907, time/step=1325ms, lr=6.16e-05
+2024-12-08 08:48:23,973 - logger.py:50 - Epoch: [232][26/27] 	 loss: 0.02268, MAE: 0.23240, time/step=982ms, lr=6.16e-05
+2024-12-08 08:48:26,373 - logger.py:50 - Epoch: [232] Target: [1] train MAE: 0.23240, val MAE: 0.34988, test MAE: 0.36463, Time: 28.91s
+2024-12-08 08:48:26,373 - logger.py:50 - Best -- epoch=229, train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724
+
+2024-12-08 08:48:27,835 - logger.py:50 - Epoch: [233][0/27] 	 loss: 0.01607, MAE: 0.16462, time/step=1457ms, lr=5.99e-05
+2024-12-08 08:48:52,928 - logger.py:50 - Epoch: [233][26/27] 	 loss: 0.02140, MAE: 0.21924, time/step=983ms, lr=5.99e-05
+2024-12-08 08:48:55,075 - logger.py:50 - Epoch: [233] Target: [1] train MAE: 0.21924, val MAE: 0.35917, test MAE: 0.36673, Time: 28.70s
+2024-12-08 08:48:55,075 - logger.py:50 - Best -- epoch=229, train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724
+
+2024-12-08 08:48:56,632 - logger.py:50 - Epoch: [234][0/27] 	 loss: 0.02424, MAE: 0.24839, time/step=1552ms, lr=5.83e-05
+2024-12-08 08:49:21,934 - logger.py:50 - Epoch: [234][26/27] 	 loss: 0.02247, MAE: 0.23025, time/step=995ms, lr=5.83e-05
+2024-12-08 08:49:24,198 - logger.py:50 - Epoch: [234] Target: [1] train MAE: 0.23025, val MAE: 0.35347, test MAE: 0.35807, Time: 29.12s
+2024-12-08 08:49:24,198 - logger.py:50 - Best -- epoch=229, train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724
+
+2024-12-08 08:49:25,569 - logger.py:50 - Epoch: [235][0/27] 	 loss: 0.02044, MAE: 0.20942, time/step=1368ms, lr=5.66e-05
+2024-12-08 08:49:50,663 - logger.py:50 - Epoch: [235][26/27] 	 loss: 0.02094, MAE: 0.21459, time/step=980ms, lr=5.66e-05
+2024-12-08 08:49:53,066 - logger.py:50 - Epoch: [235] Target: [1] train MAE: 0.21459, val MAE: 0.35512, test MAE: 0.36643, Time: 28.87s
+2024-12-08 08:49:53,066 - logger.py:50 - Best -- epoch=229, train MAE: 0.22174, val MAE: 0.33372, test MAE: 0.35724
+
+2024-12-08 08:49:54,521 - logger.py:50 - Epoch: [236][0/27] 	 loss: 0.02039, MAE: 0.20893, time/step=1450ms, lr=5.50e-05
+2024-12-08 08:50:19,645 - logger.py:50 - Epoch: [236][26/27] 	 loss: 0.02105, MAE: 0.21568, time/step=984ms, lr=5.50e-05
+2024-12-08 08:50:21,847 - logger.py:50 - Epoch: [236] Target: [1] train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724, Time: 28.78s
+2024-12-08 08:50:21,849 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:50:23,552 - logger.py:50 - Epoch: [237][0/27] 	 loss: 0.02042, MAE: 0.20922, time/step=1698ms, lr=5.34e-05
+2024-12-08 08:50:48,758 - logger.py:50 - Epoch: [237][26/27] 	 loss: 0.02073, MAE: 0.21242, time/step=996ms, lr=5.34e-05
+2024-12-08 08:50:51,002 - logger.py:50 - Epoch: [237] Target: [1] train MAE: 0.21242, val MAE: 0.34500, test MAE: 0.36133, Time: 29.15s
+2024-12-08 08:50:51,003 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:50:52,405 - logger.py:50 - Epoch: [238][0/27] 	 loss: 0.02146, MAE: 0.21988, time/step=1400ms, lr=5.18e-05
+2024-12-08 08:51:17,458 - logger.py:50 - Epoch: [238][26/27] 	 loss: 0.02165, MAE: 0.22183, time/step=980ms, lr=5.18e-05
+2024-12-08 08:51:19,785 - logger.py:50 - Epoch: [238] Target: [1] train MAE: 0.22183, val MAE: 0.32783, test MAE: 0.33136, Time: 28.78s
+2024-12-08 08:51:19,785 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:51:21,357 - logger.py:50 - Epoch: [239][0/27] 	 loss: 0.02080, MAE: 0.21309, time/step=1567ms, lr=5.02e-05
+2024-12-08 08:51:46,695 - logger.py:50 - Epoch: [239][26/27] 	 loss: 0.02076, MAE: 0.21273, time/step=996ms, lr=5.02e-05
+2024-12-08 08:51:48,911 - logger.py:50 - Epoch: [239] Target: [1] train MAE: 0.21273, val MAE: 0.34223, test MAE: 0.35277, Time: 29.13s
+2024-12-08 08:51:48,912 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:51:50,283 - logger.py:50 - Epoch: [240][0/27] 	 loss: 0.01693, MAE: 0.17347, time/step=1368ms, lr=4.87e-05
+2024-12-08 08:52:15,431 - logger.py:50 - Epoch: [240][26/27] 	 loss: 0.02023, MAE: 0.20729, time/step=982ms, lr=4.87e-05
+2024-12-08 08:52:17,785 - logger.py:50 - Epoch: [240] Target: [1] train MAE: 0.20729, val MAE: 0.33416, test MAE: 0.34561, Time: 28.87s
+2024-12-08 08:52:17,786 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:52:19,305 - logger.py:50 - Epoch: [241][0/27] 	 loss: 0.01909, MAE: 0.19557, time/step=1515ms, lr=4.71e-05
+2024-12-08 08:52:44,396 - logger.py:50 - Epoch: [241][26/27] 	 loss: 0.02046, MAE: 0.20961, time/step=985ms, lr=4.71e-05
+2024-12-08 08:52:46,551 - logger.py:50 - Epoch: [241] Target: [1] train MAE: 0.20961, val MAE: 0.32687, test MAE: 0.33278, Time: 28.77s
+2024-12-08 08:52:46,552 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:52:48,113 - logger.py:50 - Epoch: [242][0/27] 	 loss: 0.01923, MAE: 0.19700, time/step=1556ms, lr=4.56e-05
+2024-12-08 08:53:13,426 - logger.py:50 - Epoch: [242][26/27] 	 loss: 0.02068, MAE: 0.21189, time/step=995ms, lr=4.56e-05
+2024-12-08 08:53:15,749 - logger.py:50 - Epoch: [242] Target: [1] train MAE: 0.21189, val MAE: 0.36146, test MAE: 0.39010, Time: 29.20s
+2024-12-08 08:53:15,749 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:53:17,114 - logger.py:50 - Epoch: [243][0/27] 	 loss: 0.02158, MAE: 0.22110, time/step=1363ms, lr=4.41e-05
+2024-12-08 08:53:42,225 - logger.py:50 - Epoch: [243][26/27] 	 loss: 0.02036, MAE: 0.20856, time/step=980ms, lr=4.41e-05
+2024-12-08 08:53:44,401 - logger.py:50 - Epoch: [243] Target: [1] train MAE: 0.20856, val MAE: 0.33727, test MAE: 0.32407, Time: 28.65s
+2024-12-08 08:53:44,401 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:53:45,984 - logger.py:50 - Epoch: [244][0/27] 	 loss: 0.01775, MAE: 0.18185, time/step=1578ms, lr=4.27e-05
+2024-12-08 08:54:11,319 - logger.py:50 - Epoch: [244][26/27] 	 loss: 0.02074, MAE: 0.21246, time/step=997ms, lr=4.27e-05
+2024-12-08 08:54:13,556 - logger.py:50 - Epoch: [244] Target: [1] train MAE: 0.21246, val MAE: 0.34415, test MAE: 0.36517, Time: 29.16s
+2024-12-08 08:54:13,557 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:54:14,892 - logger.py:50 - Epoch: [245][0/27] 	 loss: 0.01914, MAE: 0.19606, time/step=1333ms, lr=4.13e-05
+2024-12-08 08:54:39,966 - logger.py:50 - Epoch: [245][26/27] 	 loss: 0.02078, MAE: 0.21293, time/step=978ms, lr=4.13e-05
+2024-12-08 08:54:42,322 - logger.py:50 - Epoch: [245] Target: [1] train MAE: 0.21293, val MAE: 0.36681, test MAE: 0.38847, Time: 28.77s
+2024-12-08 08:54:42,322 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:54:43,904 - logger.py:50 - Epoch: [246][0/27] 	 loss: 0.02112, MAE: 0.21644, time/step=1578ms, lr=3.98e-05
+2024-12-08 08:55:09,126 - logger.py:50 - Epoch: [246][26/27] 	 loss: 0.02037, MAE: 0.20872, time/step=993ms, lr=3.98e-05
+2024-12-08 08:55:11,270 - logger.py:50 - Epoch: [246] Target: [1] train MAE: 0.20872, val MAE: 0.33701, test MAE: 0.33780, Time: 28.95s
+2024-12-08 08:55:11,270 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:55:12,604 - logger.py:50 - Epoch: [247][0/27] 	 loss: 0.01991, MAE: 0.20397, time/step=1330ms, lr=3.85e-05
+2024-12-08 08:55:37,728 - logger.py:50 - Epoch: [247][26/27] 	 loss: 0.02066, MAE: 0.21171, time/step=980ms, lr=3.85e-05
+2024-12-08 08:55:40,126 - logger.py:50 - Epoch: [247] Target: [1] train MAE: 0.21171, val MAE: 0.33668, test MAE: 0.35600, Time: 28.86s
+2024-12-08 08:55:40,126 - logger.py:50 - Best -- epoch=236, train MAE: 0.21568, val MAE: 0.32547, test MAE: 0.33724
+
+2024-12-08 08:55:41,505 - logger.py:50 - Epoch: [248][0/27] 	 loss: 0.02194, MAE: 0.22482, time/step=1374ms, lr=3.71e-05
+2024-12-08 08:56:06,651 - logger.py:50 - Epoch: [248][26/27] 	 loss: 0.02065, MAE: 0.21158, time/step=982ms, lr=3.71e-05
+2024-12-08 08:56:08,868 - logger.py:50 - Epoch: [248] Target: [1] train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495, Time: 28.74s
+2024-12-08 08:56:08,869 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:56:10,349 - logger.py:50 - Epoch: [249][0/27] 	 loss: 0.01954, MAE: 0.20022, time/step=1476ms, lr=3.57e-05
+2024-12-08 08:56:35,626 - logger.py:50 - Epoch: [249][26/27] 	 loss: 0.02089, MAE: 0.21407, time/step=991ms, lr=3.57e-05
+2024-12-08 08:56:37,868 - logger.py:50 - Epoch: [249] Target: [1] train MAE: 0.21407, val MAE: 0.31715, test MAE: 0.34410, Time: 29.00s
+2024-12-08 08:56:37,869 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:56:39,248 - logger.py:50 - Epoch: [250][0/27] 	 loss: 0.01833, MAE: 0.18776, time/step=1376ms, lr=3.44e-05
+2024-12-08 08:57:04,397 - logger.py:50 - Epoch: [250][26/27] 	 loss: 0.02040, MAE: 0.20906, time/step=982ms, lr=3.44e-05
+2024-12-08 08:57:06,634 - logger.py:50 - Epoch: [250] Target: [1] train MAE: 0.20906, val MAE: 0.33862, test MAE: 0.33442, Time: 28.77s
+2024-12-08 08:57:06,634 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:57:08,282 - logger.py:50 - Epoch: [251][0/27] 	 loss: 0.01912, MAE: 0.19592, time/step=1643ms, lr=3.31e-05
+2024-12-08 08:57:33,474 - logger.py:50 - Epoch: [251][26/27] 	 loss: 0.01975, MAE: 0.20236, time/step=994ms, lr=3.31e-05
+2024-12-08 08:57:35,695 - logger.py:50 - Epoch: [251] Target: [1] train MAE: 0.20236, val MAE: 0.33636, test MAE: 0.34009, Time: 29.06s
+2024-12-08 08:57:35,695 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:57:37,144 - logger.py:50 - Epoch: [252][0/27] 	 loss: 0.02141, MAE: 0.21938, time/step=1444ms, lr=3.19e-05
+2024-12-08 08:58:02,269 - logger.py:50 - Epoch: [252][26/27] 	 loss: 0.01941, MAE: 0.19891, time/step=984ms, lr=3.19e-05
+2024-12-08 08:58:04,612 - logger.py:50 - Epoch: [252] Target: [1] train MAE: 0.19891, val MAE: 0.34661, test MAE: 0.36557, Time: 28.92s
+2024-12-08 08:58:04,612 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:58:05,942 - logger.py:50 - Epoch: [253][0/27] 	 loss: 0.02105, MAE: 0.21565, time/step=1327ms, lr=3.06e-05
+2024-12-08 08:58:30,980 - logger.py:50 - Epoch: [253][26/27] 	 loss: 0.01943, MAE: 0.19912, time/step=976ms, lr=3.06e-05
+2024-12-08 08:58:33,329 - logger.py:50 - Epoch: [253] Target: [1] train MAE: 0.19912, val MAE: 0.33356, test MAE: 0.33044, Time: 28.72s
+2024-12-08 08:58:33,329 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:58:34,934 - logger.py:50 - Epoch: [254][0/27] 	 loss: 0.02132, MAE: 0.21841, time/step=1601ms, lr=2.94e-05
+2024-12-08 08:58:59,999 - logger.py:50 - Epoch: [254][26/27] 	 loss: 0.01984, MAE: 0.20325, time/step=988ms, lr=2.94e-05
+2024-12-08 08:59:02,134 - logger.py:50 - Epoch: [254] Target: [1] train MAE: 0.20325, val MAE: 0.34457, test MAE: 0.35673, Time: 28.80s
+2024-12-08 08:59:02,134 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:59:03,843 - logger.py:50 - Epoch: [255][0/27] 	 loss: 0.01893, MAE: 0.19392, time/step=1707ms, lr=2.82e-05
+2024-12-08 08:59:29,082 - logger.py:50 - Epoch: [255][26/27] 	 loss: 0.01977, MAE: 0.20251, time/step=998ms, lr=2.82e-05
+2024-12-08 08:59:31,345 - logger.py:50 - Epoch: [255] Target: [1] train MAE: 0.20251, val MAE: 0.32512, test MAE: 0.33872, Time: 29.21s
+2024-12-08 08:59:31,346 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 08:59:32,699 - logger.py:50 - Epoch: [256][0/27] 	 loss: 0.01764, MAE: 0.18071, time/step=1350ms, lr=2.70e-05
+2024-12-08 08:59:57,771 - logger.py:50 - Epoch: [256][26/27] 	 loss: 0.01915, MAE: 0.19616, time/step=979ms, lr=2.70e-05
+2024-12-08 09:00:00,003 - logger.py:50 - Epoch: [256] Target: [1] train MAE: 0.19616, val MAE: 0.32045, test MAE: 0.32930, Time: 28.66s
+2024-12-08 09:00:00,004 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:00:01,621 - logger.py:50 - Epoch: [257][0/27] 	 loss: 0.01708, MAE: 0.17497, time/step=1613ms, lr=2.59e-05
+2024-12-08 09:00:26,902 - logger.py:50 - Epoch: [257][26/27] 	 loss: 0.01913, MAE: 0.19599, time/step=996ms, lr=2.59e-05
+2024-12-08 09:00:29,071 - logger.py:50 - Epoch: [257] Target: [1] train MAE: 0.19599, val MAE: 0.33275, test MAE: 0.31976, Time: 29.07s
+2024-12-08 09:00:29,071 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:00:30,614 - logger.py:50 - Epoch: [258][0/27] 	 loss: 0.01758, MAE: 0.18011, time/step=1539ms, lr=2.47e-05
+2024-12-08 09:00:55,793 - logger.py:50 - Epoch: [258][26/27] 	 loss: 0.01872, MAE: 0.19176, time/step=990ms, lr=2.47e-05
+2024-12-08 09:00:58,256 - logger.py:50 - Epoch: [258] Target: [1] train MAE: 0.19176, val MAE: 0.32865, test MAE: 0.33207, Time: 29.19s
+2024-12-08 09:00:58,257 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:00:59,624 - logger.py:50 - Epoch: [259][0/27] 	 loss: 0.01875, MAE: 0.19214, time/step=1363ms, lr=2.36e-05
+2024-12-08 09:01:24,721 - logger.py:50 - Epoch: [259][26/27] 	 loss: 0.01916, MAE: 0.19629, time/step=980ms, lr=2.36e-05
+2024-12-08 09:01:26,891 - logger.py:50 - Epoch: [259] Target: [1] train MAE: 0.19629, val MAE: 0.31923, test MAE: 0.31844, Time: 28.63s
+2024-12-08 09:01:26,891 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:01:28,472 - logger.py:50 - Epoch: [260][0/27] 	 loss: 0.01864, MAE: 0.19096, time/step=1576ms, lr=2.26e-05
+2024-12-08 09:01:53,727 - logger.py:50 - Epoch: [260][26/27] 	 loss: 0.01926, MAE: 0.19734, time/step=994ms, lr=2.26e-05
+2024-12-08 09:01:56,110 - logger.py:50 - Epoch: [260] Target: [1] train MAE: 0.19734, val MAE: 0.33801, test MAE: 0.34247, Time: 29.22s
+2024-12-08 09:01:56,110 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:01:57,486 - logger.py:50 - Epoch: [261][0/27] 	 loss: 0.01888, MAE: 0.19346, time/step=1373ms, lr=2.15e-05
+2024-12-08 09:02:22,705 - logger.py:50 - Epoch: [261][26/27] 	 loss: 0.01863, MAE: 0.19091, time/step=985ms, lr=2.15e-05
+2024-12-08 09:02:25,031 - logger.py:50 - Epoch: [261] Target: [1] train MAE: 0.19091, val MAE: 0.32424, test MAE: 0.31532, Time: 28.92s
+2024-12-08 09:02:25,031 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:02:26,593 - logger.py:50 - Epoch: [262][0/27] 	 loss: 0.01846, MAE: 0.18911, time/step=1556ms, lr=2.05e-05
+2024-12-08 09:02:51,881 - logger.py:50 - Epoch: [262][26/27] 	 loss: 0.01908, MAE: 0.19547, time/step=994ms, lr=2.05e-05
+2024-12-08 09:02:54,020 - logger.py:50 - Epoch: [262] Target: [1] train MAE: 0.19547, val MAE: 0.31941, test MAE: 0.32667, Time: 28.99s
+2024-12-08 09:02:54,020 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:02:55,374 - logger.py:50 - Epoch: [263][0/27] 	 loss: 0.01791, MAE: 0.18346, time/step=1351ms, lr=1.95e-05
+2024-12-08 09:03:20,525 - logger.py:50 - Epoch: [263][26/27] 	 loss: 0.01890, MAE: 0.19366, time/step=982ms, lr=1.95e-05
+2024-12-08 09:03:22,855 - logger.py:50 - Epoch: [263] Target: [1] train MAE: 0.19366, val MAE: 0.33240, test MAE: 0.33455, Time: 28.84s
+2024-12-08 09:03:22,856 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:03:24,182 - logger.py:50 - Epoch: [264][0/27] 	 loss: 0.01710, MAE: 0.17523, time/step=1324ms, lr=1.85e-05
+2024-12-08 09:03:49,300 - logger.py:50 - Epoch: [264][26/27] 	 loss: 0.01844, MAE: 0.18896, time/step=979ms, lr=1.85e-05
+2024-12-08 09:03:51,546 - logger.py:50 - Epoch: [264] Target: [1] train MAE: 0.18896, val MAE: 0.31986, test MAE: 0.33675, Time: 28.69s
+2024-12-08 09:03:51,546 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:03:53,146 - logger.py:50 - Epoch: [265][0/27] 	 loss: 0.02089, MAE: 0.21400, time/step=1596ms, lr=1.76e-05
+2024-12-08 09:04:18,391 - logger.py:50 - Epoch: [265][26/27] 	 loss: 0.01882, MAE: 0.19282, time/step=994ms, lr=1.76e-05
+2024-12-08 09:04:20,544 - logger.py:50 - Epoch: [265] Target: [1] train MAE: 0.19282, val MAE: 0.31292, test MAE: 0.31429, Time: 29.00s
+2024-12-08 09:04:20,544 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:04:21,893 - logger.py:50 - Epoch: [266][0/27] 	 loss: 0.01849, MAE: 0.18943, time/step=1346ms, lr=1.66e-05
+2024-12-08 09:04:47,033 - logger.py:50 - Epoch: [266][26/27] 	 loss: 0.01810, MAE: 0.18546, time/step=981ms, lr=1.66e-05
+2024-12-08 09:04:49,494 - logger.py:50 - Epoch: [266] Target: [1] train MAE: 0.18546, val MAE: 0.33146, test MAE: 0.32988, Time: 28.95s
+2024-12-08 09:04:49,494 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:04:51,007 - logger.py:50 - Epoch: [267][0/27] 	 loss: 0.01680, MAE: 0.17218, time/step=1508ms, lr=1.58e-05
+2024-12-08 09:05:16,074 - logger.py:50 - Epoch: [267][26/27] 	 loss: 0.01831, MAE: 0.18757, time/step=984ms, lr=1.58e-05
+2024-12-08 09:05:18,226 - logger.py:50 - Epoch: [267] Target: [1] train MAE: 0.18757, val MAE: 0.33476, test MAE: 0.35024, Time: 28.73s
+2024-12-08 09:05:18,226 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:05:19,574 - logger.py:50 - Epoch: [268][0/27] 	 loss: 0.01889, MAE: 0.19349, time/step=1345ms, lr=1.49e-05
+2024-12-08 09:05:44,820 - logger.py:50 - Epoch: [268][26/27] 	 loss: 0.01872, MAE: 0.19184, time/step=985ms, lr=1.49e-05
+2024-12-08 09:05:47,063 - logger.py:50 - Epoch: [268] Target: [1] train MAE: 0.19184, val MAE: 0.32626, test MAE: 0.31737, Time: 28.84s
+2024-12-08 09:05:47,063 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:05:48,401 - logger.py:50 - Epoch: [269][0/27] 	 loss: 0.01990, MAE: 0.20392, time/step=1335ms, lr=1.40e-05
+2024-12-08 09:06:13,519 - logger.py:50 - Epoch: [269][26/27] 	 loss: 0.01802, MAE: 0.18458, time/step=980ms, lr=1.40e-05
+2024-12-08 09:06:15,759 - logger.py:50 - Epoch: [269] Target: [1] train MAE: 0.18458, val MAE: 0.31581, test MAE: 0.32129, Time: 28.70s
+2024-12-08 09:06:15,759 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:06:17,616 - logger.py:50 - Epoch: [270][0/27] 	 loss: 0.02115, MAE: 0.21666, time/step=1851ms, lr=1.32e-05
+2024-12-08 09:06:42,911 - logger.py:50 - Epoch: [270][26/27] 	 loss: 0.01849, MAE: 0.18941, time/step=1005ms, lr=1.32e-05
+2024-12-08 09:06:45,065 - logger.py:50 - Epoch: [270] Target: [1] train MAE: 0.18941, val MAE: 0.32210, test MAE: 0.31691, Time: 29.31s
+2024-12-08 09:06:45,065 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:06:46,381 - logger.py:50 - Epoch: [271][0/27] 	 loss: 0.01630, MAE: 0.16697, time/step=1312ms, lr=1.24e-05
+2024-12-08 09:07:11,661 - logger.py:50 - Epoch: [271][26/27] 	 loss: 0.01763, MAE: 0.18065, time/step=985ms, lr=1.24e-05
+2024-12-08 09:07:14,026 - logger.py:50 - Epoch: [271] Target: [1] train MAE: 0.18065, val MAE: 0.31871, test MAE: 0.32695, Time: 28.96s
+2024-12-08 09:07:14,026 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:07:15,580 - logger.py:50 - Epoch: [272][0/27] 	 loss: 0.01649, MAE: 0.16900, time/step=1549ms, lr=1.16e-05
+2024-12-08 09:07:40,733 - logger.py:50 - Epoch: [272][26/27] 	 loss: 0.01790, MAE: 0.18344, time/step=989ms, lr=1.16e-05
+2024-12-08 09:07:42,872 - logger.py:50 - Epoch: [272] Target: [1] train MAE: 0.18344, val MAE: 0.32750, test MAE: 0.33270, Time: 28.85s
+2024-12-08 09:07:42,872 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:07:44,501 - logger.py:50 - Epoch: [273][0/27] 	 loss: 0.01626, MAE: 0.16660, time/step=1626ms, lr=1.09e-05
+2024-12-08 09:08:09,730 - logger.py:50 - Epoch: [273][26/27] 	 loss: 0.01781, MAE: 0.18252, time/step=995ms, lr=1.09e-05
+2024-12-08 09:08:11,978 - logger.py:50 - Epoch: [273] Target: [1] train MAE: 0.18252, val MAE: 0.31739, test MAE: 0.31694, Time: 29.11s
+2024-12-08 09:08:11,978 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:08:13,304 - logger.py:50 - Epoch: [274][0/27] 	 loss: 0.01555, MAE: 0.15931, time/step=1323ms, lr=1.02e-05
+2024-12-08 09:08:38,442 - logger.py:50 - Epoch: [274][26/27] 	 loss: 0.01752, MAE: 0.17948, time/step=980ms, lr=1.02e-05
+2024-12-08 09:08:40,652 - logger.py:50 - Epoch: [274] Target: [1] train MAE: 0.17948, val MAE: 0.32151, test MAE: 0.32817, Time: 28.67s
+2024-12-08 09:08:40,653 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:08:42,254 - logger.py:50 - Epoch: [275][0/27] 	 loss: 0.01667, MAE: 0.17078, time/step=1597ms, lr=9.50e-06
+2024-12-08 09:09:07,538 - logger.py:50 - Epoch: [275][26/27] 	 loss: 0.01837, MAE: 0.18819, time/step=996ms, lr=9.50e-06
+2024-12-08 09:09:09,842 - logger.py:50 - Epoch: [275] Target: [1] train MAE: 0.18819, val MAE: 0.32226, test MAE: 0.31584, Time: 29.19s
+2024-12-08 09:09:09,843 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:09:11,342 - logger.py:50 - Epoch: [276][0/27] 	 loss: 0.01740, MAE: 0.17824, time/step=1494ms, lr=8.84e-06
+2024-12-08 09:09:36,602 - logger.py:50 - Epoch: [276][26/27] 	 loss: 0.01776, MAE: 0.18200, time/step=991ms, lr=8.84e-06
+2024-12-08 09:09:38,970 - logger.py:50 - Epoch: [276] Target: [1] train MAE: 0.18200, val MAE: 0.31548, test MAE: 0.31316, Time: 29.13s
+2024-12-08 09:09:38,970 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:09:40,493 - logger.py:50 - Epoch: [277][0/27] 	 loss: 0.01831, MAE: 0.18758, time/step=1518ms, lr=8.20e-06
+2024-12-08 09:10:05,651 - logger.py:50 - Epoch: [277][26/27] 	 loss: 0.01778, MAE: 0.18218, time/step=988ms, lr=8.20e-06
+2024-12-08 09:10:07,788 - logger.py:50 - Epoch: [277] Target: [1] train MAE: 0.18218, val MAE: 0.32571, test MAE: 0.31319, Time: 28.82s
+2024-12-08 09:10:07,788 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:10:09,150 - logger.py:50 - Epoch: [278][0/27] 	 loss: 0.01789, MAE: 0.18326, time/step=1359ms, lr=7.59e-06
+2024-12-08 09:10:34,352 - logger.py:50 - Epoch: [278][26/27] 	 loss: 0.01723, MAE: 0.17649, time/step=984ms, lr=7.59e-06
+2024-12-08 09:10:36,667 - logger.py:50 - Epoch: [278] Target: [1] train MAE: 0.17649, val MAE: 0.32804, test MAE: 0.32371, Time: 28.88s
+2024-12-08 09:10:36,667 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:10:38,020 - logger.py:50 - Epoch: [279][0/27] 	 loss: 0.01764, MAE: 0.18074, time/step=1350ms, lr=7.01e-06
+2024-12-08 09:11:03,116 - logger.py:50 - Epoch: [279][26/27] 	 loss: 0.01773, MAE: 0.18165, time/step=979ms, lr=7.01e-06
+2024-12-08 09:11:05,511 - logger.py:50 - Epoch: [279] Target: [1] train MAE: 0.18165, val MAE: 0.32460, test MAE: 0.31984, Time: 28.84s
+2024-12-08 09:11:05,511 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:11:07,043 - logger.py:50 - Epoch: [280][0/27] 	 loss: 0.01795, MAE: 0.18396, time/step=1527ms, lr=6.45e-06
+2024-12-08 09:11:32,141 - logger.py:50 - Epoch: [280][26/27] 	 loss: 0.01724, MAE: 0.17663, time/step=986ms, lr=6.45e-06
+2024-12-08 09:11:34,365 - logger.py:50 - Epoch: [280] Target: [1] train MAE: 0.17663, val MAE: 0.32045, test MAE: 0.32860, Time: 28.85s
+2024-12-08 09:11:34,365 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:11:36,006 - logger.py:50 - Epoch: [281][0/27] 	 loss: 0.01652, MAE: 0.16923, time/step=1636ms, lr=5.92e-06
+2024-12-08 09:12:01,312 - logger.py:50 - Epoch: [281][26/27] 	 loss: 0.01729, MAE: 0.17711, time/step=998ms, lr=5.92e-06
+2024-12-08 09:12:03,506 - logger.py:50 - Epoch: [281] Target: [1] train MAE: 0.17711, val MAE: 0.31548, test MAE: 0.31249, Time: 29.14s
+2024-12-08 09:12:03,507 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:12:04,874 - logger.py:50 - Epoch: [282][0/27] 	 loss: 0.01592, MAE: 0.16309, time/step=1365ms, lr=5.42e-06
+2024-12-08 09:12:30,050 - logger.py:50 - Epoch: [282][26/27] 	 loss: 0.01727, MAE: 0.17699, time/step=983ms, lr=5.42e-06
+2024-12-08 09:12:32,419 - logger.py:50 - Epoch: [282] Target: [1] train MAE: 0.17699, val MAE: 0.31498, test MAE: 0.31117, Time: 28.91s
+2024-12-08 09:12:32,419 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:12:33,903 - logger.py:50 - Epoch: [283][0/27] 	 loss: 0.01848, MAE: 0.18933, time/step=1480ms, lr=4.94e-06
+2024-12-08 09:12:59,137 - logger.py:50 - Epoch: [283][26/27] 	 loss: 0.01802, MAE: 0.18466, time/step=989ms, lr=4.94e-06
+2024-12-08 09:13:01,296 - logger.py:50 - Epoch: [283] Target: [1] train MAE: 0.18466, val MAE: 0.31585, test MAE: 0.31739, Time: 28.88s
+2024-12-08 09:13:01,296 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:13:02,884 - logger.py:50 - Epoch: [284][0/27] 	 loss: 0.01493, MAE: 0.15293, time/step=1585ms, lr=4.49e-06
+2024-12-08 09:13:28,200 - logger.py:50 - Epoch: [284][26/27] 	 loss: 0.01759, MAE: 0.18022, time/step=996ms, lr=4.49e-06
+2024-12-08 09:13:30,775 - logger.py:50 - Epoch: [284] Target: [1] train MAE: 0.18022, val MAE: 0.31545, test MAE: 0.31185, Time: 29.48s
+2024-12-08 09:13:30,775 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:13:32,116 - logger.py:50 - Epoch: [285][0/27] 	 loss: 0.01494, MAE: 0.15310, time/step=1338ms, lr=4.07e-06
+2024-12-08 09:13:57,257 - logger.py:50 - Epoch: [285][26/27] 	 loss: 0.01726, MAE: 0.17686, time/step=981ms, lr=4.07e-06
+2024-12-08 09:13:59,470 - logger.py:50 - Epoch: [285] Target: [1] train MAE: 0.17686, val MAE: 0.32253, test MAE: 0.31823, Time: 28.69s
+2024-12-08 09:13:59,470 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:14:01,068 - logger.py:50 - Epoch: [286][0/27] 	 loss: 0.01724, MAE: 0.17668, time/step=1594ms, lr=3.68e-06
+2024-12-08 09:14:26,305 - logger.py:50 - Epoch: [286][26/27] 	 loss: 0.01718, MAE: 0.17607, time/step=994ms, lr=3.68e-06
+2024-12-08 09:14:28,445 - logger.py:50 - Epoch: [286] Target: [1] train MAE: 0.17607, val MAE: 0.31720, test MAE: 0.31364, Time: 28.97s
+2024-12-08 09:14:28,445 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:14:29,792 - logger.py:50 - Epoch: [287][0/27] 	 loss: 0.01504, MAE: 0.15414, time/step=1344ms, lr=3.31e-06
+2024-12-08 09:14:54,904 - logger.py:50 - Epoch: [287][26/27] 	 loss: 0.01741, MAE: 0.17836, time/step=980ms, lr=3.31e-06
+2024-12-08 09:14:57,306 - logger.py:50 - Epoch: [287] Target: [1] train MAE: 0.17836, val MAE: 0.31665, test MAE: 0.31466, Time: 28.86s
+2024-12-08 09:14:57,306 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:14:58,977 - logger.py:50 - Epoch: [288][0/27] 	 loss: 0.01886, MAE: 0.19327, time/step=1667ms, lr=2.97e-06
+2024-12-08 09:15:24,296 - logger.py:50 - Epoch: [288][26/27] 	 loss: 0.01734, MAE: 0.17763, time/step=999ms, lr=2.97e-06
+2024-12-08 09:15:26,420 - logger.py:50 - Epoch: [288] Target: [1] train MAE: 0.17763, val MAE: 0.31461, test MAE: 0.32014, Time: 29.11s
+2024-12-08 09:15:26,420 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:15:27,795 - logger.py:50 - Epoch: [289][0/27] 	 loss: 0.01684, MAE: 0.17251, time/step=1372ms, lr=2.65e-06
+2024-12-08 09:15:52,952 - logger.py:50 - Epoch: [289][26/27] 	 loss: 0.01726, MAE: 0.17687, time/step=983ms, lr=2.65e-06
+2024-12-08 09:15:55,304 - logger.py:50 - Epoch: [289] Target: [1] train MAE: 0.17687, val MAE: 0.31574, test MAE: 0.31569, Time: 28.88s
+2024-12-08 09:15:55,305 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:15:56,801 - logger.py:50 - Epoch: [290][0/27] 	 loss: 0.01760, MAE: 0.18028, time/step=1492ms, lr=2.37e-06
+2024-12-08 09:16:21,945 - logger.py:50 - Epoch: [290][26/27] 	 loss: 0.01744, MAE: 0.17873, time/step=987ms, lr=2.37e-06
+2024-12-08 09:16:24,179 - logger.py:50 - Epoch: [290] Target: [1] train MAE: 0.17873, val MAE: 0.31761, test MAE: 0.32133, Time: 28.87s
+2024-12-08 09:16:24,179 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:16:25,532 - logger.py:50 - Epoch: [291][0/27] 	 loss: 0.01887, MAE: 0.19331, time/step=1350ms, lr=2.11e-06
+2024-12-08 09:16:50,834 - logger.py:50 - Epoch: [291][26/27] 	 loss: 0.01656, MAE: 0.16967, time/step=987ms, lr=2.11e-06
+2024-12-08 09:16:53,104 - logger.py:50 - Epoch: [291] Target: [1] train MAE: 0.16967, val MAE: 0.31544, test MAE: 0.31610, Time: 28.92s
+2024-12-08 09:16:53,104 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:16:54,438 - logger.py:50 - Epoch: [292][0/27] 	 loss: 0.01693, MAE: 0.17347, time/step=1331ms, lr=1.88e-06
+2024-12-08 09:17:19,546 - logger.py:50 - Epoch: [292][26/27] 	 loss: 0.01672, MAE: 0.17133, time/step=979ms, lr=1.88e-06
+2024-12-08 09:17:21,916 - logger.py:50 - Epoch: [292] Target: [1] train MAE: 0.17133, val MAE: 0.31733, test MAE: 0.31489, Time: 28.81s
+2024-12-08 09:17:21,917 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:17:23,448 - logger.py:50 - Epoch: [293][0/27] 	 loss: 0.01593, MAE: 0.16324, time/step=1528ms, lr=1.67e-06
+2024-12-08 09:17:48,585 - logger.py:50 - Epoch: [293][26/27] 	 loss: 0.01693, MAE: 0.17342, time/step=988ms, lr=1.67e-06
+2024-12-08 09:17:50,900 - logger.py:50 - Epoch: [293] Target: [1] train MAE: 0.17342, val MAE: 0.31806, test MAE: 0.31746, Time: 28.98s
+2024-12-08 09:17:50,900 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:17:52,255 - logger.py:50 - Epoch: [294][0/27] 	 loss: 0.01956, MAE: 0.20042, time/step=1353ms, lr=1.49e-06
+2024-12-08 09:18:17,537 - logger.py:50 - Epoch: [294][26/27] 	 loss: 0.01727, MAE: 0.17697, time/step=986ms, lr=1.49e-06
+2024-12-08 09:18:19,819 - logger.py:50 - Epoch: [294] Target: [1] train MAE: 0.17697, val MAE: 0.31718, test MAE: 0.31810, Time: 28.92s
+2024-12-08 09:18:19,819 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:18:21,191 - logger.py:50 - Epoch: [295][0/27] 	 loss: 0.01726, MAE: 0.17689, time/step=1369ms, lr=1.34e-06
+2024-12-08 09:18:46,267 - logger.py:50 - Epoch: [295][26/27] 	 loss: 0.01655, MAE: 0.16957, time/step=979ms, lr=1.34e-06
+2024-12-08 09:18:48,644 - logger.py:50 - Epoch: [295] Target: [1] train MAE: 0.16957, val MAE: 0.31725, test MAE: 0.31411, Time: 28.83s
+2024-12-08 09:18:48,644 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:18:50,294 - logger.py:50 - Epoch: [296][0/27] 	 loss: 0.01556, MAE: 0.15947, time/step=1645ms, lr=1.22e-06
+2024-12-08 09:19:15,380 - logger.py:50 - Epoch: [296][26/27] 	 loss: 0.01729, MAE: 0.17710, time/step=990ms, lr=1.22e-06
+2024-12-08 09:19:17,632 - logger.py:50 - Epoch: [296] Target: [1] train MAE: 0.17710, val MAE: 0.31775, test MAE: 0.31404, Time: 28.99s
+2024-12-08 09:19:17,632 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:19:18,991 - logger.py:50 - Epoch: [297][0/27] 	 loss: 0.01752, MAE: 0.17952, time/step=1356ms, lr=1.12e-06
+2024-12-08 09:19:44,242 - logger.py:50 - Epoch: [297][26/27] 	 loss: 0.01723, MAE: 0.17651, time/step=985ms, lr=1.12e-06
+2024-12-08 09:19:46,518 - logger.py:50 - Epoch: [297] Target: [1] train MAE: 0.17651, val MAE: 0.31632, test MAE: 0.31708, Time: 28.89s
+2024-12-08 09:19:46,518 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:19:47,878 - logger.py:50 - Epoch: [298][0/27] 	 loss: 0.01600, MAE: 0.16394, time/step=1357ms, lr=1.05e-06
+2024-12-08 09:20:12,960 - logger.py:50 - Epoch: [298][26/27] 	 loss: 0.01690, MAE: 0.17320, time/step=979ms, lr=1.05e-06
+2024-12-08 09:20:15,199 - logger.py:50 - Epoch: [298] Target: [1] train MAE: 0.17320, val MAE: 0.31578, test MAE: 0.31723, Time: 28.68s
+2024-12-08 09:20:15,200 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
+2024-12-08 09:20:16,834 - logger.py:50 - Epoch: [299][0/27] 	 loss: 0.01717, MAE: 0.17596, time/step=1630ms, lr=1.01e-06
+2024-12-08 09:20:42,085 - logger.py:50 - Epoch: [299][26/27] 	 loss: 0.01717, MAE: 0.17595, time/step=996ms, lr=1.01e-06
+2024-12-08 09:20:44,226 - logger.py:50 - Epoch: [299] Target: [1] train MAE: 0.17595, val MAE: 0.31876, test MAE: 0.32036, Time: 29.03s
+2024-12-08 09:20:44,226 - logger.py:50 - Best -- epoch=248, train MAE: 0.21158, val MAE: 0.30846, test MAE: 0.31495
+
