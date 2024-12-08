@@ -142,11 +142,14 @@ def main(args):
     np.random.seed(args.seed)
     
     ''' Dataset '''
-    import ipdb; ipdb.set_trace()
+    #import ipdb; ipdb.set_trace()
     train_dataset = QM9(args.data_path, 'train', feature_type=args.feature_type)
     val_dataset   = QM9(args.data_path, 'valid', feature_type=args.feature_type)
     test_dataset  = QM9(args.data_path, 'test', feature_type=args.feature_type)
-    print(len(train_dataset))
+    a = len(train_dataset)
+    b = len(val_dataset)
+    c = len(test_dataset)
+    print(a, b, c, a+b+c)
     #i = 0
     #for x in train_dataset:
     #    print(x)

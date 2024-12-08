@@ -193,15 +193,15 @@ class QM9(InMemoryDataset):
 
         train, valid, test = np.split(data_perm, [Ntrain, Ntrain+Nvalid])
         indices = {"train": train, "valid": valid, "test": test}
-        import ipdb; ipdb.set_trace()
+        #import ipdb; ipdb.set_trace()
 
         np.savez(os.path.join(self.root, 'splits.npz'), idx_train=train, idx_valid=valid, idx_test=test)
 
         # Add a second index to align with cormorant splits.
         j = 0
         for i, mol in enumerate(tqdm(suppl)):
-            if i in skip:
-                continue
+            #if i in skip:
+            #    continue
             if j not in indices[self.split]:
                 j += 1
                 continue
@@ -291,6 +291,7 @@ class QM9(InMemoryDataset):
                 edge_d_index=edge_d_index, edge_d_attr=edge_d_attr)
             data_list.append(data)
             
+        #import ipdb; ipdb.set_trace()
         torch.save(self.collate(data_list), self.processed_paths[0])
 
 
