@@ -35,6 +35,11 @@ import utils
 ModelEma = ModelEmaV2
 
 
+# new
+from pymatgen import IMolecule
+from pymatgen.symmetry.analyzer import PointGroupAnalyzer
+
+
 def get_args_parser():
     parser = argparse.ArgumentParser('Training equivariant networks', add_help=False)
     parser.add_argument('--output-dir', type=str, default=None)
@@ -137,13 +142,19 @@ def main(args):
     np.random.seed(args.seed)
     
     ''' Dataset '''
+    import ipdb; ipdb.set_trace()
     train_dataset = QM9(args.data_path, 'train', feature_type=args.feature_type)
     val_dataset   = QM9(args.data_path, 'valid', feature_type=args.feature_type)
     test_dataset  = QM9(args.data_path, 'test', feature_type=args.feature_type)
-    print(len(train_dataset), args.data_path)
-    print(len(val_dataset))
-    print(len(test_dataset))
-    return
+    print(len(train_dataset))
+    #i = 0
+    #for x in train_dataset:
+    #    print(x)
+    #    #molecule = IMolecule.from_str(atom_data, "xyz")
+    #    #point_group = str(PointGroupAnalyzer(molecule).get_pointgroup())
+    #    i += 1
+    #    if i > 4:
+    #        break
     _log.info('Training set mean: {}, std:{}'.format(
         train_dataset.mean(args.target), train_dataset.std(args.target)))
     # calculate dataset stats
@@ -290,8 +301,6 @@ def main(args):
             info_str = 'Best EMA -- epoch={}, val MAE: {:.5f}, test MAE: {:.5f}\n'.format(
                 best_ema_epoch, best_ema_val_err, best_ema_test_err)
             _log.info(info_str)
-        
-        
 
 if __name__ == "__main__":
     

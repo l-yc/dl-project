@@ -170,15 +170,22 @@ class QM9(InMemoryDataset):
                                    sanitize=False)
         data_list = []
 
-        Nmols = len(suppl) - len(skip)
-        Ntrain = 100000
-        Ntest = int(0.1*Nmols)
+        #Nmols = len(suppl) - len(skip)
+        #Ntrain = 100000
+        #Ntest = int(0.1*Nmols)
+        #Nvalid = Nmols - (Ntrain + Ntest)
+        Nmols = 4320
+        Ntrain = 3456
+        Ntest = 432
         Nvalid = Nmols - (Ntrain + Ntest)
 
         np.random.seed(0)
-        data_perm = np.random.permutation(Nmols)
+        #data_perm = np.random.permutation(Nmols)
+        with open('selected_indices.csv') as f:
+            indices = list(map(int, f.read().split(',')))
+            data_perm = np.random.permutation(indices)
         
-        if self.torchmd_net_split:
+        if False and self.torchmd_net_split:
             Ntrain = 110000
             Nvalid =  10000
             Ntest = Nmols - (Ntrain + Nvalid)
@@ -186,6 +193,7 @@ class QM9(InMemoryDataset):
 
         train, valid, test = np.split(data_perm, [Ntrain, Ntrain+Nvalid])
         indices = {"train": train, "valid": valid, "test": test}
+        import ipdb; ipdb.set_trace()
 
         np.savez(os.path.join(self.root, 'splits.npz'), idx_train=train, idx_valid=valid, idx_test=test)
 
