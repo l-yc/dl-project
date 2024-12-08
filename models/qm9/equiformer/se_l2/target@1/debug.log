@@ -1,0 +1,1932 @@
+2024-12-08 06:32:06,108 - logger.py:50 - Namespace(amp=False, batch_size=128, clip_grad=None, compute_stats=False, cooldown_epochs=10, data_path='datasets/qm9', decay_epochs=30, decay_rate=0.1, dist_url='env://', distributed=False, drop_path=0.0, epochs=300, feature_type='one_hot', input_irreps='5x0e', local_rank=0, loss='l1', lr=0.0005, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, min_lr=1e-06, model_ema=False, model_ema_decay=0.9999, model_ema_force_cpu=False, model_name='graph_attention_transformer_nonlinear_l2', momentum=0.9, num_basis=128, opt='adamw', opt_betas=None, opt_eps=1e-08, output_channels=1, output_dir='models/qm9/equiformer/se_l2/target@1/', patience_epochs=10, pin_mem=True, print_freq=100, radius=5.0, rank=0, sched='cosine', seed=0, standardize=True, target=1, warmup_epochs=5, warmup_lr=1e-06, weight_decay=0.005, workers=4, world_size=1)
+2024-12-08 06:33:08,227 - logger.py:50 - Namespace(amp=False, batch_size=128, clip_grad=None, compute_stats=False, cooldown_epochs=10, data_path='datasets/qm9', decay_epochs=30, decay_rate=0.1, dist_url='env://', distributed=False, drop_path=0.0, epochs=300, feature_type='one_hot', input_irreps='5x0e', local_rank=0, loss='l1', lr=0.0005, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, min_lr=1e-06, model_ema=False, model_ema_decay=0.9999, model_ema_force_cpu=False, model_name='graph_attention_transformer_nonlinear_l2', momentum=0.9, num_basis=128, opt='adamw', opt_betas=None, opt_eps=1e-08, output_channels=1, output_dir='models/qm9/equiformer/se_l2/target@1/', patience_epochs=10, pin_mem=True, print_freq=100, radius=5.0, rank=0, sched='cosine', seed=0, standardize=True, target=1, warmup_epochs=5, warmup_lr=1e-06, weight_decay=0.005, workers=4, world_size=1)
+2024-12-08 06:34:32,019 - logger.py:50 - Training set mean: 65.1042709350586, std:12.06631851196289
+2024-12-08 06:34:41,891 - logger.py:50 - GraphAttentionTransformer(
+  (atom_embed): NodeEmbeddingNetwork(
+    (atom_type_lin): LinearRS(
+      (tp): TensorProduct(5x0e x 1x0e -> 128x0e+64x1e+32x2e | 640 paths | 640 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+    )
+  )
+  (rbf): GaussianRadialBasisLayer(mean_init_max=1.0, mean_init_min=0, std_init_max=1.0, std_init_min=0.0078125)
+  (edge_deg_embed): EdgeDegreeEmbeddingNetwork(
+    (exp): LinearRS(
+      (tp): TensorProduct(1x0e x 1x0e -> 128x0e+64x1e+32x2e | 128 paths | 128 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+    )
+    (dw): TensorProductRescale(
+      (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+      (bias): ParameterList()
+    )
+    (rad): RadialProfile(
+      (net): Sequential(
+        (0): Linear(in_features=128, out_features=64, bias=True)
+        (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        (2): SiLU()
+        (3): Linear(in_features=64, out_features=64, bias=True)
+        (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        (5): SiLU()
+        (6): Linear(in_features=64, out_features=960, bias=False)
+      )
+    )
+    (proj): LinearRS(
+      (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+    )
+    (scale_scatter): ScaledScatter(avg_aggregate_num=15.57930850982666)
+  )
+  (blocks): ModuleList(
+    (0): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (1): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (2): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (3): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (4): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (5): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 512x0e | 196608 paths | 196608 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 512])
+        )
+      )
+      (ffn_shortcut): FullyConnectedTensorProductRescale(
+        (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 512x0e | 65536 paths | 65536 weights)
+        (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 512])
+      )
+    )
+  )
+  (norm): EquivariantLayerNormV2(512x0e, eps=1e-05)
+  (head): Sequential(
+    (0): LinearRS(
+      (tp): TensorProduct(512x0e x 1x0e -> 512x0e | 262144 paths | 262144 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 512])
+    )
+    (1): Activation(
+      512x0e -> 512x0e, 
+      (acts): ModuleList(
+        (0): normalize2mom(
+          (f): SiLU()
+        )
+      )
+    )
+    (2): LinearRS(
+      (tp): TensorProduct(512x0e x 1x0e -> 1x0e | 512 paths | 512 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 1])
+    )
+  )
+  (scale_scatter): ScaledScatter(avg_aggregate_num=18.03065905448718)
+)
+2024-12-08 06:34:51,161 - logger.py:50 - Number of params: 3531715
+2024-12-08 06:34:57,133 - logger.py:50 - Epoch: [0][0/22] 	 loss: 5.00948, MAE: 60.44600, time/step=5963ms, lr=1.00e-06
+2024-12-08 06:36:15,922 - logger.py:50 - Epoch: [0][21/22] 	 loss: 4.07443, MAE: 49.16339, time/step=3852ms, lr=1.00e-06
+2024-12-08 06:36:26,760 - logger.py:50 - Epoch: [0] Target: [1] train MAE: 49.16339, val MAE: 36.34425, test MAE: 36.03366, Time: 95.59s
+2024-12-08 06:36:26,760 - logger.py:50 - Best -- epoch=0, train MAE: 49.16339, val MAE: 36.34425, test MAE: 36.03366
+
+2024-12-08 06:36:28,806 - logger.py:50 - Epoch: [1][0/22] 	 loss: 3.06848, MAE: 37.02528, time/step=2042ms, lr=1.01e-04
+2024-12-08 06:37:02,047 - logger.py:50 - Epoch: [1][21/22] 	 loss: 4.45586, MAE: 53.76578, time/step=1604ms, lr=1.01e-04
+2024-12-08 06:37:06,100 - logger.py:50 - Epoch: [1] Target: [1] train MAE: 53.76578, val MAE: 10.35119, test MAE: 10.40884, Time: 39.34s
+2024-12-08 06:37:06,100 - logger.py:50 - Best -- epoch=1, train MAE: 53.76578, val MAE: 10.35119, test MAE: 10.40884
+
+2024-12-08 06:37:08,102 - logger.py:50 - Epoch: [2][0/22] 	 loss: 0.88231, MAE: 10.64624, time/step=1998ms, lr=2.01e-04
+2024-12-08 06:37:41,292 - logger.py:50 - Epoch: [2][21/22] 	 loss: 0.99697, MAE: 12.02970, time/step=1600ms, lr=2.01e-04
+2024-12-08 06:37:43,908 - logger.py:50 - Epoch: [2] Target: [1] train MAE: 12.02970, val MAE: 6.91435, test MAE: 6.77967, Time: 37.81s
+2024-12-08 06:37:43,908 - logger.py:50 - Best -- epoch=2, train MAE: 12.02970, val MAE: 6.91435, test MAE: 6.77967
+
+2024-12-08 06:37:45,931 - logger.py:50 - Epoch: [3][0/22] 	 loss: 0.56618, MAE: 6.83173, time/step=2020ms, lr=3.00e-04
+2024-12-08 06:38:19,180 - logger.py:50 - Epoch: [3][21/22] 	 loss: 0.45898, MAE: 5.53825, time/step=1603ms, lr=3.00e-04
+2024-12-08 06:38:21,808 - logger.py:50 - Epoch: [3] Target: [1] train MAE: 5.53825, val MAE: 5.02884, test MAE: 5.45475, Time: 37.90s
+2024-12-08 06:38:21,808 - logger.py:50 - Best -- epoch=3, train MAE: 5.53825, val MAE: 5.02884, test MAE: 5.45475
+
+2024-12-08 06:38:23,770 - logger.py:50 - Epoch: [4][0/22] 	 loss: 0.43473, MAE: 5.24557, time/step=1958ms, lr=4.00e-04
+2024-12-08 06:38:56,906 - logger.py:50 - Epoch: [4][21/22] 	 loss: 0.64254, MAE: 7.75307, time/step=1595ms, lr=4.00e-04
+2024-12-08 06:38:59,496 - logger.py:50 - Epoch: [4] Target: [1] train MAE: 7.75307, val MAE: 4.93713, test MAE: 5.06862, Time: 37.69s
+2024-12-08 06:38:59,496 - logger.py:50 - Best -- epoch=4, train MAE: 7.75307, val MAE: 4.93713, test MAE: 5.06862
+
+2024-12-08 06:39:01,663 - logger.py:50 - Epoch: [5][0/22] 	 loss: 0.39850, MAE: 4.80845, time/step=2161ms, lr=5.00e-04
+2024-12-08 06:39:34,810 - logger.py:50 - Epoch: [5][21/22] 	 loss: 0.50808, MAE: 6.13068, time/step=1605ms, lr=5.00e-04
+2024-12-08 06:39:37,419 - logger.py:50 - Epoch: [5] Target: [1] train MAE: 6.13068, val MAE: 17.99043, test MAE: 17.46463, Time: 37.92s
+2024-12-08 06:39:37,420 - logger.py:50 - Best -- epoch=4, train MAE: 7.75307, val MAE: 4.93713, test MAE: 5.06862
+
+2024-12-08 06:39:39,308 - logger.py:50 - Epoch: [6][0/22] 	 loss: 1.44275, MAE: 17.40874, time/step=1885ms, lr=5.00e-04
+2024-12-08 06:40:12,626 - logger.py:50 - Epoch: [6][21/22] 	 loss: 1.27266, MAE: 15.35634, time/step=1600ms, lr=5.00e-04
+2024-12-08 06:40:15,210 - logger.py:50 - Epoch: [6] Target: [1] train MAE: 15.35634, val MAE: 6.57560, test MAE: 6.66539, Time: 37.79s
+2024-12-08 06:40:15,210 - logger.py:50 - Best -- epoch=4, train MAE: 7.75307, val MAE: 4.93713, test MAE: 5.06862
+
+2024-12-08 06:40:17,074 - logger.py:50 - Epoch: [7][0/22] 	 loss: 0.50292, MAE: 6.06840, time/step=1861ms, lr=4.99e-04
+2024-12-08 06:40:50,428 - logger.py:50 - Epoch: [7][21/22] 	 loss: 0.52352, MAE: 6.31701, time/step=1601ms, lr=4.99e-04
+2024-12-08 06:40:53,008 - logger.py:50 - Epoch: [7] Target: [1] train MAE: 6.31701, val MAE: 3.58298, test MAE: 3.27413, Time: 37.80s
+2024-12-08 06:40:53,008 - logger.py:50 - Best -- epoch=7, train MAE: 6.31701, val MAE: 3.58298, test MAE: 3.27413
+
+2024-12-08 06:40:54,971 - logger.py:50 - Epoch: [8][0/22] 	 loss: 0.27915, MAE: 3.36826, time/step=1960ms, lr=4.99e-04
+2024-12-08 06:41:28,228 - logger.py:50 - Epoch: [8][21/22] 	 loss: 0.27537, MAE: 3.32267, time/step=1601ms, lr=4.99e-04
+2024-12-08 06:41:30,963 - logger.py:50 - Epoch: [8] Target: [1] train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546, Time: 37.96s
+2024-12-08 06:41:30,963 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:41:33,093 - logger.py:50 - Epoch: [9][0/22] 	 loss: 0.20061, MAE: 2.42059, time/step=2127ms, lr=4.99e-04
+2024-12-08 06:42:06,202 - logger.py:50 - Epoch: [9][21/22] 	 loss: 0.42855, MAE: 5.17098, time/step=1602ms, lr=4.99e-04
+2024-12-08 06:42:08,755 - logger.py:50 - Epoch: [9] Target: [1] train MAE: 5.17098, val MAE: 8.99818, test MAE: 8.76741, Time: 37.79s
+2024-12-08 06:42:08,755 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:42:10,722 - logger.py:50 - Epoch: [10][0/22] 	 loss: 0.75368, MAE: 9.09417, time/step=1963ms, lr=4.99e-04
+2024-12-08 06:42:44,024 - logger.py:50 - Epoch: [10][21/22] 	 loss: 0.43306, MAE: 5.22544, time/step=1603ms, lr=4.99e-04
+2024-12-08 06:42:46,592 - logger.py:50 - Epoch: [10] Target: [1] train MAE: 5.22544, val MAE: 4.31782, test MAE: 3.99366, Time: 37.84s
+2024-12-08 06:42:46,592 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:42:48,532 - logger.py:50 - Epoch: [11][0/22] 	 loss: 0.34539, MAE: 4.16755, time/step=1936ms, lr=4.98e-04
+2024-12-08 06:43:21,791 - logger.py:50 - Epoch: [11][21/22] 	 loss: 0.32129, MAE: 3.87680, time/step=1600ms, lr=4.98e-04
+2024-12-08 06:43:24,454 - logger.py:50 - Epoch: [11] Target: [1] train MAE: 3.87680, val MAE: 2.86867, test MAE: 2.90484, Time: 37.86s
+2024-12-08 06:43:24,454 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:43:26,452 - logger.py:50 - Epoch: [12][0/22] 	 loss: 0.23628, MAE: 2.85101, time/step=1995ms, lr=4.98e-04
+2024-12-08 06:43:59,614 - logger.py:50 - Epoch: [12][21/22] 	 loss: 0.28870, MAE: 3.48351, time/step=1598ms, lr=4.98e-04
+2024-12-08 06:44:02,307 - logger.py:50 - Epoch: [12] Target: [1] train MAE: 3.48351, val MAE: 5.52129, test MAE: 5.54155, Time: 37.85s
+2024-12-08 06:44:02,307 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:44:04,364 - logger.py:50 - Epoch: [13][0/22] 	 loss: 0.46830, MAE: 5.65071, time/step=2054ms, lr=4.98e-04
+2024-12-08 06:44:37,565 - logger.py:50 - Epoch: [13][21/22] 	 loss: 0.38672, MAE: 4.66631, time/step=1603ms, lr=4.98e-04
+2024-12-08 06:44:40,253 - logger.py:50 - Epoch: [13] Target: [1] train MAE: 4.66631, val MAE: 4.96292, test MAE: 4.64063, Time: 37.95s
+2024-12-08 06:44:40,254 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:44:42,300 - logger.py:50 - Epoch: [14][0/22] 	 loss: 0.41816, MAE: 5.04561, time/step=2042ms, lr=4.97e-04
+2024-12-08 06:45:15,583 - logger.py:50 - Epoch: [14][21/22] 	 loss: 0.25929, MAE: 3.12865, time/step=1606ms, lr=4.97e-04
+2024-12-08 06:45:18,277 - logger.py:50 - Epoch: [14] Target: [1] train MAE: 3.12865, val MAE: 3.81961, test MAE: 3.99006, Time: 38.02s
+2024-12-08 06:45:18,277 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:45:20,263 - logger.py:50 - Epoch: [15][0/22] 	 loss: 0.29664, MAE: 3.57931, time/step=1982ms, lr=4.97e-04
+2024-12-08 06:45:53,561 - logger.py:50 - Epoch: [15][21/22] 	 loss: 0.18551, MAE: 2.23840, time/step=1604ms, lr=4.97e-04
+2024-12-08 06:45:56,275 - logger.py:50 - Epoch: [15] Target: [1] train MAE: 2.23840, val MAE: 3.14884, test MAE: 3.07518, Time: 38.00s
+2024-12-08 06:45:56,276 - logger.py:50 - Best -- epoch=8, train MAE: 3.32267, val MAE: 2.62364, test MAE: 2.46546
+
+2024-12-08 06:45:58,188 - logger.py:50 - Epoch: [16][0/22] 	 loss: 0.26653, MAE: 3.21607, time/step=1909ms, lr=4.97e-04
+2024-12-08 06:46:31,547 - logger.py:50 - Epoch: [16][21/22] 	 loss: 0.20188, MAE: 2.43598, time/step=1603ms, lr=4.97e-04
+2024-12-08 06:46:34,236 - logger.py:50 - Epoch: [16] Target: [1] train MAE: 2.43598, val MAE: 2.35693, test MAE: 2.40317, Time: 37.96s
+2024-12-08 06:46:34,236 - logger.py:50 - Best -- epoch=16, train MAE: 2.43598, val MAE: 2.35693, test MAE: 2.40317
+
+2024-12-08 06:46:36,180 - logger.py:50 - Epoch: [17][0/22] 	 loss: 0.20172, MAE: 2.43398, time/step=1941ms, lr=4.96e-04
+2024-12-08 06:47:09,524 - logger.py:50 - Epoch: [17][21/22] 	 loss: 0.33808, MAE: 4.07938, time/step=1604ms, lr=4.96e-04
+2024-12-08 06:47:12,225 - logger.py:50 - Epoch: [17] Target: [1] train MAE: 4.07938, val MAE: 5.42497, test MAE: 5.26939, Time: 37.99s
+2024-12-08 06:47:12,225 - logger.py:50 - Best -- epoch=16, train MAE: 2.43598, val MAE: 2.35693, test MAE: 2.40317
+
+2024-12-08 06:47:14,326 - logger.py:50 - Epoch: [18][0/22] 	 loss: 0.45502, MAE: 5.49047, time/step=2098ms, lr=4.96e-04
+2024-12-08 06:47:47,408 - logger.py:50 - Epoch: [18][21/22] 	 loss: 0.22778, MAE: 2.74850, time/step=1599ms, lr=4.96e-04
+2024-12-08 06:47:50,098 - logger.py:50 - Epoch: [18] Target: [1] train MAE: 2.74850, val MAE: 1.50756, test MAE: 1.40886, Time: 37.87s
+2024-12-08 06:47:50,098 - logger.py:50 - Best -- epoch=18, train MAE: 2.74850, val MAE: 1.50756, test MAE: 1.40886
+
+2024-12-08 06:47:52,128 - logger.py:50 - Epoch: [19][0/22] 	 loss: 0.12137, MAE: 1.46452, time/step=2027ms, lr=4.95e-04
+2024-12-08 06:48:25,330 - logger.py:50 - Epoch: [19][21/22] 	 loss: 0.17314, MAE: 2.08911, time/step=1601ms, lr=4.95e-04
+2024-12-08 06:48:28,018 - logger.py:50 - Epoch: [19] Target: [1] train MAE: 2.08911, val MAE: 6.12532, test MAE: 6.06000, Time: 37.92s
+2024-12-08 06:48:28,018 - logger.py:50 - Best -- epoch=18, train MAE: 2.74850, val MAE: 1.50756, test MAE: 1.40886
+
+2024-12-08 06:48:30,003 - logger.py:50 - Epoch: [20][0/22] 	 loss: 0.50517, MAE: 6.09550, time/step=1982ms, lr=4.95e-04
+2024-12-08 06:49:03,233 - logger.py:50 - Epoch: [20][21/22] 	 loss: 0.37357, MAE: 4.50760, time/step=1601ms, lr=4.95e-04
+2024-12-08 06:49:05,926 - logger.py:50 - Epoch: [20] Target: [1] train MAE: 4.50760, val MAE: 5.10590, test MAE: 5.17713, Time: 37.91s
+2024-12-08 06:49:05,926 - logger.py:50 - Best -- epoch=18, train MAE: 2.74850, val MAE: 1.50756, test MAE: 1.40886
+
+2024-12-08 06:49:07,918 - logger.py:50 - Epoch: [21][0/22] 	 loss: 0.41226, MAE: 4.97446, time/step=1989ms, lr=4.94e-04
+2024-12-08 06:49:41,060 - logger.py:50 - Epoch: [21][21/22] 	 loss: 0.22225, MAE: 2.68176, time/step=1597ms, lr=4.94e-04
+2024-12-08 06:49:43,746 - logger.py:50 - Epoch: [21] Target: [1] train MAE: 2.68176, val MAE: 1.49344, test MAE: 1.35133, Time: 37.82s
+2024-12-08 06:49:43,746 - logger.py:50 - Best -- epoch=21, train MAE: 2.68176, val MAE: 1.49344, test MAE: 1.35133
+
+2024-12-08 06:49:45,764 - logger.py:50 - Epoch: [22][0/22] 	 loss: 0.12825, MAE: 1.54746, time/step=2014ms, lr=4.93e-04
+2024-12-08 06:50:19,013 - logger.py:50 - Epoch: [22][21/22] 	 loss: 0.27609, MAE: 3.33133, time/step=1603ms, lr=4.93e-04
+2024-12-08 06:50:21,586 - logger.py:50 - Epoch: [22] Target: [1] train MAE: 3.33133, val MAE: 3.60737, test MAE: 3.50041, Time: 37.84s
+2024-12-08 06:50:21,587 - logger.py:50 - Best -- epoch=21, train MAE: 2.68176, val MAE: 1.49344, test MAE: 1.35133
+
+2024-12-08 06:50:23,673 - logger.py:50 - Epoch: [23][0/22] 	 loss: 0.30461, MAE: 3.67555, time/step=2082ms, lr=4.93e-04
+2024-12-08 06:50:56,904 - logger.py:50 - Epoch: [23][21/22] 	 loss: 0.18150, MAE: 2.18998, time/step=1605ms, lr=4.93e-04
+2024-12-08 06:50:59,505 - logger.py:50 - Epoch: [23] Target: [1] train MAE: 2.18998, val MAE: 1.96118, test MAE: 1.88631, Time: 37.92s
+2024-12-08 06:50:59,505 - logger.py:50 - Best -- epoch=21, train MAE: 2.68176, val MAE: 1.49344, test MAE: 1.35133
+
+2024-12-08 06:51:01,472 - logger.py:50 - Epoch: [24][0/22] 	 loss: 0.15877, MAE: 1.91582, time/step=1964ms, lr=4.92e-04
+2024-12-08 06:51:34,657 - logger.py:50 - Epoch: [24][21/22] 	 loss: 0.16616, MAE: 2.00491, time/step=1598ms, lr=4.92e-04
+2024-12-08 06:51:37,384 - logger.py:50 - Epoch: [24] Target: [1] train MAE: 2.00491, val MAE: 2.22512, test MAE: 2.21957, Time: 37.88s
+2024-12-08 06:51:37,384 - logger.py:50 - Best -- epoch=21, train MAE: 2.68176, val MAE: 1.49344, test MAE: 1.35133
+
+2024-12-08 06:51:39,329 - logger.py:50 - Epoch: [25][0/22] 	 loss: 0.17589, MAE: 2.12233, time/step=1941ms, lr=4.91e-04
+2024-12-08 06:53:16,318 - logger.py:50 - Namespace(amp=False, batch_size=128, clip_grad=None, compute_stats=False, cooldown_epochs=10, data_path='datasets/qm9', decay_epochs=30, decay_rate=0.1, dist_url='env://', distributed=False, drop_path=0.0, epochs=300, feature_type='one_hot', input_irreps='5x0e', local_rank=0, loss='l1', lr=0.0005, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, min_lr=1e-06, model_ema=False, model_ema_decay=0.9999, model_ema_force_cpu=False, model_name='graph_attention_transformer_nonlinear_l2', momentum=0.9, num_basis=128, opt='adamw', opt_betas=None, opt_eps=1e-08, output_channels=1, output_dir='models/qm9/equiformer/se_l2/target@1/', patience_epochs=10, pin_mem=True, print_freq=100, radius=5.0, rank=0, sched='cosine', seed=0, standardize=True, target=1, warmup_epochs=5, warmup_lr=1e-06, weight_decay=0.005, workers=4, world_size=1)
+2024-12-08 06:54:11,833 - logger.py:50 - Training set mean: 58.92556381225586, std:10.245723724365234
+2024-12-08 06:54:21,542 - logger.py:50 - GraphAttentionTransformer(
+  (atom_embed): NodeEmbeddingNetwork(
+    (atom_type_lin): LinearRS(
+      (tp): TensorProduct(5x0e x 1x0e -> 128x0e+64x1e+32x2e | 640 paths | 640 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+    )
+  )
+  (rbf): GaussianRadialBasisLayer(mean_init_max=1.0, mean_init_min=0, std_init_max=1.0, std_init_min=0.0078125)
+  (edge_deg_embed): EdgeDegreeEmbeddingNetwork(
+    (exp): LinearRS(
+      (tp): TensorProduct(1x0e x 1x0e -> 128x0e+64x1e+32x2e | 128 paths | 128 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+    )
+    (dw): TensorProductRescale(
+      (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+      (bias): ParameterList()
+    )
+    (rad): RadialProfile(
+      (net): Sequential(
+        (0): Linear(in_features=128, out_features=64, bias=True)
+        (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        (2): SiLU()
+        (3): Linear(in_features=64, out_features=64, bias=True)
+        (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+        (5): SiLU()
+        (6): Linear(in_features=64, out_features=960, bias=False)
+      )
+    )
+    (proj): LinearRS(
+      (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+    )
+    (scale_scatter): ScaledScatter(avg_aggregate_num=15.57930850982666)
+  )
+  (blocks): ModuleList(
+    (0): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (1): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (2): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (3): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (4): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+    )
+    (5): TransBlock(
+      (norm_1): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ga): GraphAttention(
+        rescale_degree=False, 
+        (merge_src): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (merge_dst): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList()
+        )
+        (sep_act): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (dtp_rad): RadialProfile(
+            (net): Sequential(
+              (0): Linear(in_features=128, out_features=64, bias=True)
+              (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (2): SiLU()
+              (3): Linear(in_features=64, out_features=64, bias=True)
+              (4): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+              (5): SiLU()
+              (6): Linear(in_features=64, out_features=960, bias=False)
+            )
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 224x0e+64x1e+32x2e | 86016 paths | 86016 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 224])
+          )
+          (gate): Gate (224x0e+64x1e+32x2e -> 128x0e+64x1e+32x2e)
+        )
+        (sep_alpha): LinearRS(
+          (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e | 28672 paths | 28672 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+        (sep_value): SeparableFCTP(
+          (dtp): TensorProductRescale(
+            (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e+1x1e+1x2e -> 224x0e+384x1e+352x2e | 960 paths | 960 weights)
+            (bias): ParameterList()
+          )
+          (lin): LinearRS(
+            (tp): TensorProduct(224x0e+384x1e+352x2e x 1x0e -> 128x0e+64x1e+32x2e | 64512 paths | 64512 weights)
+            (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+          )
+        )
+        (vec2heads_alpha): Vec2AttnHeads(irreps_head=32x0e, num_heads=4)
+        (vec2heads_value): Vec2AttnHeads(irreps_head=32x0e+16x1e+8x2e, num_heads=4)
+        (alpha_act): Activation(
+          32x0e -> 32x0e, 
+          (acts): ModuleList(
+            (0): normalize2mom(
+              (f): SmoothLeakyReLU(negative_slope=0.2)
+            )
+          )
+        )
+        (heads2vec): AttnHeads2Vec(irreps_head=32x0e+16x1e+8x2e)
+        (alpha_dropout): Dropout(p=0.2, inplace=False)
+        (proj): LinearRS(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 128x0e+64x1e+32x2e | 21504 paths | 21504 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 128])
+        )
+      )
+      (norm_2): EquivariantLayerNormV2(128x0e+64x1e+32x2e, eps=1e-05)
+      (ffn): FeedForwardNetwork(
+        (fctp_1): FullyConnectedTensorProductRescaleSwishGate(
+          (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 672x0e+192x1e+96x2e | 101376 paths | 101376 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 672])
+          (gate): Gate (672x0e+192x1e+96x2e -> 384x0e+192x1e+96x2e)
+        )
+        (fctp_2): FullyConnectedTensorProductRescale(
+          (tp): TensorProduct(384x0e+192x1e+96x2e x 1x0e -> 512x0e | 196608 paths | 196608 weights)
+          (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 512])
+        )
+      )
+      (ffn_shortcut): FullyConnectedTensorProductRescale(
+        (tp): TensorProduct(128x0e+64x1e+32x2e x 1x0e -> 512x0e | 65536 paths | 65536 weights)
+        (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 512])
+      )
+    )
+  )
+  (norm): EquivariantLayerNormV2(512x0e, eps=1e-05)
+  (head): Sequential(
+    (0): LinearRS(
+      (tp): TensorProduct(512x0e x 1x0e -> 512x0e | 262144 paths | 262144 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 512])
+    )
+    (1): Activation(
+      512x0e -> 512x0e, 
+      (acts): ModuleList(
+        (0): normalize2mom(
+          (f): SiLU()
+        )
+      )
+    )
+    (2): LinearRS(
+      (tp): TensorProduct(512x0e x 1x0e -> 1x0e | 512 paths | 512 weights)
+      (bias): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 1])
+    )
+  )
+  (scale_scatter): ScaledScatter(avg_aggregate_num=18.03065905448718)
+)
+2024-12-08 06:54:26,051 - logger.py:50 - Number of params: 3531715
+2024-12-08 06:54:29,263 - logger.py:50 - Epoch: [0][0/27] 	 loss: 4.17666, MAE: 42.79293, time/step=3202ms, lr=1.00e-06
+2024-12-08 06:55:44,823 - logger.py:50 - Epoch: [0][26/27] 	 loss: 3.34647, MAE: 34.28700, time/step=2917ms, lr=1.00e-06
+2024-12-08 06:55:59,228 - logger.py:50 - Epoch: [0] Target: [1] train MAE: 34.28700, val MAE: 25.26973, test MAE: 24.47769, Time: 93.17s
+2024-12-08 06:55:59,228 - logger.py:50 - Best -- epoch=0, train MAE: 34.28700, val MAE: 25.26973, test MAE: 24.47769
+
+2024-12-08 06:56:00,613 - logger.py:50 - Epoch: [1][0/27] 	 loss: 2.41223, MAE: 24.71500, time/step=1381ms, lr=1.01e-04
+2024-12-08 06:56:25,918 - logger.py:50 - Epoch: [1][26/27] 	 loss: 3.06760, MAE: 31.42975, time/step=988ms, lr=1.01e-04
+2024-12-08 06:56:30,143 - logger.py:50 - Epoch: [1] Target: [1] train MAE: 31.42975, val MAE: 10.09996, test MAE: 9.71883, Time: 30.92s
+2024-12-08 06:56:30,144 - logger.py:50 - Best -- epoch=1, train MAE: 31.42975, val MAE: 10.09996, test MAE: 9.71883
+
+2024-12-08 06:56:31,748 - logger.py:50 - Epoch: [2][0/27] 	 loss: 1.02805, MAE: 10.53313, time/step=1599ms, lr=2.01e-04
+2024-12-08 06:56:57,080 - logger.py:50 - Epoch: [2][26/27] 	 loss: 0.79768, MAE: 8.17281, time/step=997ms, lr=2.01e-04
+2024-12-08 06:56:59,244 - logger.py:50 - Epoch: [2] Target: [1] train MAE: 8.17281, val MAE: 5.14671, test MAE: 5.21873, Time: 29.10s
+2024-12-08 06:56:59,244 - logger.py:50 - Best -- epoch=2, train MAE: 8.17281, val MAE: 5.14671, test MAE: 5.21873
+
+2024-12-08 06:57:00,639 - logger.py:50 - Epoch: [3][0/27] 	 loss: 0.45639, MAE: 4.67601, time/step=1392ms, lr=3.00e-04
+2024-12-08 06:57:26,005 - logger.py:50 - Epoch: [3][26/27] 	 loss: 0.41223, MAE: 4.22355, time/step=991ms, lr=3.00e-04
+2024-12-08 06:57:28,300 - logger.py:50 - Epoch: [3] Target: [1] train MAE: 4.22355, val MAE: 4.74459, test MAE: 5.02692, Time: 29.06s
+2024-12-08 06:57:28,300 - logger.py:50 - Best -- epoch=3, train MAE: 4.22355, val MAE: 4.74459, test MAE: 5.02692
+
+2024-12-08 06:57:29,656 - logger.py:50 - Epoch: [4][0/27] 	 loss: 0.46375, MAE: 4.75150, time/step=1353ms, lr=4.00e-04
+2024-12-08 06:57:54,795 - logger.py:50 - Epoch: [4][26/27] 	 loss: 0.65171, MAE: 6.67723, time/step=981ms, lr=4.00e-04
+2024-12-08 06:57:57,192 - logger.py:50 - Epoch: [4] Target: [1] train MAE: 6.67723, val MAE: 6.82357, test MAE: 6.83353, Time: 28.89s
+2024-12-08 06:57:57,192 - logger.py:50 - Best -- epoch=3, train MAE: 4.22355, val MAE: 4.74459, test MAE: 5.02692
+
+2024-12-08 06:57:58,899 - logger.py:50 - Epoch: [5][0/27] 	 loss: 0.67607, MAE: 6.92683, time/step=1701ms, lr=5.00e-04
+2024-12-08 06:58:24,287 - logger.py:50 - Epoch: [5][26/27] 	 loss: 0.42942, MAE: 4.39974, time/step=1003ms, lr=5.00e-04
+2024-12-08 06:58:26,520 - logger.py:50 - Epoch: [5] Target: [1] train MAE: 4.39974, val MAE: 3.10274, test MAE: 3.16447, Time: 29.33s
+2024-12-08 06:58:26,520 - logger.py:50 - Best -- epoch=5, train MAE: 4.39974, val MAE: 3.10274, test MAE: 3.16447
+
+2024-12-08 06:58:27,956 - logger.py:50 - Epoch: [6][0/27] 	 loss: 0.24692, MAE: 2.52985, time/step=1433ms, lr=5.00e-04
+2024-12-08 06:58:53,190 - logger.py:50 - Epoch: [6][26/27] 	 loss: 0.30023, MAE: 3.07612, time/step=988ms, lr=5.00e-04
+2024-12-08 06:58:55,517 - logger.py:50 - Epoch: [6] Target: [1] train MAE: 3.07612, val MAE: 3.38314, test MAE: 3.60942, Time: 29.00s
+2024-12-08 06:58:55,518 - logger.py:50 - Best -- epoch=5, train MAE: 4.39974, val MAE: 3.10274, test MAE: 3.16447
+
+2024-12-08 06:58:57,193 - logger.py:50 - Epoch: [7][0/27] 	 loss: 0.31841, MAE: 3.26233, time/step=1668ms, lr=4.99e-04
+2024-12-08 06:59:22,559 - logger.py:50 - Epoch: [7][26/27] 	 loss: 0.28041, MAE: 2.87296, time/step=1001ms, lr=4.99e-04
+2024-12-08 06:59:24,907 - logger.py:50 - Epoch: [7] Target: [1] train MAE: 2.87296, val MAE: 4.12929, test MAE: 4.19598, Time: 29.39s
+2024-12-08 06:59:24,908 - logger.py:50 - Best -- epoch=5, train MAE: 4.39974, val MAE: 3.10274, test MAE: 3.16447
+
+2024-12-08 06:59:26,332 - logger.py:50 - Epoch: [8][0/27] 	 loss: 0.40465, MAE: 4.14595, time/step=1422ms, lr=4.99e-04
+2024-12-08 06:59:51,593 - logger.py:50 - Epoch: [8][26/27] 	 loss: 0.62697, MAE: 6.42377, time/step=988ms, lr=4.99e-04
+2024-12-08 06:59:53,795 - logger.py:50 - Epoch: [8] Target: [1] train MAE: 6.42377, val MAE: 6.55908, test MAE: 6.77939, Time: 28.89s
+2024-12-08 06:59:53,796 - logger.py:50 - Best -- epoch=5, train MAE: 4.39974, val MAE: 3.10274, test MAE: 3.16447
+
+2024-12-08 06:59:55,470 - logger.py:50 - Epoch: [9][0/27] 	 loss: 0.59661, MAE: 6.11270, time/step=1669ms, lr=4.99e-04
+2024-12-08 07:00:20,842 - logger.py:50 - Epoch: [9][26/27] 	 loss: 0.34941, MAE: 3.57996, time/step=1002ms, lr=4.99e-04
+2024-12-08 07:00:23,137 - logger.py:50 - Epoch: [9] Target: [1] train MAE: 3.57996, val MAE: 2.15971, test MAE: 2.49750, Time: 29.34s
+2024-12-08 07:00:23,137 - logger.py:50 - Best -- epoch=9, train MAE: 3.57996, val MAE: 2.15971, test MAE: 2.49750
+
+2024-12-08 07:00:24,467 - logger.py:50 - Epoch: [10][0/27] 	 loss: 0.17425, MAE: 1.78536, time/step=1327ms, lr=4.99e-04
+2024-12-08 07:00:49,762 - logger.py:50 - Epoch: [10][26/27] 	 loss: 0.21107, MAE: 2.16254, time/step=986ms, lr=4.99e-04
+2024-12-08 07:00:51,987 - logger.py:50 - Epoch: [10] Target: [1] train MAE: 2.16254, val MAE: 1.60280, test MAE: 1.74776, Time: 28.85s
+2024-12-08 07:00:51,987 - logger.py:50 - Best -- epoch=10, train MAE: 2.16254, val MAE: 1.60280, test MAE: 1.74776
+
+2024-12-08 07:00:53,725 - logger.py:50 - Epoch: [11][0/27] 	 loss: 0.14710, MAE: 1.50710, time/step=1731ms, lr=4.98e-04
+2024-12-08 07:01:19,137 - logger.py:50 - Epoch: [11][26/27] 	 loss: 0.29479, MAE: 3.02030, time/step=1005ms, lr=4.98e-04
+2024-12-08 07:01:21,419 - logger.py:50 - Epoch: [11] Target: [1] train MAE: 3.02030, val MAE: 4.90166, test MAE: 5.08939, Time: 29.43s
+2024-12-08 07:01:21,419 - logger.py:50 - Best -- epoch=10, train MAE: 2.16254, val MAE: 1.60280, test MAE: 1.74776
+
+2024-12-08 07:01:22,773 - logger.py:50 - Epoch: [12][0/27] 	 loss: 0.47787, MAE: 4.89616, time/step=1351ms, lr=4.98e-04
+2024-12-08 07:01:48,027 - logger.py:50 - Epoch: [12][26/27] 	 loss: 0.32767, MAE: 3.35720, time/step=985ms, lr=4.98e-04
+2024-12-08 07:01:50,237 - logger.py:50 - Epoch: [12] Target: [1] train MAE: 3.35720, val MAE: 2.01046, test MAE: 2.08706, Time: 28.82s
+2024-12-08 07:01:50,237 - logger.py:50 - Best -- epoch=10, train MAE: 2.16254, val MAE: 1.60280, test MAE: 1.74776
+
+2024-12-08 07:01:51,791 - logger.py:50 - Epoch: [13][0/27] 	 loss: 0.18475, MAE: 1.89291, time/step=1549ms, lr=4.98e-04
+2024-12-08 07:02:17,194 - logger.py:50 - Epoch: [13][26/27] 	 loss: 0.23128, MAE: 2.36962, time/step=998ms, lr=4.98e-04
+2024-12-08 07:02:19,539 - logger.py:50 - Epoch: [13] Target: [1] train MAE: 2.36962, val MAE: 1.78310, test MAE: 1.96646, Time: 29.30s
+2024-12-08 07:02:19,540 - logger.py:50 - Best -- epoch=10, train MAE: 2.16254, val MAE: 1.60280, test MAE: 1.74776
+
+2024-12-08 07:02:20,949 - logger.py:50 - Epoch: [14][0/27] 	 loss: 0.13669, MAE: 1.40050, time/step=1405ms, lr=4.97e-04
+2024-12-08 07:02:46,197 - logger.py:50 - Epoch: [14][26/27] 	 loss: 0.18346, MAE: 1.87972, time/step=987ms, lr=4.97e-04
+2024-12-08 07:02:48,564 - logger.py:50 - Epoch: [14] Target: [1] train MAE: 1.87972, val MAE: 1.36183, test MAE: 1.51349, Time: 29.02s
+2024-12-08 07:02:48,564 - logger.py:50 - Best -- epoch=14, train MAE: 1.87972, val MAE: 1.36183, test MAE: 1.51349
+
+2024-12-08 07:02:50,148 - logger.py:50 - Epoch: [15][0/27] 	 loss: 0.12017, MAE: 1.23124, time/step=1579ms, lr=4.97e-04
+2024-12-08 07:03:15,530 - logger.py:50 - Epoch: [15][26/27] 	 loss: 0.16313, MAE: 1.67136, time/step=999ms, lr=4.97e-04
+2024-12-08 07:03:17,674 - logger.py:50 - Epoch: [15] Target: [1] train MAE: 1.67136, val MAE: 1.26316, test MAE: 1.34749, Time: 29.11s
+2024-12-08 07:03:17,674 - logger.py:50 - Best -- epoch=15, train MAE: 1.67136, val MAE: 1.26316, test MAE: 1.34749
+
+2024-12-08 07:03:18,991 - logger.py:50 - Epoch: [16][0/27] 	 loss: 0.10371, MAE: 1.06259, time/step=1315ms, lr=4.97e-04
+2024-12-08 07:03:44,346 - logger.py:50 - Epoch: [16][26/27] 	 loss: 0.16217, MAE: 1.66152, time/step=988ms, lr=4.97e-04
+2024-12-08 07:03:46,798 - logger.py:50 - Epoch: [16] Target: [1] train MAE: 1.66152, val MAE: 1.06842, test MAE: 1.16380, Time: 29.12s
+2024-12-08 07:03:46,799 - logger.py:50 - Best -- epoch=16, train MAE: 1.66152, val MAE: 1.06842, test MAE: 1.16380
+
+2024-12-08 07:03:48,459 - logger.py:50 - Epoch: [17][0/27] 	 loss: 0.09920, MAE: 1.01642, time/step=1655ms, lr=4.96e-04
+2024-12-08 07:04:13,729 - logger.py:50 - Epoch: [17][26/27] 	 loss: 0.27296, MAE: 2.79670, time/step=997ms, lr=4.96e-04
+2024-12-08 07:04:15,871 - logger.py:50 - Epoch: [17] Target: [1] train MAE: 2.79670, val MAE: 4.01613, test MAE: 4.11537, Time: 29.07s
+2024-12-08 07:04:15,872 - logger.py:50 - Best -- epoch=16, train MAE: 1.66152, val MAE: 1.06842, test MAE: 1.16380
+
+2024-12-08 07:04:17,242 - logger.py:50 - Epoch: [18][0/27] 	 loss: 0.38083, MAE: 3.90192, time/step=1367ms, lr=4.96e-04
+2024-12-08 07:04:42,726 - logger.py:50 - Epoch: [18][26/27] 	 loss: 0.22689, MAE: 2.32470, time/step=995ms, lr=4.96e-04
+2024-12-08 07:04:45,009 - logger.py:50 - Epoch: [18] Target: [1] train MAE: 2.32470, val MAE: 1.11444, test MAE: 1.10154, Time: 29.14s
+2024-12-08 07:04:45,009 - logger.py:50 - Best -- epoch=16, train MAE: 1.66152, val MAE: 1.06842, test MAE: 1.16380
+
+2024-12-08 07:04:46,402 - logger.py:50 - Epoch: [19][0/27] 	 loss: 0.10297, MAE: 1.05500, time/step=1389ms, lr=4.95e-04
+2024-12-08 07:05:11,706 - logger.py:50 - Epoch: [19][26/27] 	 loss: 0.14311, MAE: 1.46630, time/step=989ms, lr=4.95e-04
+2024-12-08 07:05:13,917 - logger.py:50 - Epoch: [19] Target: [1] train MAE: 1.46630, val MAE: 1.26481, test MAE: 1.30616, Time: 28.91s
+2024-12-08 07:05:13,917 - logger.py:50 - Best -- epoch=16, train MAE: 1.66152, val MAE: 1.06842, test MAE: 1.16380
+
+2024-12-08 07:05:15,513 - logger.py:50 - Epoch: [20][0/27] 	 loss: 0.09989, MAE: 1.02344, time/step=1591ms, lr=4.95e-04
+2024-12-08 07:05:40,974 - logger.py:50 - Epoch: [20][26/27] 	 loss: 0.28023, MAE: 2.87117, time/step=1002ms, lr=4.95e-04
+2024-12-08 07:05:43,246 - logger.py:50 - Epoch: [20] Target: [1] train MAE: 2.87117, val MAE: 1.50517, test MAE: 1.46605, Time: 29.33s
+2024-12-08 07:05:43,246 - logger.py:50 - Best -- epoch=16, train MAE: 1.66152, val MAE: 1.06842, test MAE: 1.16380
+
+2024-12-08 07:05:44,586 - logger.py:50 - Epoch: [21][0/27] 	 loss: 0.16575, MAE: 1.69821, time/step=1336ms, lr=4.94e-04
+2024-12-08 07:06:09,868 - logger.py:50 - Epoch: [21][26/27] 	 loss: 0.19420, MAE: 1.98968, time/step=986ms, lr=4.94e-04
+2024-12-08 07:06:12,247 - logger.py:50 - Epoch: [21] Target: [1] train MAE: 1.98968, val MAE: 0.97406, test MAE: 1.04779, Time: 29.00s
+2024-12-08 07:06:12,247 - logger.py:50 - Best -- epoch=21, train MAE: 1.98968, val MAE: 0.97406, test MAE: 1.04779
+
+2024-12-08 07:06:13,854 - logger.py:50 - Epoch: [22][0/27] 	 loss: 0.10730, MAE: 1.09933, time/step=1602ms, lr=4.93e-04
+2024-12-08 07:06:39,270 - logger.py:50 - Epoch: [22][26/27] 	 loss: 0.14504, MAE: 1.48604, time/step=1001ms, lr=4.93e-04
+2024-12-08 07:06:41,524 - logger.py:50 - Epoch: [22] Target: [1] train MAE: 1.48604, val MAE: 1.48244, test MAE: 1.51651, Time: 29.28s
+2024-12-08 07:06:41,525 - logger.py:50 - Best -- epoch=21, train MAE: 1.98968, val MAE: 0.97406, test MAE: 1.04779
+
+2024-12-08 07:06:42,902 - logger.py:50 - Epoch: [23][0/27] 	 loss: 0.12528, MAE: 1.28354, time/step=1374ms, lr=4.93e-04
+2024-12-08 07:07:08,174 - logger.py:50 - Epoch: [23][26/27] 	 loss: 0.12457, MAE: 1.27629, time/step=987ms, lr=4.93e-04
+2024-12-08 07:07:10,442 - logger.py:50 - Epoch: [23] Target: [1] train MAE: 1.27629, val MAE: 1.49639, test MAE: 1.41535, Time: 28.92s
+2024-12-08 07:07:10,442 - logger.py:50 - Best -- epoch=21, train MAE: 1.98968, val MAE: 0.97406, test MAE: 1.04779
+
+2024-12-08 07:07:12,031 - logger.py:50 - Epoch: [24][0/27] 	 loss: 0.16552, MAE: 1.69592, time/step=1584ms, lr=4.92e-04
+2024-12-08 07:07:37,470 - logger.py:50 - Epoch: [24][26/27] 	 loss: 0.12978, MAE: 1.32969, time/step=1001ms, lr=4.92e-04
+2024-12-08 07:07:39,613 - logger.py:50 - Epoch: [24] Target: [1] train MAE: 1.32969, val MAE: 1.17790, test MAE: 1.25499, Time: 29.17s
+2024-12-08 07:07:39,614 - logger.py:50 - Best -- epoch=21, train MAE: 1.98968, val MAE: 0.97406, test MAE: 1.04779
+
+2024-12-08 07:07:40,962 - logger.py:50 - Epoch: [25][0/27] 	 loss: 0.11130, MAE: 1.14039, time/step=1345ms, lr=4.91e-04
+2024-12-08 07:08:06,249 - logger.py:50 - Epoch: [25][26/27] 	 loss: 0.14152, MAE: 1.45001, time/step=986ms, lr=4.91e-04
+2024-12-08 07:08:08,510 - logger.py:50 - Epoch: [25] Target: [1] train MAE: 1.45001, val MAE: 1.20768, test MAE: 1.08365, Time: 28.90s
+2024-12-08 07:08:08,510 - logger.py:50 - Best -- epoch=21, train MAE: 1.98968, val MAE: 0.97406, test MAE: 1.04779
+
+2024-12-08 07:08:10,237 - logger.py:50 - Epoch: [26][0/27] 	 loss: 0.13429, MAE: 1.37590, time/step=1722ms, lr=4.91e-04
+2024-12-08 07:08:35,669 - logger.py:50 - Epoch: [26][26/27] 	 loss: 0.12716, MAE: 1.30283, time/step=1006ms, lr=4.91e-04
+2024-12-08 07:08:37,942 - logger.py:50 - Epoch: [26] Target: [1] train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492, Time: 29.43s
+2024-12-08 07:08:37,942 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:08:39,302 - logger.py:50 - Epoch: [27][0/27] 	 loss: 0.09398, MAE: 0.96289, time/step=1356ms, lr=4.90e-04
+2024-12-08 07:09:04,571 - logger.py:50 - Epoch: [27][26/27] 	 loss: 0.11483, MAE: 1.17649, time/step=986ms, lr=4.90e-04
+2024-12-08 07:09:06,800 - logger.py:50 - Epoch: [27] Target: [1] train MAE: 1.17649, val MAE: 2.31725, test MAE: 2.44384, Time: 28.86s
+2024-12-08 07:09:06,801 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:09:08,430 - logger.py:50 - Epoch: [28][0/27] 	 loss: 0.20263, MAE: 2.07614, time/step=1625ms, lr=4.89e-04
+2024-12-08 07:09:33,912 - logger.py:50 - Epoch: [28][26/27] 	 loss: 0.28410, MAE: 2.91082, time/step=1004ms, lr=4.89e-04
+2024-12-08 07:09:36,105 - logger.py:50 - Epoch: [28] Target: [1] train MAE: 2.91082, val MAE: 1.73240, test MAE: 1.69587, Time: 29.30s
+2024-12-08 07:09:36,105 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:09:37,574 - logger.py:50 - Epoch: [29][0/27] 	 loss: 0.17749, MAE: 1.81852, time/step=1466ms, lr=4.89e-04
+2024-12-08 07:10:02,858 - logger.py:50 - Epoch: [29][26/27] 	 loss: 0.14569, MAE: 1.49269, time/step=991ms, lr=4.89e-04
+2024-12-08 07:10:05,047 - logger.py:50 - Epoch: [29] Target: [1] train MAE: 1.49269, val MAE: 1.43765, test MAE: 1.60957, Time: 28.94s
+2024-12-08 07:10:05,048 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:10:06,692 - logger.py:50 - Epoch: [30][0/27] 	 loss: 0.13980, MAE: 1.43230, time/step=1639ms, lr=4.88e-04
+2024-12-08 07:10:32,082 - logger.py:50 - Epoch: [30][26/27] 	 loss: 0.18601, MAE: 1.90580, time/step=1001ms, lr=4.88e-04
+2024-12-08 07:10:34,383 - logger.py:50 - Epoch: [30] Target: [1] train MAE: 1.90580, val MAE: 1.99335, test MAE: 2.09560, Time: 29.34s
+2024-12-08 07:10:34,383 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:10:35,762 - logger.py:50 - Epoch: [31][0/27] 	 loss: 0.18260, MAE: 1.87086, time/step=1375ms, lr=4.87e-04
+2024-12-08 07:11:00,992 - logger.py:50 - Epoch: [31][26/27] 	 loss: 0.26624, MAE: 2.72781, time/step=985ms, lr=4.87e-04
+2024-12-08 07:11:03,394 - logger.py:50 - Epoch: [31] Target: [1] train MAE: 2.72781, val MAE: 2.19856, test MAE: 2.14092, Time: 29.01s
+2024-12-08 07:11:03,394 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:11:05,211 - logger.py:50 - Epoch: [32][0/27] 	 loss: 0.22161, MAE: 2.27056, time/step=1810ms, lr=4.86e-04
+2024-12-08 07:11:30,560 - logger.py:50 - Epoch: [32][26/27] 	 loss: 0.20788, MAE: 2.12987, time/step=1006ms, lr=4.86e-04
+2024-12-08 07:11:32,884 - logger.py:50 - Epoch: [32] Target: [1] train MAE: 2.12987, val MAE: 1.99881, test MAE: 1.83558, Time: 29.49s
+2024-12-08 07:11:32,884 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:11:34,216 - logger.py:50 - Epoch: [33][0/27] 	 loss: 0.20065, MAE: 2.05582, time/step=1329ms, lr=4.85e-04
+2024-12-08 07:11:59,495 - logger.py:50 - Epoch: [33][26/27] 	 loss: 0.14484, MAE: 1.48396, time/step=985ms, lr=4.85e-04
+2024-12-08 07:12:01,765 - logger.py:50 - Epoch: [33] Target: [1] train MAE: 1.48396, val MAE: 1.19464, test MAE: 1.25819, Time: 28.88s
+2024-12-08 07:12:01,765 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:12:03,381 - logger.py:50 - Epoch: [34][0/27] 	 loss: 0.11511, MAE: 1.17935, time/step=1611ms, lr=4.84e-04
+2024-12-08 07:12:28,760 - logger.py:50 - Epoch: [34][26/27] 	 loss: 0.12835, MAE: 1.31504, time/step=1000ms, lr=4.84e-04
+2024-12-08 07:12:31,111 - logger.py:50 - Epoch: [34] Target: [1] train MAE: 1.31504, val MAE: 1.06903, test MAE: 1.08640, Time: 29.35s
+2024-12-08 07:12:31,112 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:12:32,736 - logger.py:50 - Epoch: [35][0/27] 	 loss: 0.10276, MAE: 1.05282, time/step=1619ms, lr=4.83e-04
+2024-12-08 07:12:57,973 - logger.py:50 - Epoch: [35][26/27] 	 loss: 0.19592, MAE: 2.00738, time/step=995ms, lr=4.83e-04
+2024-12-08 07:13:00,364 - logger.py:50 - Epoch: [35] Target: [1] train MAE: 2.00738, val MAE: 1.49067, test MAE: 1.53915, Time: 29.25s
+2024-12-08 07:13:00,364 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:13:01,870 - logger.py:50 - Epoch: [36][0/27] 	 loss: 0.13682, MAE: 1.40184, time/step=1501ms, lr=4.82e-04
+2024-12-08 07:13:27,128 - logger.py:50 - Epoch: [36][26/27] 	 loss: 0.13550, MAE: 1.38832, time/step=991ms, lr=4.82e-04
+2024-12-08 07:13:29,282 - logger.py:50 - Epoch: [36] Target: [1] train MAE: 1.38832, val MAE: 0.93925, test MAE: 1.00287, Time: 28.92s
+2024-12-08 07:13:29,282 - logger.py:50 - Best -- epoch=26, train MAE: 1.30283, val MAE: 0.91325, test MAE: 0.93492
+
+2024-12-08 07:13:30,641 - logger.py:50 - Epoch: [37][0/27] 	 loss: 0.08376, MAE: 0.85818, time/step=1356ms, lr=4.82e-04
+2024-12-08 07:13:56,032 - logger.py:50 - Epoch: [37][26/27] 	 loss: 0.09712, MAE: 0.99506, time/step=991ms, lr=4.82e-04
+2024-12-08 07:13:58,371 - logger.py:50 - Epoch: [37] Target: [1] train MAE: 0.99506, val MAE: 0.86378, test MAE: 0.89785, Time: 29.09s
+2024-12-08 07:13:58,371 - logger.py:50 - Best -- epoch=37, train MAE: 0.99506, val MAE: 0.86378, test MAE: 0.89785
+
+2024-12-08 07:13:59,749 - logger.py:50 - Epoch: [38][0/27] 	 loss: 0.07038, MAE: 0.72113, time/step=1375ms, lr=4.81e-04
+2024-12-08 07:14:24,975 - logger.py:50 - Epoch: [38][26/27] 	 loss: 0.13880, MAE: 1.42215, time/step=985ms, lr=4.81e-04
+2024-12-08 07:14:27,226 - logger.py:50 - Epoch: [38] Target: [1] train MAE: 1.42215, val MAE: 2.26360, test MAE: 2.08966, Time: 28.85s
+2024-12-08 07:14:27,226 - logger.py:50 - Best -- epoch=37, train MAE: 0.99506, val MAE: 0.86378, test MAE: 0.89785
+
+2024-12-08 07:14:28,777 - logger.py:50 - Epoch: [39][0/27] 	 loss: 0.22442, MAE: 2.29939, time/step=1547ms, lr=4.79e-04
+2024-12-08 07:14:54,182 - logger.py:50 - Epoch: [39][26/27] 	 loss: 0.14088, MAE: 1.44337, time/step=998ms, lr=4.79e-04
+2024-12-08 07:14:56,311 - logger.py:50 - Epoch: [39] Target: [1] train MAE: 1.44337, val MAE: 1.17904, test MAE: 1.19524, Time: 29.08s
+2024-12-08 07:14:56,311 - logger.py:50 - Best -- epoch=37, train MAE: 0.99506, val MAE: 0.86378, test MAE: 0.89785
+
+2024-12-08 07:14:57,714 - logger.py:50 - Epoch: [40][0/27] 	 loss: 0.09714, MAE: 0.99530, time/step=1400ms, lr=4.78e-04
+2024-12-08 07:15:22,944 - logger.py:50 - Epoch: [40][26/27] 	 loss: 0.08514, MAE: 0.87235, time/step=986ms, lr=4.78e-04
+2024-12-08 07:15:25,373 - logger.py:50 - Epoch: [40] Target: [1] train MAE: 0.87235, val MAE: 1.07499, test MAE: 1.00035, Time: 29.06s
+2024-12-08 07:15:25,373 - logger.py:50 - Best -- epoch=37, train MAE: 0.99506, val MAE: 0.86378, test MAE: 0.89785
+
+2024-12-08 07:15:26,912 - logger.py:50 - Epoch: [41][0/27] 	 loss: 0.10442, MAE: 1.06986, time/step=1534ms, lr=4.77e-04
+2024-12-08 07:15:52,112 - logger.py:50 - Epoch: [41][26/27] 	 loss: 0.09119, MAE: 0.93430, time/step=990ms, lr=4.77e-04
+2024-12-08 07:15:54,268 - logger.py:50 - Epoch: [41] Target: [1] train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171, Time: 28.89s
+2024-12-08 07:15:54,268 - logger.py:50 - Best -- epoch=41, train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171
+
+2024-12-08 07:15:55,627 - logger.py:50 - Epoch: [42][0/27] 	 loss: 0.08291, MAE: 0.84952, time/step=1355ms, lr=4.76e-04
+2024-12-08 07:16:20,990 - logger.py:50 - Epoch: [42][26/27] 	 loss: 0.08467, MAE: 0.86753, time/step=990ms, lr=4.76e-04
+2024-12-08 07:16:23,276 - logger.py:50 - Epoch: [42] Target: [1] train MAE: 0.86753, val MAE: 0.99543, test MAE: 0.92558, Time: 29.01s
+2024-12-08 07:16:23,276 - logger.py:50 - Best -- epoch=41, train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171
+
+2024-12-08 07:16:24,623 - logger.py:50 - Epoch: [43][0/27] 	 loss: 0.09913, MAE: 1.01565, time/step=1342ms, lr=4.75e-04
+2024-12-08 07:16:49,805 - logger.py:50 - Epoch: [43][26/27] 	 loss: 0.11523, MAE: 1.18057, time/step=982ms, lr=4.75e-04
+2024-12-08 07:16:52,267 - logger.py:50 - Epoch: [43] Target: [1] train MAE: 1.18057, val MAE: 1.93160, test MAE: 1.76454, Time: 28.99s
+2024-12-08 07:16:52,267 - logger.py:50 - Best -- epoch=41, train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171
+
+2024-12-08 07:16:53,802 - logger.py:50 - Epoch: [44][0/27] 	 loss: 0.19146, MAE: 1.96166, time/step=1530ms, lr=4.74e-04
+2024-12-08 07:17:19,112 - logger.py:50 - Epoch: [44][26/27] 	 loss: 0.13776, MAE: 1.41142, time/step=994ms, lr=4.74e-04
+2024-12-08 07:17:21,263 - logger.py:50 - Epoch: [44] Target: [1] train MAE: 1.41142, val MAE: 0.85193, test MAE: 0.81594, Time: 29.00s
+2024-12-08 07:17:21,263 - logger.py:50 - Best -- epoch=41, train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171
+
+2024-12-08 07:17:22,646 - logger.py:50 - Epoch: [45][0/27] 	 loss: 0.08260, MAE: 0.84634, time/step=1380ms, lr=4.73e-04
+2024-12-08 07:17:47,867 - logger.py:50 - Epoch: [45][26/27] 	 loss: 0.08989, MAE: 0.92103, time/step=985ms, lr=4.73e-04
+2024-12-08 07:17:50,283 - logger.py:50 - Epoch: [45] Target: [1] train MAE: 0.92103, val MAE: 1.55477, test MAE: 1.61149, Time: 29.02s
+2024-12-08 07:17:50,283 - logger.py:50 - Best -- epoch=41, train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171
+
+2024-12-08 07:17:51,796 - logger.py:50 - Epoch: [46][0/27] 	 loss: 0.15225, MAE: 1.55989, time/step=1509ms, lr=4.72e-04
+2024-12-08 07:18:16,984 - logger.py:50 - Epoch: [46][26/27] 	 loss: 0.10634, MAE: 1.08949, time/step=989ms, lr=4.72e-04
+2024-12-08 07:18:19,187 - logger.py:50 - Epoch: [46] Target: [1] train MAE: 1.08949, val MAE: 1.21821, test MAE: 1.25995, Time: 28.90s
+2024-12-08 07:18:19,187 - logger.py:50 - Best -- epoch=41, train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171
+
+2024-12-08 07:18:20,544 - logger.py:50 - Epoch: [47][0/27] 	 loss: 0.11127, MAE: 1.14007, time/step=1354ms, lr=4.70e-04
+2024-12-08 07:18:45,954 - logger.py:50 - Epoch: [47][26/27] 	 loss: 0.11915, MAE: 1.22074, time/step=991ms, lr=4.70e-04
+2024-12-08 07:18:48,197 - logger.py:50 - Epoch: [47] Target: [1] train MAE: 1.22074, val MAE: 1.21830, test MAE: 1.17655, Time: 29.01s
+2024-12-08 07:18:48,197 - logger.py:50 - Best -- epoch=41, train MAE: 0.93430, val MAE: 0.80805, test MAE: 0.82171
+
+2024-12-08 07:18:49,530 - logger.py:50 - Epoch: [48][0/27] 	 loss: 0.11213, MAE: 1.14887, time/step=1329ms, lr=4.69e-04
+2024-12-08 07:19:14,749 - logger.py:50 - Epoch: [48][26/27] 	 loss: 0.08866, MAE: 0.90835, time/step=983ms, lr=4.69e-04
+2024-12-08 07:19:17,120 - logger.py:50 - Epoch: [48] Target: [1] train MAE: 0.90835, val MAE: 0.78029, test MAE: 0.82057, Time: 28.92s
+2024-12-08 07:19:17,120 - logger.py:50 - Best -- epoch=48, train MAE: 0.90835, val MAE: 0.78029, test MAE: 0.82057
+
+2024-12-08 07:19:18,688 - logger.py:50 - Epoch: [49][0/27] 	 loss: 0.06984, MAE: 0.71557, time/step=1563ms, lr=4.68e-04
+2024-12-08 07:19:43,962 - logger.py:50 - Epoch: [49][26/27] 	 loss: 0.07931, MAE: 0.81254, time/step=994ms, lr=4.68e-04
+2024-12-08 07:19:46,260 - logger.py:50 - Epoch: [49] Target: [1] train MAE: 0.81254, val MAE: 0.80038, test MAE: 0.73104, Time: 29.14s
+2024-12-08 07:19:46,260 - logger.py:50 - Best -- epoch=48, train MAE: 0.90835, val MAE: 0.78029, test MAE: 0.82057
+
+2024-12-08 07:19:47,666 - logger.py:50 - Epoch: [50][0/27] 	 loss: 0.07603, MAE: 0.77900, time/step=1401ms, lr=4.67e-04
+2024-12-08 07:20:12,921 - logger.py:50 - Epoch: [50][26/27] 	 loss: 0.07443, MAE: 0.76260, time/step=987ms, lr=4.67e-04
+2024-12-08 07:20:15,366 - logger.py:50 - Epoch: [50] Target: [1] train MAE: 0.76260, val MAE: 0.79298, test MAE: 0.80915, Time: 29.11s
+2024-12-08 07:20:15,366 - logger.py:50 - Best -- epoch=48, train MAE: 0.90835, val MAE: 0.78029, test MAE: 0.82057
+
+2024-12-08 07:20:16,887 - logger.py:50 - Epoch: [51][0/27] 	 loss: 0.06993, MAE: 0.71650, time/step=1516ms, lr=4.65e-04
+2024-12-08 07:20:42,128 - logger.py:50 - Epoch: [51][26/27] 	 loss: 0.12047, MAE: 1.23429, time/step=991ms, lr=4.65e-04
+2024-12-08 07:20:44,280 - logger.py:50 - Epoch: [51] Target: [1] train MAE: 1.23429, val MAE: 1.09589, test MAE: 1.07118, Time: 28.91s
+2024-12-08 07:20:44,281 - logger.py:50 - Best -- epoch=48, train MAE: 0.90835, val MAE: 0.78029, test MAE: 0.82057
+
+2024-12-08 07:20:45,645 - logger.py:50 - Epoch: [52][0/27] 	 loss: 0.11075, MAE: 1.13472, time/step=1361ms, lr=4.64e-04
+2024-12-08 07:21:11,142 - logger.py:50 - Epoch: [52][26/27] 	 loss: 0.14802, MAE: 1.51654, time/step=995ms, lr=4.64e-04
+2024-12-08 07:21:13,532 - logger.py:50 - Epoch: [52] Target: [1] train MAE: 1.51654, val MAE: 1.06247, test MAE: 1.09454, Time: 29.25s
+2024-12-08 07:21:13,532 - logger.py:50 - Best -- epoch=48, train MAE: 0.90835, val MAE: 0.78029, test MAE: 0.82057
+
+2024-12-08 07:21:14,828 - logger.py:50 - Epoch: [53][0/27] 	 loss: 0.08983, MAE: 0.92036, time/step=1292ms, lr=4.63e-04
+2024-12-08 07:21:40,100 - logger.py:50 - Epoch: [53][26/27] 	 loss: 0.07198, MAE: 0.73751, time/step=984ms, lr=4.63e-04
+2024-12-08 07:21:42,321 - logger.py:50 - Epoch: [53] Target: [1] train MAE: 0.73751, val MAE: 1.01451, test MAE: 1.03588, Time: 28.79s
+2024-12-08 07:21:42,321 - logger.py:50 - Best -- epoch=48, train MAE: 0.90835, val MAE: 0.78029, test MAE: 0.82057
+
+2024-12-08 07:21:43,937 - logger.py:50 - Epoch: [54][0/27] 	 loss: 0.08596, MAE: 0.88071, time/step=1611ms, lr=4.61e-04
+2024-12-08 07:22:09,307 - logger.py:50 - Epoch: [54][26/27] 	 loss: 0.07544, MAE: 0.77296, time/step=999ms, lr=4.61e-04
+2024-12-08 07:22:11,580 - logger.py:50 - Epoch: [54] Target: [1] train MAE: 0.77296, val MAE: 0.72315, test MAE: 0.67851, Time: 29.26s
+2024-12-08 07:22:11,580 - logger.py:50 - Best -- epoch=54, train MAE: 0.77296, val MAE: 0.72315, test MAE: 0.67851
+
+2024-12-08 07:22:13,016 - logger.py:50 - Epoch: [55][0/27] 	 loss: 0.06285, MAE: 0.64396, time/step=1433ms, lr=4.60e-04
+2024-12-08 07:22:38,246 - logger.py:50 - Epoch: [55][26/27] 	 loss: 0.08459, MAE: 0.86664, time/step=988ms, lr=4.60e-04
+2024-12-08 07:22:40,641 - logger.py:50 - Epoch: [55] Target: [1] train MAE: 0.86664, val MAE: 1.77300, test MAE: 1.73190, Time: 29.06s
+2024-12-08 07:22:40,641 - logger.py:50 - Best -- epoch=54, train MAE: 0.77296, val MAE: 0.72315, test MAE: 0.67851
+
+2024-12-08 07:22:42,233 - logger.py:50 - Epoch: [56][0/27] 	 loss: 0.17095, MAE: 1.75148, time/step=1587ms, lr=4.58e-04
+2024-12-08 07:23:07,588 - logger.py:50 - Epoch: [56][26/27] 	 loss: 0.10990, MAE: 1.12596, time/step=998ms, lr=4.58e-04
+2024-12-08 07:23:09,833 - logger.py:50 - Epoch: [56] Target: [1] train MAE: 1.12596, val MAE: 0.65757, test MAE: 0.63225, Time: 29.19s
+2024-12-08 07:23:09,833 - logger.py:50 - Best -- epoch=56, train MAE: 1.12596, val MAE: 0.65757, test MAE: 0.63225
+
+2024-12-08 07:23:11,191 - logger.py:50 - Epoch: [57][0/27] 	 loss: 0.06266, MAE: 0.64203, time/step=1354ms, lr=4.57e-04
+2024-12-08 07:23:36,447 - logger.py:50 - Epoch: [57][26/27] 	 loss: 0.08508, MAE: 0.87168, time/step=986ms, lr=4.57e-04
+2024-12-08 07:23:38,704 - logger.py:50 - Epoch: [57] Target: [1] train MAE: 0.87168, val MAE: 1.05041, test MAE: 1.09296, Time: 28.87s
+2024-12-08 07:23:38,705 - logger.py:50 - Best -- epoch=56, train MAE: 1.12596, val MAE: 0.65757, test MAE: 0.63225
+
+2024-12-08 07:23:40,387 - logger.py:50 - Epoch: [58][0/27] 	 loss: 0.09101, MAE: 0.93245, time/step=1677ms, lr=4.55e-04
+2024-12-08 07:24:05,863 - logger.py:50 - Epoch: [58][26/27] 	 loss: 0.07563, MAE: 0.77493, time/step=1006ms, lr=4.55e-04
+2024-12-08 07:24:08,145 - logger.py:50 - Epoch: [58] Target: [1] train MAE: 0.77493, val MAE: 0.68736, test MAE: 0.72521, Time: 29.44s
+2024-12-08 07:24:08,146 - logger.py:50 - Best -- epoch=56, train MAE: 1.12596, val MAE: 0.65757, test MAE: 0.63225
+
+2024-12-08 07:24:09,504 - logger.py:50 - Epoch: [59][0/27] 	 loss: 0.05537, MAE: 0.56726, time/step=1355ms, lr=4.54e-04
+2024-12-08 07:24:34,760 - logger.py:50 - Epoch: [59][26/27] 	 loss: 0.11571, MAE: 1.18552, time/step=986ms, lr=4.54e-04
+2024-12-08 07:24:36,985 - logger.py:50 - Epoch: [59] Target: [1] train MAE: 1.18552, val MAE: 0.68711, test MAE: 0.70419, Time: 28.84s
+2024-12-08 07:24:36,985 - logger.py:50 - Best -- epoch=56, train MAE: 1.12596, val MAE: 0.65757, test MAE: 0.63225
+
+2024-12-08 07:24:38,596 - logger.py:50 - Epoch: [60][0/27] 	 loss: 0.06713, MAE: 0.68783, time/step=1606ms, lr=4.52e-04
+2024-12-08 07:25:03,969 - logger.py:50 - Epoch: [60][26/27] 	 loss: 0.08342, MAE: 0.85468, time/step=999ms, lr=4.52e-04
+2024-12-08 07:25:06,144 - logger.py:50 - Epoch: [60] Target: [1] train MAE: 0.85468, val MAE: 0.70247, test MAE: 0.68790, Time: 29.16s
+2024-12-08 07:25:06,144 - logger.py:50 - Best -- epoch=56, train MAE: 1.12596, val MAE: 0.65757, test MAE: 0.63225
+
+2024-12-08 07:25:07,539 - logger.py:50 - Epoch: [61][0/27] 	 loss: 0.07352, MAE: 0.75326, time/step=1392ms, lr=4.51e-04
+2024-12-08 07:25:32,807 - logger.py:50 - Epoch: [61][26/27] 	 loss: 0.07860, MAE: 0.80534, time/step=987ms, lr=4.51e-04
+2024-12-08 07:25:35,139 - logger.py:50 - Epoch: [61] Target: [1] train MAE: 0.80534, val MAE: 0.77001, test MAE: 0.67365, Time: 29.00s
+2024-12-08 07:25:35,140 - logger.py:50 - Best -- epoch=56, train MAE: 1.12596, val MAE: 0.65757, test MAE: 0.63225
+
+2024-12-08 07:25:36,761 - logger.py:50 - Epoch: [62][0/27] 	 loss: 0.07064, MAE: 0.72371, time/step=1616ms, lr=4.49e-04
+2024-12-08 07:26:02,165 - logger.py:50 - Epoch: [62][26/27] 	 loss: 0.07369, MAE: 0.75498, time/step=1001ms, lr=4.49e-04
+2024-12-08 07:26:04,418 - logger.py:50 - Epoch: [62] Target: [1] train MAE: 0.75498, val MAE: 0.64269, test MAE: 0.60461, Time: 29.28s
+2024-12-08 07:26:04,418 - logger.py:50 - Best -- epoch=62, train MAE: 0.75498, val MAE: 0.64269, test MAE: 0.60461
+
+2024-12-08 07:26:05,806 - logger.py:50 - Epoch: [63][0/27] 	 loss: 0.05503, MAE: 0.56387, time/step=1385ms, lr=4.48e-04
+2024-12-08 07:26:31,043 - logger.py:50 - Epoch: [63][26/27] 	 loss: 0.08039, MAE: 0.82361, time/step=986ms, lr=4.48e-04
+2024-12-08 07:26:33,286 - logger.py:50 - Epoch: [63] Target: [1] train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603, Time: 28.87s
+2024-12-08 07:26:33,286 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:26:34,923 - logger.py:50 - Epoch: [64][0/27] 	 loss: 0.05449, MAE: 0.55827, time/step=1631ms, lr=4.46e-04
+2024-12-08 07:27:00,334 - logger.py:50 - Epoch: [64][26/27] 	 loss: 0.08379, MAE: 0.85849, time/step=1002ms, lr=4.46e-04
+2024-12-08 07:27:02,633 - logger.py:50 - Epoch: [64] Target: [1] train MAE: 0.85849, val MAE: 0.67531, test MAE: 0.61787, Time: 29.35s
+2024-12-08 07:27:02,634 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:27:04,003 - logger.py:50 - Epoch: [65][0/27] 	 loss: 0.06314, MAE: 0.64694, time/step=1365ms, lr=4.44e-04
+2024-12-08 07:27:29,236 - logger.py:50 - Epoch: [65][26/27] 	 loss: 0.10205, MAE: 1.04560, time/step=985ms, lr=4.44e-04
+2024-12-08 07:27:31,583 - logger.py:50 - Epoch: [65] Target: [1] train MAE: 1.04560, val MAE: 0.98608, test MAE: 1.09151, Time: 28.95s
+2024-12-08 07:27:31,585 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:27:33,239 - logger.py:50 - Epoch: [66][0/27] 	 loss: 0.08144, MAE: 0.83442, time/step=1650ms, lr=4.43e-04
+2024-12-08 07:27:58,513 - logger.py:50 - Epoch: [66][26/27] 	 loss: 0.06892, MAE: 0.70617, time/step=997ms, lr=4.43e-04
+2024-12-08 07:28:00,780 - logger.py:50 - Epoch: [66] Target: [1] train MAE: 0.70617, val MAE: 1.09012, test MAE: 1.06905, Time: 29.19s
+2024-12-08 07:28:00,780 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:28:02,154 - logger.py:50 - Epoch: [67][0/27] 	 loss: 0.09575, MAE: 0.98103, time/step=1369ms, lr=4.41e-04
+2024-12-08 07:28:27,490 - logger.py:50 - Epoch: [67][26/27] 	 loss: 0.08461, MAE: 0.86691, time/step=989ms, lr=4.41e-04
+2024-12-08 07:28:29,704 - logger.py:50 - Epoch: [67] Target: [1] train MAE: 0.86691, val MAE: 0.81143, test MAE: 0.83756, Time: 28.92s
+2024-12-08 07:28:29,705 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:28:31,309 - logger.py:50 - Epoch: [68][0/27] 	 loss: 0.07968, MAE: 0.81642, time/step=1600ms, lr=4.39e-04
+2024-12-08 07:28:56,704 - logger.py:50 - Epoch: [68][26/27] 	 loss: 0.12234, MAE: 1.25349, time/step=1000ms, lr=4.39e-04
+2024-12-08 07:28:58,930 - logger.py:50 - Epoch: [68] Target: [1] train MAE: 1.25349, val MAE: 1.70064, test MAE: 1.59840, Time: 29.23s
+2024-12-08 07:28:58,930 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:29:00,287 - logger.py:50 - Epoch: [69][0/27] 	 loss: 0.17748, MAE: 1.81846, time/step=1354ms, lr=4.38e-04
+2024-12-08 07:29:25,602 - logger.py:50 - Epoch: [69][26/27] 	 loss: 0.07931, MAE: 0.81258, time/step=988ms, lr=4.38e-04
+2024-12-08 07:29:27,830 - logger.py:50 - Epoch: [69] Target: [1] train MAE: 0.81258, val MAE: 0.70928, test MAE: 0.72394, Time: 28.90s
+2024-12-08 07:29:27,830 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:29:29,482 - logger.py:50 - Epoch: [70][0/27] 	 loss: 0.06370, MAE: 0.65266, time/step=1644ms, lr=4.36e-04
+2024-12-08 07:29:54,928 - logger.py:50 - Epoch: [70][26/27] 	 loss: 0.06745, MAE: 0.69109, time/step=1003ms, lr=4.36e-04
+2024-12-08 07:29:57,226 - logger.py:50 - Epoch: [70] Target: [1] train MAE: 0.69109, val MAE: 0.67541, test MAE: 0.69231, Time: 29.40s
+2024-12-08 07:29:57,226 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:29:58,574 - logger.py:50 - Epoch: [71][0/27] 	 loss: 0.04962, MAE: 0.50842, time/step=1344ms, lr=4.34e-04
+2024-12-08 07:30:23,790 - logger.py:50 - Epoch: [71][26/27] 	 loss: 0.06414, MAE: 0.65717, time/step=984ms, lr=4.34e-04
+2024-12-08 07:30:26,170 - logger.py:50 - Epoch: [71] Target: [1] train MAE: 0.65717, val MAE: 0.64673, test MAE: 0.67071, Time: 28.94s
+2024-12-08 07:30:26,171 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:30:27,800 - logger.py:50 - Epoch: [72][0/27] 	 loss: 0.05233, MAE: 0.53621, time/step=1625ms, lr=4.32e-04
+2024-12-08 07:30:53,232 - logger.py:50 - Epoch: [72][26/27] 	 loss: 0.07215, MAE: 0.73919, time/step=1002ms, lr=4.32e-04
+2024-12-08 07:30:55,379 - logger.py:50 - Epoch: [72] Target: [1] train MAE: 0.73919, val MAE: 0.62181, test MAE: 0.61877, Time: 29.21s
+2024-12-08 07:30:55,380 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:30:56,799 - logger.py:50 - Epoch: [73][0/27] 	 loss: 0.05784, MAE: 0.59257, time/step=1416ms, lr=4.31e-04
+2024-12-08 07:31:22,056 - logger.py:50 - Epoch: [73][26/27] 	 loss: 0.06521, MAE: 0.66812, time/step=988ms, lr=4.31e-04
+2024-12-08 07:31:24,409 - logger.py:50 - Epoch: [73] Target: [1] train MAE: 0.66812, val MAE: 0.84366, test MAE: 0.77604, Time: 29.03s
+2024-12-08 07:31:24,410 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:31:26,022 - logger.py:50 - Epoch: [74][0/27] 	 loss: 0.07458, MAE: 0.76412, time/step=1608ms, lr=4.29e-04
+2024-12-08 07:31:51,443 - logger.py:50 - Epoch: [74][26/27] 	 loss: 0.06716, MAE: 0.68814, time/step=1001ms, lr=4.29e-04
+2024-12-08 07:31:53,620 - logger.py:50 - Epoch: [74] Target: [1] train MAE: 0.68814, val MAE: 1.27999, test MAE: 1.15531, Time: 29.21s
+2024-12-08 07:31:53,620 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:31:55,004 - logger.py:50 - Epoch: [75][0/27] 	 loss: 0.11772, MAE: 1.20608, time/step=1381ms, lr=4.27e-04
+2024-12-08 07:32:20,260 - logger.py:50 - Epoch: [75][26/27] 	 loss: 0.09024, MAE: 0.92456, time/step=987ms, lr=4.27e-04
+2024-12-08 07:32:22,740 - logger.py:50 - Epoch: [75] Target: [1] train MAE: 0.92456, val MAE: 0.83842, test MAE: 0.81329, Time: 29.12s
+2024-12-08 07:32:22,741 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:32:24,517 - logger.py:50 - Epoch: [76][0/27] 	 loss: 0.08283, MAE: 0.84865, time/step=1772ms, lr=4.25e-04
+2024-12-08 07:32:49,893 - logger.py:50 - Epoch: [76][26/27] 	 loss: 0.09832, MAE: 1.00740, time/step=1005ms, lr=4.25e-04
+2024-12-08 07:32:52,055 - logger.py:50 - Epoch: [76] Target: [1] train MAE: 1.00740, val MAE: 0.69108, test MAE: 0.74751, Time: 29.31s
+2024-12-08 07:32:52,056 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:32:53,471 - logger.py:50 - Epoch: [77][0/27] 	 loss: 0.06519, MAE: 0.66794, time/step=1412ms, lr=4.23e-04
+2024-12-08 07:33:18,870 - logger.py:50 - Epoch: [77][26/27] 	 loss: 0.06270, MAE: 0.64237, time/step=993ms, lr=4.23e-04
+2024-12-08 07:33:21,191 - logger.py:50 - Epoch: [77] Target: [1] train MAE: 0.64237, val MAE: 0.78651, test MAE: 0.79608, Time: 29.13s
+2024-12-08 07:33:21,191 - logger.py:50 - Best -- epoch=63, train MAE: 0.82361, val MAE: 0.61315, test MAE: 0.55603
+
+2024-12-08 07:33:22,538 - logger.py:50 - Epoch: [78][0/27] 	 loss: 0.06865, MAE: 0.70336, time/step=1344ms, lr=4.21e-04
+2024-12-08 07:33:47,866 - logger.py:50 - Epoch: [78][26/27] 	 loss: 0.05888, MAE: 0.60329, time/step=988ms, lr=4.21e-04
+2024-12-08 07:33:50,089 - logger.py:50 - Epoch: [78] Target: [1] train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012, Time: 28.90s
+2024-12-08 07:33:50,089 - logger.py:50 - Best -- epoch=78, train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012
+
+2024-12-08 07:33:51,789 - logger.py:50 - Epoch: [79][0/27] 	 loss: 0.04259, MAE: 0.43641, time/step=1694ms, lr=4.19e-04
+2024-12-08 07:34:17,269 - logger.py:50 - Epoch: [79][26/27] 	 loss: 0.06329, MAE: 0.64849, time/step=1006ms, lr=4.19e-04
+2024-12-08 07:34:19,622 - logger.py:50 - Epoch: [79] Target: [1] train MAE: 0.64849, val MAE: 0.70880, test MAE: 0.72705, Time: 29.53s
+2024-12-08 07:34:19,622 - logger.py:50 - Best -- epoch=78, train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012
+
+2024-12-08 07:34:20,991 - logger.py:50 - Epoch: [80][0/27] 	 loss: 0.06208, MAE: 0.63605, time/step=1365ms, lr=4.17e-04
+2024-12-08 07:34:46,264 - logger.py:50 - Epoch: [80][26/27] 	 loss: 0.06344, MAE: 0.65002, time/step=987ms, lr=4.17e-04
+2024-12-08 07:34:48,552 - logger.py:50 - Epoch: [80] Target: [1] train MAE: 0.65002, val MAE: 1.15896, test MAE: 1.19825, Time: 28.93s
+2024-12-08 07:34:48,552 - logger.py:50 - Best -- epoch=78, train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012
+
+2024-12-08 07:34:50,237 - logger.py:50 - Epoch: [81][0/27] 	 loss: 0.10285, MAE: 1.05378, time/step=1680ms, lr=4.15e-04
+2024-12-08 07:35:15,697 - logger.py:50 - Epoch: [81][26/27] 	 loss: 0.07432, MAE: 0.76146, time/step=1005ms, lr=4.15e-04
+2024-12-08 07:35:17,861 - logger.py:50 - Epoch: [81] Target: [1] train MAE: 0.76146, val MAE: 0.59731, test MAE: 0.55696, Time: 29.31s
+2024-12-08 07:35:17,861 - logger.py:50 - Best -- epoch=78, train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012
+
+2024-12-08 07:35:19,311 - logger.py:50 - Epoch: [82][0/27] 	 loss: 0.05183, MAE: 0.53099, time/step=1445ms, lr=4.14e-04
+2024-12-08 07:35:44,642 - logger.py:50 - Epoch: [82][26/27] 	 loss: 0.09705, MAE: 0.99437, time/step=992ms, lr=4.14e-04
+2024-12-08 07:35:47,039 - logger.py:50 - Epoch: [82] Target: [1] train MAE: 0.99437, val MAE: 1.84439, test MAE: 1.84803, Time: 29.18s
+2024-12-08 07:35:47,039 - logger.py:50 - Best -- epoch=78, train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012
+
+2024-12-08 07:35:48,714 - logger.py:50 - Epoch: [83][0/27] 	 loss: 0.16914, MAE: 1.73300, time/step=1669ms, lr=4.12e-04
+2024-12-08 07:36:14,180 - logger.py:50 - Epoch: [83][26/27] 	 loss: 0.09169, MAE: 0.93938, time/step=1005ms, lr=4.12e-04
+2024-12-08 07:36:16,445 - logger.py:50 - Epoch: [83] Target: [1] train MAE: 0.93938, val MAE: 1.10073, test MAE: 1.14609, Time: 29.41s
+2024-12-08 07:36:16,445 - logger.py:50 - Best -- epoch=78, train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012
+
+2024-12-08 07:36:17,815 - logger.py:50 - Epoch: [84][0/27] 	 loss: 0.09839, MAE: 1.00808, time/step=1366ms, lr=4.10e-04
+2024-12-08 07:36:43,093 - logger.py:50 - Epoch: [84][26/27] 	 loss: 0.06218, MAE: 0.63710, time/step=987ms, lr=4.10e-04
+2024-12-08 07:36:45,415 - logger.py:50 - Epoch: [84] Target: [1] train MAE: 0.63710, val MAE: 0.74770, test MAE: 0.69581, Time: 28.97s
+2024-12-08 07:36:45,416 - logger.py:50 - Best -- epoch=78, train MAE: 0.60329, val MAE: 0.54380, test MAE: 0.56012
+
+2024-12-08 07:36:47,135 - logger.py:50 - Epoch: [85][0/27] 	 loss: 0.06739, MAE: 0.69045, time/step=1715ms, lr=4.08e-04
+2024-12-08 07:37:12,581 - logger.py:50 - Epoch: [85][26/27] 	 loss: 0.06124, MAE: 0.62748, time/step=1006ms, lr=4.08e-04
+2024-12-08 07:37:14,906 - logger.py:50 - Epoch: [85] Target: [1] train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224, Time: 29.49s
+2024-12-08 07:37:14,906 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:37:16,271 - logger.py:50 - Epoch: [86][0/27] 	 loss: 0.05687, MAE: 0.58265, time/step=1361ms, lr=4.05e-04
+2024-12-08 07:37:41,612 - logger.py:50 - Epoch: [86][26/27] 	 loss: 0.05254, MAE: 0.53830, time/step=989ms, lr=4.05e-04
+2024-12-08 07:37:43,887 - logger.py:50 - Epoch: [86] Target: [1] train MAE: 0.53830, val MAE: 0.58704, test MAE: 0.56315, Time: 28.98s
+2024-12-08 07:37:43,887 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:37:45,533 - logger.py:50 - Epoch: [87][0/27] 	 loss: 0.05922, MAE: 0.60678, time/step=1642ms, lr=4.03e-04
+2024-12-08 07:38:11,105 - logger.py:50 - Epoch: [87][26/27] 	 loss: 0.08831, MAE: 0.90483, time/step=1008ms, lr=4.03e-04
+2024-12-08 07:38:13,413 - logger.py:50 - Epoch: [87] Target: [1] train MAE: 0.90483, val MAE: 0.71129, test MAE: 0.61257, Time: 29.53s
+2024-12-08 07:38:13,413 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:38:14,992 - logger.py:50 - Epoch: [88][0/27] 	 loss: 0.06014, MAE: 0.61613, time/step=1576ms, lr=4.01e-04
+2024-12-08 07:38:40,305 - logger.py:50 - Epoch: [88][26/27] 	 loss: 0.10035, MAE: 1.02813, time/step=996ms, lr=4.01e-04
+2024-12-08 07:38:42,562 - logger.py:50 - Epoch: [88] Target: [1] train MAE: 1.02813, val MAE: 1.36061, test MAE: 1.42553, Time: 29.15s
+2024-12-08 07:38:42,562 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:38:44,160 - logger.py:50 - Epoch: [89][0/27] 	 loss: 0.11320, MAE: 1.15980, time/step=1592ms, lr=3.99e-04
+2024-12-08 07:39:09,573 - logger.py:50 - Epoch: [89][26/27] 	 loss: 0.09928, MAE: 1.01724, time/step=1000ms, lr=3.99e-04
+2024-12-08 07:39:12,049 - logger.py:50 - Epoch: [89] Target: [1] train MAE: 1.01724, val MAE: 1.04139, test MAE: 1.10394, Time: 29.49s
+2024-12-08 07:39:12,050 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:39:13,379 - logger.py:50 - Epoch: [90][0/27] 	 loss: 0.08020, MAE: 0.82172, time/step=1326ms, lr=3.97e-04
+2024-12-08 07:39:38,688 - logger.py:50 - Epoch: [90][26/27] 	 loss: 0.09040, MAE: 0.92621, time/step=986ms, lr=3.97e-04
+2024-12-08 07:39:41,098 - logger.py:50 - Epoch: [90] Target: [1] train MAE: 0.92621, val MAE: 1.19749, test MAE: 1.11489, Time: 29.05s
+2024-12-08 07:39:41,099 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:39:42,831 - logger.py:50 - Epoch: [91][0/27] 	 loss: 0.11865, MAE: 1.21569, time/step=1728ms, lr=3.95e-04
+2024-12-08 07:40:08,146 - logger.py:50 - Epoch: [91][26/27] 	 loss: 0.07082, MAE: 0.72560, time/step=1002ms, lr=3.95e-04
+2024-12-08 07:40:10,288 - logger.py:50 - Epoch: [91] Target: [1] train MAE: 0.72560, val MAE: 0.63913, test MAE: 0.69477, Time: 29.19s
+2024-12-08 07:40:10,288 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:40:11,615 - logger.py:50 - Epoch: [92][0/27] 	 loss: 0.05505, MAE: 0.56403, time/step=1325ms, lr=3.93e-04
+2024-12-08 07:40:36,972 - logger.py:50 - Epoch: [92][26/27] 	 loss: 0.05797, MAE: 0.59395, time/step=988ms, lr=3.93e-04
+2024-12-08 07:40:39,245 - logger.py:50 - Epoch: [92] Target: [1] train MAE: 0.59395, val MAE: 0.78019, test MAE: 0.70375, Time: 28.96s
+2024-12-08 07:40:39,246 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:40:40,619 - logger.py:50 - Epoch: [93][0/27] 	 loss: 0.06886, MAE: 0.70547, time/step=1370ms, lr=3.91e-04
+2024-12-08 07:41:05,965 - logger.py:50 - Epoch: [93][26/27] 	 loss: 0.09286, MAE: 0.95146, time/step=990ms, lr=3.91e-04
+2024-12-08 07:41:08,138 - logger.py:50 - Epoch: [93] Target: [1] train MAE: 0.95146, val MAE: 0.79899, test MAE: 0.67824, Time: 28.89s
+2024-12-08 07:41:08,138 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:41:09,792 - logger.py:50 - Epoch: [94][0/27] 	 loss: 0.07925, MAE: 0.81196, time/step=1650ms, lr=3.89e-04
+2024-12-08 07:41:35,212 - logger.py:50 - Epoch: [94][26/27] 	 loss: 0.06726, MAE: 0.68911, time/step=1003ms, lr=3.89e-04
+2024-12-08 07:41:37,463 - logger.py:50 - Epoch: [94] Target: [1] train MAE: 0.68911, val MAE: 0.61793, test MAE: 0.64930, Time: 29.33s
+2024-12-08 07:41:37,463 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:41:38,812 - logger.py:50 - Epoch: [95][0/27] 	 loss: 0.05307, MAE: 0.54372, time/step=1346ms, lr=3.86e-04
+2024-12-08 07:42:04,036 - logger.py:50 - Epoch: [95][26/27] 	 loss: 0.05425, MAE: 0.55582, time/step=984ms, lr=3.86e-04
+2024-12-08 07:42:06,252 - logger.py:50 - Epoch: [95] Target: [1] train MAE: 0.55582, val MAE: 0.63603, test MAE: 0.69352, Time: 28.79s
+2024-12-08 07:42:06,252 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:42:07,870 - logger.py:50 - Epoch: [96][0/27] 	 loss: 0.05186, MAE: 0.53133, time/step=1614ms, lr=3.84e-04
+2024-12-08 07:42:33,295 - logger.py:50 - Epoch: [96][26/27] 	 loss: 0.04949, MAE: 0.50702, time/step=1001ms, lr=3.84e-04
+2024-12-08 07:42:35,557 - logger.py:50 - Epoch: [96] Target: [1] train MAE: 0.50702, val MAE: 0.56805, test MAE: 0.58191, Time: 29.31s
+2024-12-08 07:42:35,558 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:42:37,185 - logger.py:50 - Epoch: [97][0/27] 	 loss: 0.04866, MAE: 0.49856, time/step=1625ms, lr=3.82e-04
+2024-12-08 07:43:02,407 - logger.py:50 - Epoch: [97][26/27] 	 loss: 0.05149, MAE: 0.52753, time/step=994ms, lr=3.82e-04
+2024-12-08 07:43:04,697 - logger.py:50 - Epoch: [97] Target: [1] train MAE: 0.52753, val MAE: 0.72343, test MAE: 0.78565, Time: 29.14s
+2024-12-08 07:43:04,697 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:43:06,326 - logger.py:50 - Epoch: [98][0/27] 	 loss: 0.05878, MAE: 0.60220, time/step=1624ms, lr=3.80e-04
+2024-12-08 07:43:31,729 - logger.py:50 - Epoch: [98][26/27] 	 loss: 0.05125, MAE: 0.52510, time/step=1001ms, lr=3.80e-04
+2024-12-08 07:43:33,999 - logger.py:50 - Epoch: [98] Target: [1] train MAE: 0.52510, val MAE: 0.55753, test MAE: 0.51084, Time: 29.30s
+2024-12-08 07:43:33,999 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:43:35,372 - logger.py:50 - Epoch: [99][0/27] 	 loss: 0.04231, MAE: 0.43345, time/step=1369ms, lr=3.78e-04
+2024-12-08 07:44:00,687 - logger.py:50 - Epoch: [99][26/27] 	 loss: 0.08882, MAE: 0.91005, time/step=988ms, lr=3.78e-04
+2024-12-08 07:44:03,127 - logger.py:50 - Epoch: [99] Target: [1] train MAE: 0.91005, val MAE: 0.61573, test MAE: 0.62808, Time: 29.13s
+2024-12-08 07:44:03,127 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:44:04,621 - logger.py:50 - Epoch: [100][0/27] 	 loss: 0.05103, MAE: 0.52287, time/step=1489ms, lr=3.75e-04
+2024-12-08 07:44:29,895 - logger.py:50 - Epoch: [100][26/27] 	 loss: 0.05408, MAE: 0.55408, time/step=991ms, lr=3.75e-04
+2024-12-08 07:44:32,177 - logger.py:50 - Epoch: [100] Target: [1] train MAE: 0.55408, val MAE: 0.57622, test MAE: 0.54473, Time: 29.05s
+2024-12-08 07:44:32,178 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:44:33,544 - logger.py:50 - Epoch: [101][0/27] 	 loss: 0.04050, MAE: 0.41494, time/step=1361ms, lr=3.73e-04
+2024-12-08 07:44:58,908 - logger.py:50 - Epoch: [101][26/27] 	 loss: 0.05188, MAE: 0.53151, time/step=990ms, lr=3.73e-04
+2024-12-08 07:45:01,230 - logger.py:50 - Epoch: [101] Target: [1] train MAE: 0.53151, val MAE: 0.67331, test MAE: 0.69541, Time: 29.05s
+2024-12-08 07:45:01,230 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:45:02,629 - logger.py:50 - Epoch: [102][0/27] 	 loss: 0.04926, MAE: 0.50470, time/step=1396ms, lr=3.71e-04
+2024-12-08 07:45:27,922 - logger.py:50 - Epoch: [102][26/27] 	 loss: 0.07984, MAE: 0.81806, time/step=988ms, lr=3.71e-04
+2024-12-08 07:45:30,164 - logger.py:50 - Epoch: [102] Target: [1] train MAE: 0.81806, val MAE: 0.64649, test MAE: 0.69805, Time: 28.93s
+2024-12-08 07:45:30,164 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:45:31,806 - logger.py:50 - Epoch: [103][0/27] 	 loss: 0.04786, MAE: 0.49039, time/step=1638ms, lr=3.68e-04
+2024-12-08 07:45:57,244 - logger.py:50 - Epoch: [103][26/27] 	 loss: 0.06864, MAE: 0.70328, time/step=1003ms, lr=3.68e-04
+2024-12-08 07:45:59,581 - logger.py:50 - Epoch: [103] Target: [1] train MAE: 0.70328, val MAE: 0.54517, test MAE: 0.56061, Time: 29.42s
+2024-12-08 07:45:59,581 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:46:00,940 - logger.py:50 - Epoch: [104][0/27] 	 loss: 0.04419, MAE: 0.45280, time/step=1356ms, lr=3.66e-04
+2024-12-08 07:46:26,176 - logger.py:50 - Epoch: [104][26/27] 	 loss: 0.07502, MAE: 0.76865, time/step=985ms, lr=3.66e-04
+2024-12-08 07:46:28,359 - logger.py:50 - Epoch: [104] Target: [1] train MAE: 0.76865, val MAE: 1.14841, test MAE: 1.17682, Time: 28.78s
+2024-12-08 07:46:28,359 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:46:29,978 - logger.py:50 - Epoch: [105][0/27] 	 loss: 0.10120, MAE: 1.03688, time/step=1614ms, lr=3.64e-04
+2024-12-08 07:46:55,359 - logger.py:50 - Epoch: [105][26/27] 	 loss: 0.08287, MAE: 0.84907, time/step=1000ms, lr=3.64e-04
+2024-12-08 07:46:57,643 - logger.py:50 - Epoch: [105] Target: [1] train MAE: 0.84907, val MAE: 0.83138, test MAE: 0.81239, Time: 29.28s
+2024-12-08 07:46:57,643 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:46:58,989 - logger.py:50 - Epoch: [106][0/27] 	 loss: 0.08184, MAE: 0.83853, time/step=1343ms, lr=3.61e-04
+2024-12-08 07:47:24,299 - logger.py:50 - Epoch: [106][26/27] 	 loss: 0.05114, MAE: 0.52402, time/step=987ms, lr=3.61e-04
+2024-12-08 07:47:26,571 - logger.py:50 - Epoch: [106] Target: [1] train MAE: 0.52402, val MAE: 0.59758, test MAE: 0.60556, Time: 28.93s
+2024-12-08 07:47:26,571 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:47:28,217 - logger.py:50 - Epoch: [107][0/27] 	 loss: 0.05310, MAE: 0.54403, time/step=1641ms, lr=3.59e-04
+2024-12-08 07:47:53,607 - logger.py:50 - Epoch: [107][26/27] 	 loss: 0.04982, MAE: 0.51039, time/step=1001ms, lr=3.59e-04
+2024-12-08 07:47:55,941 - logger.py:50 - Epoch: [107] Target: [1] train MAE: 0.51039, val MAE: 0.64460, test MAE: 0.63379, Time: 29.37s
+2024-12-08 07:47:55,941 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:47:57,327 - logger.py:50 - Epoch: [108][0/27] 	 loss: 0.05840, MAE: 0.59837, time/step=1383ms, lr=3.57e-04
+2024-12-08 07:48:22,558 - logger.py:50 - Epoch: [108][26/27] 	 loss: 0.06830, MAE: 0.69982, time/step=986ms, lr=3.57e-04
+2024-12-08 07:48:24,993 - logger.py:50 - Epoch: [108] Target: [1] train MAE: 0.69982, val MAE: 0.54312, test MAE: 0.55058, Time: 29.05s
+2024-12-08 07:48:24,993 - logger.py:50 - Best -- epoch=85, train MAE: 0.62748, val MAE: 0.53554, test MAE: 0.53224
+
+2024-12-08 07:48:26,595 - logger.py:50 - Epoch: [109][0/27] 	 loss: 0.04996, MAE: 0.51188, time/step=1597ms, lr=3.54e-04
+2024-12-08 07:48:51,831 - logger.py:50 - Epoch: [109][26/27] 	 loss: 0.04943, MAE: 0.50646, time/step=994ms, lr=3.54e-04
+2024-12-08 07:48:54,213 - logger.py:50 - Epoch: [109] Target: [1] train MAE: 0.50646, val MAE: 0.52974, test MAE: 0.46041, Time: 29.22s
+2024-12-08 07:48:54,213 - logger.py:50 - Best -- epoch=109, train MAE: 0.50646, val MAE: 0.52974, test MAE: 0.46041
+
+2024-12-08 07:48:55,589 - logger.py:50 - Epoch: [110][0/27] 	 loss: 0.04017, MAE: 0.41158, time/step=1373ms, lr=3.52e-04
+2024-12-08 07:49:20,978 - logger.py:50 - Epoch: [110][26/27] 	 loss: 0.07239, MAE: 0.74168, time/step=991ms, lr=3.52e-04
+2024-12-08 07:49:23,296 - logger.py:50 - Epoch: [110] Target: [1] train MAE: 0.74168, val MAE: 0.77715, test MAE: 0.71384, Time: 29.08s
+2024-12-08 07:49:23,297 - logger.py:50 - Best -- epoch=109, train MAE: 0.50646, val MAE: 0.52974, test MAE: 0.46041
+
+2024-12-08 07:49:24,643 - logger.py:50 - Epoch: [111][0/27] 	 loss: 0.07127, MAE: 0.73017, time/step=1342ms, lr=3.50e-04
+2024-12-08 07:49:49,954 - logger.py:50 - Epoch: [111][26/27] 	 loss: 0.05291, MAE: 0.54215, time/step=987ms, lr=3.50e-04
+2024-12-08 07:49:52,231 - logger.py:50 - Epoch: [111] Target: [1] train MAE: 0.54215, val MAE: 0.66505, test MAE: 0.64962, Time: 28.93s
+2024-12-08 07:49:52,231 - logger.py:50 - Best -- epoch=109, train MAE: 0.50646, val MAE: 0.52974, test MAE: 0.46041
+
+2024-12-08 07:49:53,851 - logger.py:50 - Epoch: [112][0/27] 	 loss: 0.05115, MAE: 0.52404, time/step=1615ms, lr=3.47e-04
+2024-12-08 07:50:19,273 - logger.py:50 - Epoch: [112][26/27] 	 loss: 0.05519, MAE: 0.56548, time/step=1001ms, lr=3.47e-04
+2024-12-08 07:50:21,687 - logger.py:50 - Epoch: [112] Target: [1] train MAE: 0.56548, val MAE: 0.57320, test MAE: 0.54135, Time: 29.46s
+2024-12-08 07:50:21,687 - logger.py:50 - Best -- epoch=109, train MAE: 0.50646, val MAE: 0.52974, test MAE: 0.46041
+
+2024-12-08 07:50:23,024 - logger.py:50 - Epoch: [113][0/27] 	 loss: 0.05049, MAE: 0.51728, time/step=1334ms, lr=3.45e-04
+2024-12-08 07:50:48,266 - logger.py:50 - Epoch: [113][26/27] 	 loss: 0.05081, MAE: 0.52062, time/step=984ms, lr=3.45e-04
+2024-12-08 07:50:50,522 - logger.py:50 - Epoch: [113] Target: [1] train MAE: 0.52062, val MAE: 0.54036, test MAE: 0.50911, Time: 28.84s
+2024-12-08 07:50:50,523 - logger.py:50 - Best -- epoch=109, train MAE: 0.50646, val MAE: 0.52974, test MAE: 0.46041
+
+2024-12-08 07:50:52,165 - logger.py:50 - Epoch: [114][0/27] 	 loss: 0.04754, MAE: 0.48712, time/step=1637ms, lr=3.42e-04
+2024-12-08 07:51:17,513 - logger.py:50 - Epoch: [114][26/27] 	 loss: 0.04679, MAE: 0.47943, time/step=999ms, lr=3.42e-04
+2024-12-08 07:51:19,811 - logger.py:50 - Epoch: [114] Target: [1] train MAE: 0.47943, val MAE: 0.57820, test MAE: 0.57949, Time: 29.29s
+2024-12-08 07:51:19,811 - logger.py:50 - Best -- epoch=109, train MAE: 0.50646, val MAE: 0.52974, test MAE: 0.46041
+
+2024-12-08 07:51:21,233 - logger.py:50 - Epoch: [115][0/27] 	 loss: 0.04733, MAE: 0.48493, time/step=1419ms, lr=3.40e-04
+2024-12-08 07:51:46,484 - logger.py:50 - Epoch: [115][26/27] 	 loss: 0.04543, MAE: 0.46546, time/step=988ms, lr=3.40e-04
+2024-12-08 07:51:48,879 - logger.py:50 - Epoch: [115] Target: [1] train MAE: 0.46546, val MAE: 0.51802, test MAE: 0.48531, Time: 29.07s
+2024-12-08 07:51:48,879 - logger.py:50 - Best -- epoch=115, train MAE: 0.46546, val MAE: 0.51802, test MAE: 0.48531
+
+2024-12-08 07:51:50,493 - logger.py:50 - Epoch: [116][0/27] 	 loss: 0.04170, MAE: 0.42728, time/step=1608ms, lr=3.37e-04
+2024-12-08 07:52:15,902 - logger.py:50 - Epoch: [116][26/27] 	 loss: 0.05377, MAE: 0.55091, time/step=1001ms, lr=3.37e-04
+2024-12-08 07:52:18,199 - logger.py:50 - Epoch: [116] Target: [1] train MAE: 0.55091, val MAE: 0.66052, test MAE: 0.56808, Time: 29.32s
+2024-12-08 07:52:18,200 - logger.py:50 - Best -- epoch=115, train MAE: 0.46546, val MAE: 0.51802, test MAE: 0.48531
+
+2024-12-08 07:52:19,596 - logger.py:50 - Epoch: [117][0/27] 	 loss: 0.06105, MAE: 0.62553, time/step=1392ms, lr=3.35e-04
+2024-12-08 07:52:44,881 - logger.py:50 - Epoch: [117][26/27] 	 loss: 0.04566, MAE: 0.46783, time/step=988ms, lr=3.35e-04
+2024-12-08 07:52:47,103 - logger.py:50 - Epoch: [117] Target: [1] train MAE: 0.46783, val MAE: 0.97016, test MAE: 0.95883, Time: 28.90s
+2024-12-08 07:52:47,106 - logger.py:50 - Best -- epoch=115, train MAE: 0.46546, val MAE: 0.51802, test MAE: 0.48531
+
+2024-12-08 07:52:48,777 - logger.py:50 - Epoch: [118][0/27] 	 loss: 0.08161, MAE: 0.83613, time/step=1665ms, lr=3.33e-04
+2024-12-08 07:53:14,217 - logger.py:50 - Epoch: [118][26/27] 	 loss: 0.04552, MAE: 0.46634, time/step=1004ms, lr=3.33e-04
+2024-12-08 07:53:16,581 - logger.py:50 - Epoch: [118] Target: [1] train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362, Time: 29.47s
+2024-12-08 07:53:16,581 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:53:17,940 - logger.py:50 - Epoch: [119][0/27] 	 loss: 0.03594, MAE: 0.36820, time/step=1355ms, lr=3.30e-04
+2024-12-08 07:53:43,215 - logger.py:50 - Epoch: [119][26/27] 	 loss: 0.04724, MAE: 0.48402, time/step=986ms, lr=3.30e-04
+2024-12-08 07:53:45,400 - logger.py:50 - Epoch: [119] Target: [1] train MAE: 0.48402, val MAE: 0.56614, test MAE: 0.58306, Time: 28.82s
+2024-12-08 07:53:45,400 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:53:47,024 - logger.py:50 - Epoch: [120][0/27] 	 loss: 0.04455, MAE: 0.45648, time/step=1619ms, lr=3.28e-04
+2024-12-08 07:54:12,445 - logger.py:50 - Epoch: [120][26/27] 	 loss: 0.04315, MAE: 0.44211, time/step=1001ms, lr=3.28e-04
+2024-12-08 07:54:14,738 - logger.py:50 - Epoch: [120] Target: [1] train MAE: 0.44211, val MAE: 0.48190, test MAE: 0.46274, Time: 29.34s
+2024-12-08 07:54:14,738 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:54:16,076 - logger.py:50 - Epoch: [121][0/27] 	 loss: 0.03747, MAE: 0.38391, time/step=1335ms, lr=3.25e-04
+2024-12-08 07:54:41,378 - logger.py:50 - Epoch: [121][26/27] 	 loss: 0.05253, MAE: 0.53821, time/step=987ms, lr=3.25e-04
+2024-12-08 07:54:43,746 - logger.py:50 - Epoch: [121] Target: [1] train MAE: 0.53821, val MAE: 0.54185, test MAE: 0.50482, Time: 29.01s
+2024-12-08 07:54:43,747 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:54:45,310 - logger.py:50 - Epoch: [122][0/27] 	 loss: 0.04349, MAE: 0.44559, time/step=1559ms, lr=3.23e-04
+2024-12-08 07:55:10,758 - logger.py:50 - Epoch: [122][26/27] 	 loss: 0.04451, MAE: 0.45605, time/step=1000ms, lr=3.23e-04
+2024-12-08 07:55:13,034 - logger.py:50 - Epoch: [122] Target: [1] train MAE: 0.45605, val MAE: 0.51799, test MAE: 0.55692, Time: 29.29s
+2024-12-08 07:55:13,035 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:55:14,398 - logger.py:50 - Epoch: [123][0/27] 	 loss: 0.03905, MAE: 0.40013, time/step=1360ms, lr=3.20e-04
+2024-12-08 07:55:39,633 - logger.py:50 - Epoch: [123][26/27] 	 loss: 0.05073, MAE: 0.51972, time/step=985ms, lr=3.20e-04
+2024-12-08 07:55:41,879 - logger.py:50 - Epoch: [123] Target: [1] train MAE: 0.51972, val MAE: 0.62764, test MAE: 0.61142, Time: 28.84s
+2024-12-08 07:55:41,880 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:55:43,485 - logger.py:50 - Epoch: [124][0/27] 	 loss: 0.05122, MAE: 0.52481, time/step=1601ms, lr=3.18e-04
+2024-12-08 07:56:08,765 - logger.py:50 - Epoch: [124][26/27] 	 loss: 0.05711, MAE: 0.58510, time/step=996ms, lr=3.18e-04
+2024-12-08 07:56:11,133 - logger.py:50 - Epoch: [124] Target: [1] train MAE: 0.58510, val MAE: 0.88775, test MAE: 0.82307, Time: 29.25s
+2024-12-08 07:56:11,133 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:56:12,460 - logger.py:50 - Epoch: [125][0/27] 	 loss: 0.08579, MAE: 0.87901, time/step=1323ms, lr=3.15e-04
+2024-12-08 07:56:37,685 - logger.py:50 - Epoch: [125][26/27] 	 loss: 0.04845, MAE: 0.49642, time/step=983ms, lr=3.15e-04
+2024-12-08 07:56:39,901 - logger.py:50 - Epoch: [125] Target: [1] train MAE: 0.49642, val MAE: 0.56808, test MAE: 0.57509, Time: 28.77s
+2024-12-08 07:56:39,902 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:56:41,587 - logger.py:50 - Epoch: [126][0/27] 	 loss: 0.04682, MAE: 0.47967, time/step=1680ms, lr=3.13e-04
+2024-12-08 07:57:06,931 - logger.py:50 - Epoch: [126][26/27] 	 loss: 0.06274, MAE: 0.64278, time/step=1001ms, lr=3.13e-04
+2024-12-08 07:57:09,211 - logger.py:50 - Epoch: [126] Target: [1] train MAE: 0.64278, val MAE: 0.59797, test MAE: 0.58801, Time: 29.31s
+2024-12-08 07:57:09,211 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:57:10,556 - logger.py:50 - Epoch: [127][0/27] 	 loss: 0.06246, MAE: 0.63999, time/step=1342ms, lr=3.10e-04
+2024-12-08 07:57:35,728 - logger.py:50 - Epoch: [127][26/27] 	 loss: 0.06570, MAE: 0.67310, time/step=982ms, lr=3.10e-04
+2024-12-08 07:57:37,966 - logger.py:50 - Epoch: [127] Target: [1] train MAE: 0.67310, val MAE: 0.72502, test MAE: 0.76562, Time: 28.75s
+2024-12-08 07:57:37,966 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:57:39,664 - logger.py:50 - Epoch: [128][0/27] 	 loss: 0.05930, MAE: 0.60755, time/step=1693ms, lr=3.07e-04
+2024-12-08 07:58:04,978 - logger.py:50 - Epoch: [128][26/27] 	 loss: 0.04537, MAE: 0.46486, time/step=1000ms, lr=3.07e-04
+2024-12-08 07:58:07,239 - logger.py:50 - Epoch: [128] Target: [1] train MAE: 0.46486, val MAE: 0.60238, test MAE: 0.58025, Time: 29.27s
+2024-12-08 07:58:07,239 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:58:08,578 - logger.py:50 - Epoch: [129][0/27] 	 loss: 0.04963, MAE: 0.50852, time/step=1336ms, lr=3.05e-04
+2024-12-08 07:58:33,799 - logger.py:50 - Epoch: [129][26/27] 	 loss: 0.04994, MAE: 0.51167, time/step=984ms, lr=3.05e-04
+2024-12-08 07:58:35,980 - logger.py:50 - Epoch: [129] Target: [1] train MAE: 0.51167, val MAE: 0.56911, test MAE: 0.60697, Time: 28.74s
+2024-12-08 07:58:35,980 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:58:37,537 - logger.py:50 - Epoch: [130][0/27] 	 loss: 0.04240, MAE: 0.43446, time/step=1552ms, lr=3.02e-04
+2024-12-08 07:59:02,821 - logger.py:50 - Epoch: [130][26/27] 	 loss: 0.04831, MAE: 0.49497, time/step=994ms, lr=3.02e-04
+2024-12-08 07:59:05,157 - logger.py:50 - Epoch: [130] Target: [1] train MAE: 0.49497, val MAE: 0.65137, test MAE: 0.69080, Time: 29.18s
+2024-12-08 07:59:05,157 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:59:06,672 - logger.py:50 - Epoch: [131][0/27] 	 loss: 0.04789, MAE: 0.49070, time/step=1509ms, lr=3.00e-04
+2024-12-08 07:59:31,887 - logger.py:50 - Epoch: [131][26/27] 	 loss: 0.08147, MAE: 0.83471, time/step=990ms, lr=3.00e-04
+2024-12-08 07:59:34,076 - logger.py:50 - Epoch: [131] Target: [1] train MAE: 0.83471, val MAE: 0.85177, test MAE: 0.90192, Time: 28.92s
+2024-12-08 07:59:34,077 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 07:59:35,648 - logger.py:50 - Epoch: [132][0/27] 	 loss: 0.07726, MAE: 0.79156, time/step=1567ms, lr=2.97e-04
+2024-12-08 08:00:00,963 - logger.py:50 - Epoch: [132][26/27] 	 loss: 0.05357, MAE: 0.54884, time/step=996ms, lr=2.97e-04
+2024-12-08 08:00:03,244 - logger.py:50 - Epoch: [132] Target: [1] train MAE: 0.54884, val MAE: 0.65277, test MAE: 0.63979, Time: 29.17s
+2024-12-08 08:00:03,245 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 08:00:04,656 - logger.py:50 - Epoch: [133][0/27] 	 loss: 0.04695, MAE: 0.48105, time/step=1409ms, lr=2.95e-04
+2024-12-08 08:00:29,873 - logger.py:50 - Epoch: [133][26/27] 	 loss: 0.04226, MAE: 0.43299, time/step=986ms, lr=2.95e-04
+2024-12-08 08:00:32,075 - logger.py:50 - Epoch: [133] Target: [1] train MAE: 0.43299, val MAE: 0.50224, test MAE: 0.50929, Time: 28.83s
+2024-12-08 08:00:32,075 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 08:00:33,738 - logger.py:50 - Epoch: [134][0/27] 	 loss: 0.04620, MAE: 0.47330, time/step=1658ms, lr=2.92e-04
+2024-12-08 08:00:59,075 - logger.py:50 - Epoch: [134][26/27] 	 loss: 0.04385, MAE: 0.44925, time/step=1000ms, lr=2.92e-04
+2024-12-08 08:01:01,376 - logger.py:50 - Epoch: [134] Target: [1] train MAE: 0.44925, val MAE: 0.49474, test MAE: 0.47176, Time: 29.30s
+2024-12-08 08:01:01,376 - logger.py:50 - Best -- epoch=118, train MAE: 0.46634, val MAE: 0.47553, test MAE: 0.49362
+
+2024-12-08 08:01:02,729 - logger.py:50 - Epoch: [135][0/27] 	 loss: 0.03661, MAE: 0.37506, time/step=1347ms, lr=2.90e-04
+2024-12-08 08:01:27,924 - logger.py:50 - Epoch: [135][26/27] 	 loss: 0.04047, MAE: 0.41469, time/step=983ms, lr=2.90e-04
+2024-12-08 08:01:30,129 - logger.py:50 - Epoch: [135] Target: [1] train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051, Time: 28.75s
+2024-12-08 08:01:30,129 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:01:31,729 - logger.py:50 - Epoch: [136][0/27] 	 loss: 0.03806, MAE: 0.38997, time/step=1595ms, lr=2.87e-04
+2024-12-08 08:01:57,066 - logger.py:50 - Epoch: [136][26/27] 	 loss: 0.04602, MAE: 0.47147, time/step=998ms, lr=2.87e-04
+2024-12-08 08:01:59,311 - logger.py:50 - Epoch: [136] Target: [1] train MAE: 0.47147, val MAE: 1.31471, test MAE: 1.22622, Time: 29.18s
+2024-12-08 08:01:59,311 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:02:00,658 - logger.py:50 - Epoch: [137][0/27] 	 loss: 0.12310, MAE: 1.26130, time/step=1344ms, lr=2.84e-04
+2024-12-08 08:02:25,930 - logger.py:50 - Epoch: [137][26/27] 	 loss: 0.07570, MAE: 0.77559, time/step=986ms, lr=2.84e-04
+2024-12-08 08:02:28,204 - logger.py:50 - Epoch: [137] Target: [1] train MAE: 0.77559, val MAE: 0.76279, test MAE: 0.82076, Time: 28.89s
+2024-12-08 08:02:28,204 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:02:29,809 - logger.py:50 - Epoch: [138][0/27] 	 loss: 0.07735, MAE: 0.79251, time/step=1600ms, lr=2.82e-04
+2024-12-08 08:02:55,136 - logger.py:50 - Epoch: [138][26/27] 	 loss: 0.04774, MAE: 0.48914, time/step=997ms, lr=2.82e-04
+2024-12-08 08:02:57,418 - logger.py:50 - Epoch: [138] Target: [1] train MAE: 0.48914, val MAE: 0.51263, test MAE: 0.48091, Time: 29.21s
+2024-12-08 08:02:57,418 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:02:58,767 - logger.py:50 - Epoch: [139][0/27] 	 loss: 0.04478, MAE: 0.45882, time/step=1346ms, lr=2.79e-04
+2024-12-08 08:03:23,947 - logger.py:50 - Epoch: [139][26/27] 	 loss: 0.04225, MAE: 0.43285, time/step=982ms, lr=2.79e-04
+2024-12-08 08:03:26,395 - logger.py:50 - Epoch: [139] Target: [1] train MAE: 0.43285, val MAE: 0.49685, test MAE: 0.57805, Time: 28.98s
+2024-12-08 08:03:26,395 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:03:27,928 - logger.py:50 - Epoch: [140][0/27] 	 loss: 0.04529, MAE: 0.46403, time/step=1528ms, lr=2.77e-04
+2024-12-08 08:03:53,140 - logger.py:50 - Epoch: [140][26/27] 	 loss: 0.04460, MAE: 0.45691, time/step=990ms, lr=2.77e-04
+2024-12-08 08:03:55,406 - logger.py:50 - Epoch: [140] Target: [1] train MAE: 0.45691, val MAE: 0.48251, test MAE: 0.46894, Time: 29.01s
+2024-12-08 08:03:55,407 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:03:56,750 - logger.py:50 - Epoch: [141][0/27] 	 loss: 0.03761, MAE: 0.38535, time/step=1340ms, lr=2.74e-04
+2024-12-08 08:04:22,093 - logger.py:50 - Epoch: [141][26/27] 	 loss: 0.04019, MAE: 0.41174, time/step=988ms, lr=2.74e-04
+2024-12-08 08:04:24,361 - logger.py:50 - Epoch: [141] Target: [1] train MAE: 0.41174, val MAE: 0.53566, test MAE: 0.53894, Time: 28.95s
+2024-12-08 08:04:24,362 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:04:25,729 - logger.py:50 - Epoch: [142][0/27] 	 loss: 0.04943, MAE: 0.50643, time/step=1363ms, lr=2.71e-04
+2024-12-08 08:04:50,988 - logger.py:50 - Epoch: [142][26/27] 	 loss: 0.04262, MAE: 0.43663, time/step=986ms, lr=2.71e-04
+2024-12-08 08:04:53,229 - logger.py:50 - Epoch: [142] Target: [1] train MAE: 0.43663, val MAE: 0.61351, test MAE: 0.60472, Time: 28.87s
+2024-12-08 08:04:53,229 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:04:54,924 - logger.py:50 - Epoch: [143][0/27] 	 loss: 0.05834, MAE: 0.59774, time/step=1690ms, lr=2.69e-04
+2024-12-08 08:05:20,356 - logger.py:50 - Epoch: [143][26/27] 	 loss: 0.05601, MAE: 0.57386, time/step=1005ms, lr=2.69e-04
+2024-12-08 08:05:22,732 - logger.py:50 - Epoch: [143] Target: [1] train MAE: 0.57386, val MAE: 0.55767, test MAE: 0.56675, Time: 29.50s
+2024-12-08 08:05:22,732 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:05:24,051 - logger.py:50 - Epoch: [144][0/27] 	 loss: 0.03588, MAE: 0.36761, time/step=1316ms, lr=2.66e-04
+2024-12-08 08:05:49,319 - logger.py:50 - Epoch: [144][26/27] 	 loss: 0.03996, MAE: 0.40939, time/step=985ms, lr=2.66e-04
+2024-12-08 08:05:51,470 - logger.py:50 - Epoch: [144] Target: [1] train MAE: 0.40939, val MAE: 0.58880, test MAE: 0.55971, Time: 28.74s
+2024-12-08 08:05:51,470 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:05:52,921 - logger.py:50 - Epoch: [145][0/27] 	 loss: 0.04842, MAE: 0.49607, time/step=1447ms, lr=2.64e-04
+2024-12-08 08:06:18,251 - logger.py:50 - Epoch: [145][26/27] 	 loss: 0.04207, MAE: 0.43100, time/step=992ms, lr=2.64e-04
+2024-12-08 08:06:20,530 - logger.py:50 - Epoch: [145] Target: [1] train MAE: 0.43100, val MAE: 0.48411, test MAE: 0.50814, Time: 29.06s
+2024-12-08 08:06:20,530 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:06:21,872 - logger.py:50 - Epoch: [146][0/27] 	 loss: 0.03794, MAE: 0.38875, time/step=1339ms, lr=2.61e-04
+2024-12-08 08:06:47,149 - logger.py:50 - Epoch: [146][26/27] 	 loss: 0.04371, MAE: 0.44783, time/step=986ms, lr=2.61e-04
+2024-12-08 08:06:49,404 - logger.py:50 - Epoch: [146] Target: [1] train MAE: 0.44783, val MAE: 0.95046, test MAE: 0.90185, Time: 28.87s
+2024-12-08 08:06:49,405 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:06:50,998 - logger.py:50 - Epoch: [147][0/27] 	 loss: 0.08083, MAE: 0.82820, time/step=1589ms, lr=2.58e-04
+2024-12-08 08:07:16,386 - logger.py:50 - Epoch: [147][26/27] 	 loss: 0.04921, MAE: 0.50418, time/step=999ms, lr=2.58e-04
+2024-12-08 08:07:18,707 - logger.py:50 - Epoch: [147] Target: [1] train MAE: 0.50418, val MAE: 0.50964, test MAE: 0.53589, Time: 29.30s
+2024-12-08 08:07:18,707 - logger.py:50 - Best -- epoch=135, train MAE: 0.41469, val MAE: 0.46795, test MAE: 0.49051
+
+2024-12-08 08:07:20,056 - logger.py:50 - Epoch: [148][0/27] 	 loss: 0.04089, MAE: 0.41896, time/step=1346ms, lr=2.56e-04
